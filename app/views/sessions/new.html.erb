@@ -1,0 +1,17 @@
+<h1>Login</h1>
+
+<%= form_for(:session, :url => sessions_path) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Login" %>
+  </div>
+<% end %>
+
+<p>Ainda não tem uma conta no Funfou? <%= link_to "Cadastre-se, leva menos de 10 segundos!", cadastro_path %></p>

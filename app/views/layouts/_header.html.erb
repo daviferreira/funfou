@@ -1,7 +1,15 @@
-<div id="account-info">
-    <p>Boa tarde. <a href="#">Crie uma conta</a> (leva menos de 10 segundos!) para ter acesso a todos os recursos do <strong>Funfou</strong> ou <a href="#">efetue login</a>.</p>
-</div>
 
+<% if signed_in? %>
+<div id="account-info">
+  <%= gravatar_for current_user, :size => 30 %>
+  <p>Boa tarde, <%= link_to current_user.name, current_user %></p>
+  <p><%= link_to "Sair", sair_path, :method => :delete %></p>
+</div>
+<% else %>
+  <div class="info">
+      <p>Boa tarde. <%= link_to "Crie uma conta", cadastro_path %> (leva menos de 10 segundos!) para ter acesso a todos os recursos do <strong>Funfou</strong> ou <%= link_to "efetue login", login_path %>.</p>
+  </div>
+  <% end %>
 
 <header>
     <div id="search">
