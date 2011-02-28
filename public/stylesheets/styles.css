@@ -119,12 +119,9 @@ width: 960px;
 }
 
 div#account-info{
-  background-color:#333;
+  background-color:#ffffdf;
   padding:12px;
-}
-
-div#account-info a{
-  color:#df0d32;
+  border-bottom: 1px solid #ccc;
 }
 
 /*
