@@ -1,0 +1,287 @@
+/*
+    Reset 
+    \* ......................................................................................................................................... */
+    
+/* v1.0 | 20080212 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*	
+    TITULO
+    URL
+    
+    por: M2BRNET (http://www.m2brnet.com)
+\* ......................................................................................................................................... */
+
+
+/*
+    Globais
+\* ......................................................................................................................................... */
+body{ background-color: #edf2fd; font-family:'Droid Serif', Georgia, "Times New Roman", serif; }
+
+a{ color: #1e92ff; }
+a:hover{ color: #df0d34; }
+
+h1{ font-weight:900; font-size: 55px; color: #000; font-family: Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:-1.5px; text-shadow: 2px 2px 0px #fff; }
+
+h1 a{ color: #000; text-decoration: none; }
+h1 a:hover{ color: #333; }
+
+/*
+    Layout
+\* ......................................................................................................................................... */
+
+/*
+    Header
+\* ......................................................................................................................................... */
+
+header{ width: 960px; margin: 24px auto; }
+
+header div#search{ float:right; margin:15px 0 0; }
+
+header div#search input#fld-search{border:1px solid #ccc;padding:6px;width:270px;
+
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+
+}
+
+header div#search input#btn-search{
+    padding:6px;
+    color: #fff;
+    font-weight:900;
+    background-color:#1e92ff;
+    border: none;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+cursor:pointer;
+}
+
+header div#search input#btn-search:hover{
+background-color:#df0d34;
+}
+
+div#account-info{ background-color: #ffffdf; margin: 24px auto; padding:12px; text-align: center;
+border: 1px solid #ccc; font-size:12px;
+font-family: Helvetica, Arial, sans-serif;
+color:#666;
+width: 960px;
+}
+
+/*
+    Menu
+\* ......................................................................................................................................... */
+
+
+/*
+    Conteúdo
+\* ......................................................................................................................................... */
+
+div#container{ background-color: #fff; margin:3px auto;  width:960px;
+padding: 12px 0 12px 0;
+border: 12px solid #dfe6f6;
+-webkit-border-radius: 12px;
+-moz-border-radius: 12px;
+border-radius: 12px;
+}
+
+div.question{ padding:12px; margin: 12px; border-bottom: 1px dashed #dfe6f6; }
+
+div.question p{ font-size: 20px; font-weight: 500; color: #333; line-height:26px; }
+div.question p a{ color: #333; text-decoration: none;font-family:'Droid Serif', Georgia, "Times New Roman", serif; }
+div.question p a:hover{ color: #1e92ff; }
+
+div.question p a pre{ font-size:12px; font-family:'Droid Sans Mono', monospace;}
+
+div.question ul.meta{ margin: 12px 0 12px 0; }
+div.question ul.meta li{ float:left; font-size:12px; color: #666; margin: 0 12px 0 12px; padding: 0 0 0 15px;  }
+div.question ul.meta li.alpha{ margin: 0 12px 0 0; padding: 0 0; }
+div.question ul.meta li.omega{ margin: 0 0 0 12px; }
+
+div.question ul.meta li.view{ background: url(../_img/ico-view.png) 0 0 no-repeat;}
+div.question ul.meta li.fav{ background: url(../_img/ico-fav.png) 0 0 no-repeat;}
+div.question ul.meta li.res{ background: url(../_img/ico-res.png) 0 0 no-repeat;}
+
+div.question ul.tags{ margin: 0 0 12px 0; }
+div.question ul.tags li{ float: left; margin: 0 6px 0 6px; }
+div.question ul.tags li.alpha{ margin: 0 6px 0 0; }
+div.question ul.tags li.omega{ margin: 0 0 0 6px; }
+div.question ul.tags li{ font-size:12px;}
+div.question ul.tags li a{ color: #fff; text-decoration: none; font-weight:900; display:inline-block;
+ background-color: #1e92ff; padding:6px; 
+font-family: Helvetica, Arial, sans-serif;
+
+
+/*
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+*/
+
+
+-webkit-border-top-left-radius: 3px;
+-webkit-border-bottom-right-radius: 3px;
+-moz-border-radius-topleft: 3px;
+-moz-border-radius-bottomright: 3px;
+border-top-left-radius: 3px;
+border-bottom-right-radius: 3px;
+
+}
+div.question ul.tags li a:hover{ background-color: #df0d34; }
+
+
+
+/*
+    Footer
+\* ......................................................................................................................................... */
+
+footer{
+	margin: 0 auto;
+	width: 960px;
+}
+
+footer div{ padding: 24px; font-size:12px; }
+
+/*
+    Paginação 
+\* ......................................................................................................................................... */
+
+.lista-paginacao li{
+    border:0; margin:0; padding:0;
+    list-style:none;
+    margin-right:2px;
+}
+.lista-paginacao a{
+    border:solid 1px #9aafe5;
+    margin-right:2px;
+}
+.lista-paginacao .previous-off,
+.lista-paginacao .next-off {
+    border:solid 1px #DEDEDE
+    color:#888888
+    display:block;
+    float:left;
+    font-weight:bold;
+    margin-right:2px;
+    padding:3px 4px;
+}
+.lista-paginacao .next a,
+.lista-paginacao .previous a {
+    font-weight:bold;
+}
+.lista-paginacao .active{
+    background:#2e6ab1;
+    color:#FFFFFF;
+    font-weight:bold;
+    display:block;
+    float:left;
+    padding:4px 6px;
+}
+.lista-paginacao a:link,
+.lista-paginacao a:visited {
+    color:#0e509e
+    display:block;
+    float:left;
+    padding:3px 6px;
+    text-decoration:none;
+}
+.lista-paginacao a:hover{
+    border:solid 1px #0e509e;
+}
+
+/*
+    Útil
+\* ......................................................................................................................................... */
+
+.clearfix:after                 { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+* html .clearfix                { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix    { zoom: 1; } /* IE7 */
+
+
+/*---------- vim Styles ---------*/
+.sh_vim{background:none; padding:0; margin:0; border:0 none;}.sh_vim .sh_sourceCode{background-color:#fff;color:#000;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_keyword{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_type{color:#0f0;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_string{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_regexp{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_specialchar{color:#f2f;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_comment{color:#00f;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_number{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_preproc{color:#f2f;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_function{color:#000;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_url{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_date{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_time{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_file{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_ip{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_name{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_variable{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_oldfile{color:#f2f;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_newfile{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_difflines{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_selector{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_property{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_value{color:#f00;font-weight:normal;font-style:normal;}
+
+/*-------- Snippet Base Styles ----------*/
+.snippet-wrap {position:relative;}
+*:first-child+html .snippet-wrap {display:inline-block;}
+* html .snippet-wrap {display:inline-block;}
+.snippet-reveal{text-decoration:underline;}
+.snippet-wrap .snippet-menu, .snippet-wrap .snippet-hide {position:absolute; top:10px; right:15px; font-size:.9em;z-index:1;background-color:transparent;}
+.snippet-wrap .snippet-hide {top:auto; bottom:10px;}
+*:first-child+html .snippet-wrap .snippet-hide {bottom:25px;}
+* html .snippet-wrap .snippet-hide {bottom:25px;}
+.snippet-wrap .snippet-menu pre, .snippet-wrap .snippet-hide pre {background-color:transparent; margin:0; padding:0;}
+.snippet-wrap .snippet-menu a, .snippet-wrap .snippet-hide a {padding:0 5px; text-decoration:underline;}
+.snippet-wrap pre.sh_sourceCode{padding:1em;line-height:1.8em;overflow:auto;position:relative;}
+.snippet-wrap pre.snippet-textonly {padding:2em;}
+*:first-child+html .snippet-wrap pre.snippet-formatted {padding:2em 1em;}
+* html .snippet-wrap pre.snippet-formatted {padding:2em 1em;}
+.snippet-reveal pre.sh_sourceCode {padding:.5em 1em; text-align:right;}
+.snippet-wrap .snippet-num li{padding-left:1.5em;}
+.snippet-wrap .snippet-no-num{list-style:none; padding:.6em 1em; margin:0;}
+.snippet-wrap .snippet-no-num li {list-style:none; padding-left:0;}
+.snippet-wrap .snippet-num {margin:1em 0 1em 1em; padding-left:3em;}
+.snippet-wrap .snippet-num li {list-style:decimal-leading-zero outside none;}
+.snippet-wrap .snippet-no-num li.box {padding:0 6px; margin-left:-6px;}
+.snippet-wrap .snippet-num li.box {border:1px solid; list-style-position:inside; margin-left:-3em; padding-left:6px;}
+*:first-child+html .snippet-wrap .snippet-num li.box {margin-left:-2.4em;}
+* html .snippet-wrap .snippet-num li.box {margin-left:-2.4em;}
+.snippet-wrap li.box-top {border-width:1px 1px 0 !important;}
+.snippet-wrap li.box-bot {border-width:0 1px 1px !important;}
+.snippet-wrap li.box-mid {border-width:0 1px !important;}
+.snippet-wrap .snippet-num li .box-sp {width:18px; display:inline-block;}
+*:first-child+html .snippet-wrap .snippet-num li .box-sp {width:27px;}
+* html .snippet-wrap .snippet-num li .box-sp {width:27px;}
+.snippet-wrap .snippet-no-num li.box {border:1px solid;}
+.snippet-wrap .snippet-no-num li .box-sp {display:none;}
+.snippet-wrap .snippet-num li span{ font-family:'Droid Sans Mono', monospace!important;}

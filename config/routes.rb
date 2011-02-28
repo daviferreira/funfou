@@ -4,6 +4,6 @@ Funfou::Application.routes.draw do
 
 	match "/sobre", 				:to => "pages#about"
 	match "/ajuda", 				:to => "pages#help"
-	match "/fale-conosco",	:to	=> "pages#contact"
+	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact
 
 end
