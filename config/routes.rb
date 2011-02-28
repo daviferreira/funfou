@@ -1,6 +1,9 @@
 Funfou::Application.routes.draw do
-  get "pages/home"
-  get "pages/contact"
-  get "pages/help"
-  get "pages/about"
+
+	root :to => "pages#home"
+
+	match "/sobre", 				:to => "pages#about"
+	match "/ajuda", 				:to => "pages#help"
+	match "/fale-conosco",	:to	=> "pages#contact"
+
 end
