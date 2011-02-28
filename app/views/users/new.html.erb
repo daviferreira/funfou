@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+<h2>Cadastre-se!</h2>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
@@ -22,3 +22,5 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+
+<p>Já é cadastrado? <%= link_to "Efetue login!", login_path %></p>
