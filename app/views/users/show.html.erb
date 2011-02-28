@@ -3,7 +3,15 @@
   <%= @user.name %>
 </h2>
 
+<% unless @user.questions.empty? %>
+  <div class="user-questions">
+    <%= render @questions %>
+  </div>
+  <%= will_paginate @questions %>
+<% end %>
+
 <div id="user-sidebar" class="sidebar">
-<strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+  <strong>Name</strong> <%= @user.name %><br />
+  <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
+  <strong>Perguntas</strong> <%= @user.questions.count %>
 </div>
