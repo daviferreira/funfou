@@ -1,4 +1,5 @@
-<%= form_for current_user.favorites.build(:question_id => @question.id) do |f| %>
+<%= form_for current_user.favorites.build(:question_id => @question.id),
+ 		:remote => true	do |f| %>
 	<div><%= f.hidden_field :question_id %></div>
 	<div class="actions"><%= f.submit "Adicionar aos favoritos" %></div>
 <% end %>

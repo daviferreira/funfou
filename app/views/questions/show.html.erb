@@ -1,12 +1,7 @@
 <div class="question">
 	<h2><%= @question.title %></h2>
 
-  <ul class="meta clearfix">
-		<li class="alpha">Enviada há <%= time_ago_in_words(@question.created_at) %> atrás por <%= link_to @user.name, @user %>.</li>
-      <li class="view"> visualizações</li>
-      <li class="res"> respostas</li>
-      <li class="omega fav"> favoritos</li>
-  </ul>
+	<%= render 'info_data', :question => @question %>
 
 	<%= render 'favorite_form' if signed_in? %>
 

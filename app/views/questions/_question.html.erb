@@ -1,10 +1,4 @@
 <div class="question">
   <h3><%= link_to question.title, question %></h3>
-
-  <ul class="meta clearfix">
-      <li class="alpha">Enviada há <%= time_ago_in_words(question.created_at) %> atrás.</li>
-			<li class="view"><%= question.visualizations.count %> visualizações</li>
-			<li class="res"><%= question.answers.count %> respostas</li>
-			<li class="omega fav"><%= question.favorites.count %> favoritos</li>
-  </ul>
+	<%= render 'info_data', :question => question %>
 </div>
