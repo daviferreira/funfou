@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def home
-		@title = "Página inicial"
+		if signed_in?
+			redirect_to '/perguntas'
+		else
+			@title = "Página inicial"
+		end
 	end
 
   def contact

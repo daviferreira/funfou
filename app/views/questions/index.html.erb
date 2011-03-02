@@ -1,0 +1,9 @@
+<h2>Perguntas</h2>
+
+<% @questions.each do |question| %>
+	<div class="user-questions">
+		<%= render question %>
+	</div>
+<% end %>
+
+<%= will_paginate %>

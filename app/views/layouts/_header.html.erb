@@ -3,8 +3,8 @@
 <div id="account-info">
   <%= gravatar_for current_user, :size => 30 %>
   <p>Boa tarde, <%= link_to current_user.name, current_user %></p>
-  <p><%= link_to "Users", users_path %></p>
-  <p><%= link_to "Settings", edit_user_path(current_user) %></p>
+	<p><%= link_to "Favoritos", "#" %></p>
+  <p><%= link_to "Meus dados", edit_user_path(current_user) %></p>
   <p><%= link_to "Sair", sair_path, :method => :delete %></p>
 </div>
 <% else %>
@@ -20,5 +20,5 @@
             <input type="submit" value="OK" id="btn-search" />
         </form>
     </div>
-    <h1><%= link_to "Funfou", root_path %></h1>
+    <!-- h1><%= link_to "Funfou", root_path %></h1 -->
 </header>
