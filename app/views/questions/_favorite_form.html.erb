@@ -1,0 +1,9 @@
+<% unless current_user == @question.user_id %>
+	<div id="favorite_form">
+		<% if current_user.favorite?(@question) %>
+			<%= render 'unfavorite' %>
+		<% else %>
+			<%= render 'favorite' %>
+		<% end %>
+	</div>
+<% end %>

@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
 	attr_accessible :name, :email, :password, :password_confirmation
 	
 	has_many :questions, :dependent => :destroy
+	has_many :answers, :dependent => :destroy
+	has_many :favorites, :dependent => :destroy
+	has_many :votes, :dependent => :destroy
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -49,22 +52,34 @@ class User < ActiveRecord::Base
    (user && user.salt == cookie_salt) ? user : nil
  end
 
-   private
+	def favorite?(question)
+		favorites.find_by_question_id(question)
+	end
 
-     def encrypt_password
-       self.salt = make_salt if new_record?
-       self.encrypted_password = encrypt(password)
-     end
+	def favorite!(question)
+		favorites.create!(:question_id => question.id)
+	end
 
-     def encrypt(string)
-       secure_hash("#{salt}--#{string}")
-     end
+	def unfavorite!(question)
+		favorites.find_by_question_id(question).destroy
+	end
 
-     def make_salt
-       secure_hash("#{Time.now.utc}--#{password}")
-     end
+	private
 
-     def secure_hash(string)
-       Digest::SHA2.hexdigest(string)
-     end
+		def encrypt_password
+			self.salt = make_salt if new_record?
+			self.encrypted_password = encrypt(password)
+		end
+
+		def encrypt(string)
+			secure_hash("#{salt}--#{string}")
+		end
+
+		def make_salt
+			secure_hash("#{Time.now.utc}--#{password}")
+		end
+
+		def secure_hash(string)
+			Digest::SHA2.hexdigest(string)
+		end
 end

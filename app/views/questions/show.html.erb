@@ -8,6 +8,8 @@
       <li class="omega fav"> favoritos</li>
   </ul>
 
+	<%= render 'favorite_form' if signed_in? %>
+
 	<div class="description">
 		<%= @question.content %>
 	</div>

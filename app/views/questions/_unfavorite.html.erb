@@ -1,0 +1,5 @@
+<%= form_for current_user.favorites.find_by_question_id(@question),
+		:html => { :method => :delete } do |f| %>
+	<div class="actions"><%= f.submit "Remover dos favoritos" %></div>
+<% end %>
+
