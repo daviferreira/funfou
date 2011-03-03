@@ -1,5 +1,5 @@
 Funfou::Application.routes.draw do
-	resources :users, :only => [:create, :update, :destroy]
+	resources :users, :only => [:show, :create, :update, :destroy]
 	resources :sessions, :only => [:create, :destroy]
 	resources :questions, :only => [:create, :destroy]
 	resources :favorites, :only => [:create, :destroy]
