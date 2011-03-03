@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
 
   def show
 		@question = Question.find(params[:id])
+		add_visualization	(@question.id)
 		@title = @question.title
 		@user = User.find(@question.user_id)
   end
@@ -29,4 +30,17 @@ class QuestionsController < ApplicationController
 
   def destroy
   end
+
+	private
+		
+		def add_visualization(question_id)
+			@client_ip = request.remote_ip
+			if Visualization.where("question_id = ? AND ip_address = ?", 
+														 question_id, @client_ip).blank?
+				@agent = request.env['HTTP_USER_AGENT'].downcase 
+				Visualization.create(:question_id => question_id,
+														 :ip_address => @client_ip,
+														 :browser_agent => @agent)
+			end
+		end
 end

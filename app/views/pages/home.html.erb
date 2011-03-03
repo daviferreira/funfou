@@ -1,1 +1,12 @@
-<%= link_to "Cadastre-se", cadastro_path %>
+<% if signed_in? %>
+	<p><%= link_to "Perguntar", new_question_path %></p>
+
+	<% @questions.each do |question| %>
+		<div class="user-questions">
+			<%= render question %>
+		</div>
+	<% end %>
+
+<% else %>
+	<%= link_to "Cadastre-se", cadastro_path %>
+<% end %>

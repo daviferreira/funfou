@@ -1,12 +1,14 @@
 Funfou::Application.routes.draw do
 	resources :users
-	resources :sessions, :only => [:new, :create, :destroy]
-	resources :questions, :only => [:show, :new, :create, :destroy]
-	resources :favorites, :only => [:show, :create, :destroy]
+	resources :sessions, :only => [:create, :destroy]
+	resources :questions, :only => [:create, :destroy]
+	resources :favorites, :only => [:create, :destroy]
 
 	root :to => "pages#home"
 
 	match "/perguntas",			:to => "questions#index"
+	match "/perguntar",			:to => "questions#new", :as => :new_question
+	match "/pergunta/:id",	:to => "questions#show", :as => :question 
 
 	match "/sobre", 				:to => "pages#about"
 	match "/ajuda", 				:to => "pages#help"
@@ -14,7 +16,7 @@ Funfou::Application.routes.draw do
 	
 	match "/cadastro",      :to => "users#new"
 	
-	match "/login",         :to => "sessions#new"
-	match "/sair",          :to => "sessions#destroy"
+	match "/login",         :to => "sessions#new", :as => :login
+	match "/sair",          :to => "sessions#destroy", :as => :logout
 
 end

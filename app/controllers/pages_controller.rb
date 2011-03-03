@@ -1,9 +1,8 @@
 class PagesController < ApplicationController
   def home
+		@title = "Página inicial"
 		if signed_in?
-			redirect_to '/perguntas'
-		else
-			@title = "Página inicial"
+			@questions = Question.limit(20)
 		end
 	end
 

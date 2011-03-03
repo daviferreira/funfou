@@ -1,5 +1,7 @@
 <h2>Perguntas</h2>
 
+<p><%= link_to "Perguntar", new_question_path %></p>
+
 <% @questions.each do |question| %>
 	<div class="user-questions">
 		<%= render question %>
