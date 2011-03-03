@@ -1,5 +1,5 @@
 Funfou::Application.routes.draw do
-	resources :users
+	resources :users, :only => [:create, :update, :destroy]
 	resources :sessions, :only => [:create, :destroy]
 	resources :questions, :only => [:create, :destroy]
 	resources :favorites, :only => [:create, :destroy]
@@ -14,7 +14,8 @@ Funfou::Application.routes.draw do
 	match "/ajuda", 				:to => "pages#help"
 	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact
 	
-	match "/cadastro",      :to => "users#new"
+	match "/cadastro",      :to => "users#new", :as => :new_user
+	match "/meus-dados",		:to	=> "users#edit", :as => :edit_user
 	
 	match "/login",         :to => "sessions#new", :as => :login
 	match "/sair",          :to => "sessions#destroy", :as => :logout
