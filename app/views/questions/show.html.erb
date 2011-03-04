@@ -8,5 +8,15 @@
 	<div class="description">
 		<%= @question.content %>
 	</div>
+
+	<div id="answer-form">
+	<% if signed_in? %>
+		<%= render 'answers/form' %>
+	<% else %>
+		<p>Você precisa estar logado para responder a esta pergunta</p>
+		<%= render 'sessions/form' %>
+	<% end %>
+	</div>
+
 </div>
 
