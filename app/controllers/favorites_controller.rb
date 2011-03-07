@@ -1,6 +1,14 @@
 class FavoritesController < ApplicationController
 	before_filter :authenticate
 
+  def index
+    @favorites = Favorite.where("user_id = ?", current_user.id)
+    @questions = []
+    @favorites.each do |f|
+      @questions.push(Question.find_by_id(f.question_id))
+    end
+  end
+
 	def create
 		id = params[:favorite][:question_id]
 		if current_user.favorites.find_by_question_id(id).nil?

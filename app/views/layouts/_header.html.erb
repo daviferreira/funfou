@@ -2,7 +2,7 @@
 <div id="account-info">
   <%= gravatar_for current_user, :size => 30 %>
   <p>Boa tarde, <%= link_to current_user.name, current_user %></p>
-	<p><%= link_to "Favoritos", "#" %></p>
+	<p><%= link_to "Favoritos", favorites_path %></p>
   <p><%= link_to "Meus dados", edit_user_path(current_user) %></p>
   <p><%= link_to "Sair", logout_path, :method => :delete %></p>
 </div>
