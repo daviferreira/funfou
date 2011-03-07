@@ -13,6 +13,10 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
+      if params[:session][:question_id]
+        question = Question.find_by_id(params[:session][:question_id])
+        session[:return_to] = question
+      end
       redirect_back_or user
     end
   end

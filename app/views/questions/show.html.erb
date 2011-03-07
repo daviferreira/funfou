@@ -9,10 +9,19 @@
 		<%= @question.content %>
 	</div>
 	
+	<% unless @question.answers.empty? %>
+	  <h3>Respostas</h3>
+	  <ul class="question-answers">
+	  <% @question.answers.each do |answer| %>
+	    <%= render answer %>
+	  <% end %>
+	  </ul>
+	<% end %>
+	
 	<% if signed_in? %>
 	  <%= render 'form_answer'%>
 	<% else %>
-	  <%= render 'sessions/form' %>
+	  <%= render 'sessions/form', :locals => { :question_id => @question.id } %>
 	<% end %>
 </div>
 

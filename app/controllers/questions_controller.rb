@@ -11,7 +11,6 @@ class QuestionsController < ApplicationController
 		add_visualization	(@question.id)
 		@title = @question.title
 		@user = User.find(@question.user_id)
-		store_location
   end
  
 	def new

@@ -10,7 +10,7 @@ module QuestionsHelper
 	end	
 	
 	def author_name(user_id)
-	  if user_id == current_user.id
+	  if signed_in? && user_id == current_user.id
 	    "você"
     else
       @user = User.find_by_id(user_id)

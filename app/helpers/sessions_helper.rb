@@ -35,8 +35,9 @@ module SessionsHelper
   end
   
   def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
+    return_to = session[:return_to]
     clear_return_to
+    redirect_to(return_to || default)
   end
 
   private

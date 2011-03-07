@@ -1,4 +1,9 @@
 <%= form_for(:session, :url => sessions_path) do |f| %>
+
+  <% if @question %>
+    <%= f.hidden_field :question_id , { :value => @question.id } %>
+  <% end %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
