@@ -3,14 +3,13 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = Favorite.where("user_id = ?", current_user.id)
-    @questions = {}
     unless @favorites.empty?
       params = ""
       @favorites.each do |f|
         params = params + f.question_id.to_s + ","
       end
-      params = params + "0"
-      @questions = Question.where("id IN (#{params})")
+      params = params + "-1"
+      @favorites = Question.where("id IN (#{params})").paginate(:page => params[:page])
     end
   end
 

@@ -1,7 +1,11 @@
 <h2>Favoritos</h2>
 
-<% @questions.each do |question| %>
-	<div class="user-questions">
-		<%= render question %>
-	</div>
+<% unless @favorites.empty? %>
+  <% @favorites.each do |question| %>
+  	<div class="user-questions">
+  		<%= render question %>
+  	</div>
+  <% end %>
+
+  <%= will_paginate %>
 <% end %>
