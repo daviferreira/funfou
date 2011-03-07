@@ -3,9 +3,14 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = Favorite.where("user_id = ?", current_user.id)
-    @questions = []
-    @favorites.each do |f|
-      @questions.push(Question.find_by_id(f.question_id))
+    @questions = {}
+    unless @favorites.empty?
+      params = ""
+      @favorites.each do |f|
+        params = params + f.question_id.to_s + ","
+      end
+      params = params + "0"
+      @questions = Question.where("id IN (#{params})")
     end
   end
 
