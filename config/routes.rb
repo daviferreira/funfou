@@ -3,6 +3,7 @@ Funfou::Application.routes.draw do
 	resources :sessions, :only => [:create, :destroy]
 	resources :questions, :only => [:create, :destroy]
 	resources :favorites, :only => [:create, :destroy]
+	resources :answers, :only => [:create, :destroy]
 
 	root :to => "pages#home"
 

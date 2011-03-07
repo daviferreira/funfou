@@ -64,6 +64,10 @@ class User < ActiveRecord::Base
 		favorites.find_by_question_id(question).destroy
 	end
 
+	def answer!(question, content)
+		answers.create!(:question_id => question.id, :content => content)
+	end
+
 	private
 
 		def encrypt_password

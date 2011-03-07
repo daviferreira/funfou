@@ -8,4 +8,13 @@ module QuestionsHelper
 			"#{total} #{forms[:plural]}"
 		end
 	end	
+	
+	def author_name(user_id)
+	  if user_id == current_user.id
+	    "você"
+    else
+      @user = User.find_by_id(user_id)
+      link_to @user.name, @user
+    end
+  end
 end

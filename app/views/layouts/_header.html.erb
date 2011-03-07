@@ -1,4 +1,3 @@
-
 <% if signed_in? %>
 <div id="account-info">
   <%= gravatar_for current_user, :size => 30 %>
@@ -9,7 +8,7 @@
 </div>
 <% else %>
   <div class="info">
-      <p>Boa tarde. <%= link_to "Crie uma conta", cadastro_path %> (leva menos de 10 segundos!) para ter acesso a todos os recursos do <strong>Funfou</strong> ou <%= link_to "efetue login", login_path %>.</p>
+      <p>Boa tarde. <%= link_to "Crie uma conta", new_user_path %> (leva menos de 10 segundos!) para ter acesso a todos os recursos do <strong>Funfou</strong> ou <%= link_to "efetue login", login_path %>.</p>
   </div>
   <% end %>
 
@@ -20,5 +19,5 @@
             <input type="submit" value="OK" id="btn-search" />
         </form>
     </div>
-    <!-- h1><%= link_to "Funfou", root_path %></h1 -->
+    <h1><%= link_to "Funfou", root_path %></h1>
 </header>
