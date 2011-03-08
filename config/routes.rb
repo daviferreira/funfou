@@ -15,6 +15,7 @@ Funfou::Application.routes.draw do
 	match "/ajuda", 				  :to => "pages#help", :as => :help
 	match "/fale-conosco",	  :to	=> "pages#contact", :as => :contact
 	
+	match "/usuarios",        :to => "users#index", :as => :users
 	match "/cadastro",        :to => "users#new", :as => :new_user
 	match "/meus-dados/:id",  :to	=> "users#edit", :as => :edit_user
 	match "/favoritos",       :to => "favorites#index"
