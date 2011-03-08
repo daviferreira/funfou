@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
                          :if            => :should_validate_password?
                          
  before_save :encrypt_password, :if => :should_validate_password?
+ 
+ default_scope :order => 'users.name ASC'
 
  def should_validate_password?
    !password.blank? || !password_confirmation.blank? || new_record?

@@ -1,11 +1,12 @@
 <h2>Perguntas</h2>
-
 <p><%= link_to "Perguntar", new_question_path %></p>
-
-<% @questions.each do |question| %>
-	<div class="user-questions">
-		<%= render question %>
-	</div>
+<% if @questions.empty? %>
+  <p>Nenhuma pergunta encontrada.</p>
+<% else %>
+  <% @questions.each do |question| %>
+  	<div class="user-questions">
+  		<%= render question %>
+  	</div>
+  <% end %>
 <% end %>
-
 <%= will_paginate %>

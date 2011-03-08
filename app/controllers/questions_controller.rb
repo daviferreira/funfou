@@ -3,7 +3,15 @@ class QuestionsController < ApplicationController
 
 	def index
 		@title = "Perguntas"
-		@questions = Question.all.paginate(:page => params[:page])
+		if params[:keywords].nil?
+		  @questions = Question.all.paginate(:page => params[:page])
+	  else
+	    keywords = '%' + params[:keywords] + '%';
+	    @questions = Question.where("title LIKE ? OR content LIKE ?", keywords, keywords).paginate(:page => params[:page])
+		  if @questions.count == 1
+		    redirect_to @questions.first
+	    end
+	  end
 	end
 
   def show

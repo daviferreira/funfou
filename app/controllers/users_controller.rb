@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,	:only => :destroy
+  before_filter :correct_user_or_admin, :only => [:edit, :update]
+  before_filter :admin_user,	:only => [:destroy, :toggle_admin]
   
   def index
     @title = "Usuários"
@@ -40,6 +40,17 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed." 
     redirect_to users_path
   end
+
+  def toggle_admin
+    @user = User.find(params[:id])
+    @user.toggle!(:admin)
+    if @user.admin?
+      flash[:success] = "User toggled as admin." 
+    else
+      flash[:success] = "User is not an admin anymore."
+    end
+    redirect_to users_path
+  end
   
   def update
     @user = User.find(params[:id])
@@ -64,6 +75,12 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
+
+    def correct_user_or_admin
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user) or current_user.admin?
+    end
+
     
     def admin_user
       redirect_to(root_path) unless current_user.admin? 

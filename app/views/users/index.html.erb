@@ -6,9 +6,11 @@
       <%= gravatar_for user, :size => 30 %>
 			<%= link_to user.name, user %>
 			<% if current_user.admin? %>
-				| <%= link_to "Excluir", user, :method => :delete,
+			 | <%= link_to "Excluir", user, :method => :delete,
 																 :confirm => "Tem certeza?",
 																 :title => "Delete #{user.name}" %>
+			 | <%= link_to "Admin #{user.admin}", toggle_admin_path(user) %>
+			 | <%= link_to "Editar", edit_user_path(user) %>
 			<% end %>
     </li>
   <% end %>
