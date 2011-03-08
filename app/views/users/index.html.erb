@@ -5,7 +5,7 @@
     <li>
       <%= gravatar_for user, :size => 30 %>
 			<%= link_to user.name, user %>
-			<% if current_user.admin? %>
+			<% if current_user.admin? and user.email != "contato@daviferreira.com" %>
 			 | <%= link_to "Excluir", user, :method => :delete,
 																 :confirm => "Tem certeza?",
 																 :title => "Delete #{user.name}" %>
