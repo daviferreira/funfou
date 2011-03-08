@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   
   def index
-    @title = "All users"
+    @title = "Usuários"
     @users = User.all.paginate(:page => params[:page])
   end
 
@@ -22,16 +22,16 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Bem-vindo ao Funfou!"
       redirect_to @user
     else
-      @title = "Sign up"
+      @title = "Cadastre-se"
       render 'new'
     end
   end
   
   def edit
-    @title = "Edit user"
+    @title = "Meus dados"
   end
   
   def update
@@ -43,10 +43,10 @@ class UsersController < ApplicationController
       vars.delete('password_confirmation')
     end
     if @user.update_attributes(vars)
-      flash[:success] = "Profile updated."
+      flash[:success] = "Seus dados foram atualizados com sucesso."
       redirect_to @user
     else
-      @title = "Edit user"
+      @title = "Meus dados"
       render 'edit'
     end
   end

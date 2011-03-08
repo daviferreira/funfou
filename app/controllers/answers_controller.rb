@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
 		if content.blank?
       flash[:error] = "Informe uma resposta."
 	  else
+	    flash[:success] = "Sua resposta foi publicada."
 		  current_user.answer!(@question, content)
 	  end
     redirect_to @question

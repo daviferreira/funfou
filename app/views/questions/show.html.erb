@@ -1,9 +1,10 @@
 <div class="question">
-	<h2><%= @question.title %></h2>
+	<h2>
+	  <%= render 'favorite_form' if signed_in? %>
+	  <%= @question.title %>
+	</h2>
 
 	<%= render 'info_data', :question => @question %>
-
-	<%= render 'favorite_form' if signed_in? %>
 
 	<div class="description">
 		<%= @question.content %>
@@ -19,7 +20,7 @@
 	<% end %>
 	
 	<% if signed_in? %>
-	  <%= render 'form_answer'%>
+	  <%= render 'answer_form'%>
 	<% else %>
 	  <%= render 'sessions/form', :locals => { :question_id => @question.id } %>
 	<% end %>

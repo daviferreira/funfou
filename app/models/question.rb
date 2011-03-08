@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  attr_accessor :categories
   attr_accessible :title, :content
 
 	belongs_to :user
@@ -11,5 +12,4 @@ class Question < ActiveRecord::Base
   validates :user_id, :presence => true
   
   default_scope :order => 'questions.created_at DESC'
-
 end

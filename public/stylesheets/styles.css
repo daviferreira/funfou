@@ -83,7 +83,7 @@ h1 a:hover{ color: #333; }
     Header
 \* ......................................................................................................................................... */
 
-header{ width: 960px; margin: 24px auto; display:block; }
+header{ width: 1060px; margin: 24px auto; display:block; }
 
 header div#search{ float:right; margin:15px 0 0; }
 
@@ -115,13 +115,30 @@ div.info{ background-color: #ffffdf; margin: 24px auto; padding:12px; text-align
 border: 1px solid #ccc; font-size:12px;
 font-family: Helvetica, Arial, sans-serif;
 color:#666;
-width: 960px;
+width: 1060px;
 }
 
 div#account-info{
   background-color:#ffffdf;
   padding:12px;
   border-bottom: 1px solid #ccc;
+}
+
+div#account-info ul#user-options{
+  float:right;
+}
+
+div#account-info ul#user-options li.perguntar a{
+  color:#df0d32;
+}
+
+div#account-info img {
+  float:left;
+}
+
+div#account-info ul#user-options li{
+  float:left;
+  margin:0 12px 0 0;
 }
 
 /*
@@ -133,7 +150,7 @@ div#account-info{
     Conteúdo
 \* ......................................................................................................................................... */
 
-section#content{ background-color: #fff; margin:3px auto;  width:960px;
+section#content{ background-color: #fff; margin:3px auto;  width:1060px;
 padding: 12px 0 12px 0;
 border: 12px solid #dfe6f6;
 -webkit-border-radius: 12px;
@@ -141,6 +158,8 @@ border: 12px solid #dfe6f6;
 border-radius: 12px;
 display:block;
 }
+
+section#content h2{font-size:36px;padding:12px 0 0 24px;color:#333;letter-spacing:-1.5px; text-shadow: 2px 2px 0px #fff}
 
 div.question{ padding:12px; margin: 12px; border-bottom: 1px dashed #dfe6f6; }
 
@@ -186,7 +205,45 @@ border-bottom-right-radius: 3px;
 }
 div.question ul.tags li a:hover{ background-color: #df0d34; }
 
+div.question h2{
+  font-size:32px;
+  padding: 0 0!important;
+}
 
+#favorite-form{
+  float:right;
+}
+
+div.question div.description{
+  padding:12px;
+  background-color:#f2f2f2;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+div.question h3{
+  font-size:22px;
+  color:#333;
+  margin:12px 0 12px 0;
+  border-bottom:1px dotted #ccc;
+}
+
+ul.question-answers{
+  margin:12px 0 12px 0;
+}
+
+ul.question-answers li{
+  padding:12px;
+}
+
+ul.question-answers li div.info-data{
+  color:#666;
+  margin:12px 0 12px 0;
+  padding:4px 0 0;
+  font-size:12px;
+  border-top:1px solid #ccc;
+}
 
 /*
     Footer
@@ -194,7 +251,7 @@ div.question ul.tags li a:hover{ background-color: #df0d34; }
 
 footer{
 	margin: 0 auto;
-	width: 960px;
+	width: 1060px;
 	display:block;
 }
 
@@ -254,45 +311,6 @@ footer div{ padding: 24px; font-size:12px; }
 .clearfix:after                 { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
 * html .clearfix                { zoom: 1; } /* IE6 */
 *:first-child+html .clearfix    { zoom: 1; } /* IE7 */
-
-
-/*---------- vim Styles ---------*/
-.sh_vim{background:none; padding:0; margin:0; border:0 none;}.sh_vim .sh_sourceCode{background-color:#fff;color:#000;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_keyword{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_type{color:#0f0;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_string{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_regexp{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_specialchar{color:#f2f;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_comment{color:#00f;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_number{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_preproc{color:#f2f;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_function{color:#000;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_url{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_date{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_time{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_file{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_ip{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_name{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_variable{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_oldfile{color:#f2f;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_newfile{color:#f00;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_difflines{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_selector{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_property{color:#B26818;font-weight:normal;font-style:normal;}.sh_vim .sh_sourceCode .sh_value{color:#f00;font-weight:normal;font-style:normal;}
-
-/*-------- Snippet Base Styles ----------*/
-.snippet-wrap {position:relative;}
-*:first-child+html .snippet-wrap {display:inline-block;}
-* html .snippet-wrap {display:inline-block;}
-.snippet-reveal{text-decoration:underline;}
-.snippet-wrap .snippet-menu, .snippet-wrap .snippet-hide {position:absolute; top:10px; right:15px; font-size:.9em;z-index:1;background-color:transparent;}
-.snippet-wrap .snippet-hide {top:auto; bottom:10px;}
-*:first-child+html .snippet-wrap .snippet-hide {bottom:25px;}
-* html .snippet-wrap .snippet-hide {bottom:25px;}
-.snippet-wrap .snippet-menu pre, .snippet-wrap .snippet-hide pre {background-color:transparent; margin:0; padding:0;}
-.snippet-wrap .snippet-menu a, .snippet-wrap .snippet-hide a {padding:0 5px; text-decoration:underline;}
-.snippet-wrap pre.sh_sourceCode{padding:1em;line-height:1.8em;overflow:auto;position:relative;}
-.snippet-wrap pre.snippet-textonly {padding:2em;}
-*:first-child+html .snippet-wrap pre.snippet-formatted {padding:2em 1em;}
-* html .snippet-wrap pre.snippet-formatted {padding:2em 1em;}
-.snippet-reveal pre.sh_sourceCode {padding:.5em 1em; text-align:right;}
-.snippet-wrap .snippet-num li{padding-left:1.5em;}
-.snippet-wrap .snippet-no-num{list-style:none; padding:.6em 1em; margin:0;}
-.snippet-wrap .snippet-no-num li {list-style:none; padding-left:0;}
-.snippet-wrap .snippet-num {margin:1em 0 1em 1em; padding-left:3em;}
-.snippet-wrap .snippet-num li {list-style:decimal-leading-zero outside none;}
-.snippet-wrap .snippet-no-num li.box {padding:0 6px; margin-left:-6px;}
-.snippet-wrap .snippet-num li.box {border:1px solid; list-style-position:inside; margin-left:-3em; padding-left:6px;}
-*:first-child+html .snippet-wrap .snippet-num li.box {margin-left:-2.4em;}
-* html .snippet-wrap .snippet-num li.box {margin-left:-2.4em;}
-.snippet-wrap li.box-top {border-width:1px 1px 0 !important;}
-.snippet-wrap li.box-bot {border-width:0 1px 1px !important;}
-.snippet-wrap li.box-mid {border-width:0 1px !important;}
-.snippet-wrap .snippet-num li .box-sp {width:18px; display:inline-block;}
-*:first-child+html .snippet-wrap .snippet-num li .box-sp {width:27px;}
-* html .snippet-wrap .snippet-num li .box-sp {width:27px;}
-.snippet-wrap .snippet-no-num li.box {border:1px solid;}
-.snippet-wrap .snippet-no-num li .box-sp {display:none;}
-.snippet-wrap .snippet-num li span{ font-family:'Droid Sans Mono', monospace!important;}
 
 .field_with_errors {
   margin-top: 10px;

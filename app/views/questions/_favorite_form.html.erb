@@ -1,5 +1,5 @@
 <% unless current_user.id == @question.user_id %>
-	<div id="favorite_form">
+	<div id="favorite-form">
 		<% if current_user.favorite?(@question) %>
 			<%= render 'unfavorite' %>
 		<% else %>
