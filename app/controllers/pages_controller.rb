@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   def home
 		@title = "Página inicial"
 		if signed_in?
-			@questions = Question.limit(20)
+			@questions = Question.all.paginate(:page => params[:page])
 		end
 	end
 
