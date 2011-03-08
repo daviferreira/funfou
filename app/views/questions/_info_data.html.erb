@@ -3,9 +3,9 @@
 	<li class="view"><%= meta_in_words(question.visualizations.count, {
 												:singular => 'visualização', 
 												:plural => 'visualizações'}) %></li>
-	<li class="res"><%= meta_in_words(question.answers.count, {
+	<li class="res"><%= link_to meta_in_words(question.answers.count, {
 												:singular => 'resposta', 
-												:plural => 'respostas'}) %></li>
+												:plural => 'respostas'}), question %></li>
 	<li class="omega fav"><%= meta_in_words(question.favorites.count, {
 												:singular => 'favorito', 
 												:plural => 'favoritos'}) %></li>

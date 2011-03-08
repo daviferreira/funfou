@@ -1,5 +1,5 @@
 <% if signed_in? %>
-	<p><%= link_to "Perguntar", new_question_path %></p>
+  <p class="btn-ask"><%= link_to "Perguntar!", new_question_path %></p>
 
 	<% @questions.each do |question| %>
 		<div class="user-questions">

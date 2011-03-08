@@ -69,6 +69,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def questions
+    @questions = Question.where("user_id = ?", params[:id]).paginate(:page => params[:page])
+  end
+  
   private
 
     def correct_user

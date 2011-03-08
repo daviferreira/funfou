@@ -5,6 +5,12 @@ Funfou::Application.routes.draw do
 	resources :favorites, :only => [:create, :destroy]
 	resources :answers, :only => [:create, :destroy]
 
+	resources :users do
+	  member do
+	    get :questions
+    end
+  end
+
 	root :to => "pages#home"
 
 	match "/perguntar",			  :to => "questions#new", :as => :new_question

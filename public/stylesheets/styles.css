@@ -141,6 +141,25 @@ div#account-info ul#user-options li{
   margin:0 12px 0 0;
 }
 
+.btn-ask{
+  padding:24px;
+  float:right;
+}
+
+.btn-ask a{
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color:#1E92FF;
+  color:#fff;
+  text-decoration:none;
+  padding:6px;
+}
+
+.btn-ask a:hover{
+  background-color:#df0d34;
+}
+
 /*
     Menu
 \* ......................................................................................................................................... */

@@ -8,7 +8,7 @@
     <li><%= link_to "Sair", logout_path, :method => :delete %></li>
   </ul>
   <div id="user-info">
-    <p>Boa tarde, <%= link_to current_user.name, current_user %></p>
+    <p>Boa tarde, <%= link_to current_user.name, current_user %>, você tem <a href="#">duas novas respostas</a>.</p>
   </div>
 </div>
 <% else %>
