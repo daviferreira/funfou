@@ -272,9 +272,14 @@ footer{
 	margin: 0 auto;
 	width: 1060px;
 	display:block;
+	font-size:12px;
+	padding: 24px;
 }
 
-footer div{ padding: 24px; font-size:12px; }
+footer div{ display:inline;  }
+footer ul{ float: right;}
+footer ul li{ float:left; padding:0 12px 0 0; margin: 0 12px 0 0; border-right:1px dotted #ccc;}
+footer ul li.last{margin:0 0;padding:0 0;border:none;}
 
 /*
     Paginação 
@@ -453,3 +458,6 @@ form.inline p { margin-bottom:0; }
 .notice a   { color: #514721; }
 .success a  { color: #264409; }
 .info a			{ color: #205791; }
+
+
+div#debug { width: 1060px; margin: 24px auto; display:block; background-color:#fff; padding:12px; }
