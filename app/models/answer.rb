@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20110308151603
+#
+# Table name: answers
+#
+#  id          :integer         not null, primary key
+#  content     :text
+#  question_id :integer
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  score       :integer
+#
+
 class Answer < ActiveRecord::Base
   attr_accessible :content, :question_id, :score
   

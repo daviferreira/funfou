@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20110308151603
+#
+# Table name: questions
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  content    :text
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Question < ActiveRecord::Base
   attr_accessor :categories
   attr_accessible :title, :content
