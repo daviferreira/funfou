@@ -1,4 +1,6 @@
 class Answer < ActiveRecord::Base
+  attr_accessible :content, :question_id, :score
+  
 	belongs_to :user
 	belongs_to :question
 	has_many :votes, :dependent => :destroy 
@@ -7,5 +9,5 @@ class Answer < ActiveRecord::Base
 	validates :question_id, :presence => true
 	validates :user_id, :presence => true
 	
-	default_scope :order => 'answers.created_at DESC'
+	default_scope :order => 'answers.score DESC, answers.created_at DESC'
 end

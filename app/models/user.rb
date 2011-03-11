@@ -69,6 +69,12 @@ class User < ActiveRecord::Base
 	def answer!(question, content)
 		answers.create!(:question_id => question.id, :content => content)
 	end
+	
+	def vote!(question, answer, value)
+	  votes.create!(:question_id => question.id, 
+	                :answer_id => answer.id, 
+	                :value => value)
+  end
 
 	private
 

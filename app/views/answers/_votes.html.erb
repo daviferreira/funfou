@@ -1,0 +1,17 @@
+<div class="votes">
+  <ul>
+    <li class="up">
+      <%= link_to "Vote up", vote_up_path(:answer_id => answer.id) %>
+    </li>
+    <li class="value">
+      <% if answer.score.nil? %>
+        0
+      <% else %>
+        <%= answer.score %>
+      <% end %>
+    </li>
+    <li class="up">
+      <%= link_to "Vote down", vote_down_path(:answer_id => answer.id) %>
+    </li>
+  </ul>
+</div>
