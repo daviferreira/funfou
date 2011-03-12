@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
   def create
 		@question = current_user.questions.build(params[:question])
 		if @question.save
+		  #@tags = params[:question][:tags]
 			flash[:success] = "Pergunta adicionada com sucesso"
 			redirect_to @question
 		else
