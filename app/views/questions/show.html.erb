@@ -1,5 +1,13 @@
 <div class="question">
 	
+	<% unless @question.categories.empty? %>
+	<ul class="categories clearfix">
+	  <% @question.categories.each do |category| %>
+	    <li><%= link_to category.name, category %></li>
+	  <% end %>
+	</ul>
+	<% end %>
+	
 	<h2>
 	  <%= render 'favorite_form' if signed_in? %>
 	  <%= @question.title %>

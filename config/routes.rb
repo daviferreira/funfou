@@ -1,4 +1,7 @@
 Funfou::Application.routes.draw do
+
+  get "categories/index"
+
 	resources :users, :only => [:show, :create, :update, :destroy, :toggle_admin, :edit]
 	resources :sessions, :only => [:create, :destroy]
 	resources :questions, :only => [:create, :destroy]
@@ -36,4 +39,6 @@ Funfou::Application.routes.draw do
 	match "/vote/down/:id",   :to => "votes#down", :as => :vote_down
 	
 	match "/favoritar/:id",   :to => "favorites#new", :as => :new_favorite
+	
+	match "/categoria/:id",   :to => "categories#index", :as => :category
 end
