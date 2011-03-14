@@ -30,7 +30,17 @@ class QuestionsController < ApplicationController
   def create
 		@question = current_user.questions.build(params[:question])
 		if @question.save
-		  #@tags = params[:question][:tags]
+		  @tags = params[:question][:tags]
+		  @tags = @tags.split(",")
+		  unless @tags.empty?
+		    @tags.each do |tag|
+		      category = Category.find_by_name(tag)
+		      if category.nil?
+		        category = Category.create!(:name => tag)
+	        end
+	        Tag.create!(:question_id => @question.id, :category_id => category.id)
+	      end
+	    end
 			flash[:success] = "Pergunta adicionada com sucesso"
 			redirect_to @question
 		else

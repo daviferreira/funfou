@@ -15,12 +15,12 @@ Funfou::Application.routes.draw do
   end
 
 	root :to => "pages#home"
-
-	match "/perguntas",			:to => "questions#index", :as => :questions
+  
+	match "/perguntas",			:to => "questions#index", :as => :perguntas
 	match "/perguntar",			:to => "questions#new", :as => :new_question
-	match "/pergunta/:id",	:to => "questions#show", :as => :question 
-	match "/pesquisar", :to => "questions#index", :as => :search
-
+	match "/pesquisar",     :to => "questions#index", :as => :search
+	match "/pergunta/:id",	:to => "questions#show", :as => :question
+	
 	match "/sobre", 				:to => "pages#about", :as => :about
 	match "/ajuda", 				:to => "pages#help", :as => :help
 	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact

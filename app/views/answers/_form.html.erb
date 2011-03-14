@@ -1,5 +1,6 @@
 <%= form_for @answer do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
+	<%= f.hidden_field :question_id, {:value => @question.id} %>
 	<div class="field">
 		<%= f.label :content %>
 		<%= f.text_area :content %>
