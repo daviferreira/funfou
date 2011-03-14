@@ -5,4 +5,9 @@ module UsersHelper
                                             :class => 'gravatar',
                                             :gravatar => options)
   end
+  
+  def first_name(name)
+    name = name.split
+    name.first
+  end
 end

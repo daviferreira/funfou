@@ -17,4 +17,27 @@ module QuestionsHelper
       link_to @user.name, @user
     end
   end
+  
+  def updates_since_last_login(question)
+    updates = 0
+    
+    if session[:last_login].nil?
+      session[:last_login] = Time.now
+    end
+    
+    last_login = session[:last_login]
+
+    unless question.answers.empty?
+      question.answers.each do |answer|
+        if answer.created_at > last_login
+          updates += 1
+        end
+      end
+    end
+    if updates > 0
+      content_tag(:span, :class => "question-updates") do
+        updates.to_s
+      end
+    end
+  end
 end

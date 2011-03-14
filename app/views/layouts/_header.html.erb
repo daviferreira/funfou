@@ -1,14 +1,16 @@
 <% if signed_in? %>
 <div id="account-info" class="clearfix">
   <ul id="user-options" class="clearfix">
-    <li><%= link_to gravatar_for current_user, :size => 30 %></li>
     <li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
   	<li><%= link_to "Favoritos", favoritos_path %></li>
     <li><%= link_to "Meus dados", meus_dados_path(current_user) %></li>
     <li><%= link_to "Sair", logout_path, :method => :delete %></li>
   </ul>
   <div id="user-info">
-    <p>Boa tarde, <%= link_to current_user.name, current_user %>, você tem <a href="#">duas novas respostas</a>.</p>
+    <p>
+      <%= link_to gravatar_for current_user, :size => 30 %> 
+      <span id="greetings-time"><%= link_to first_name(current_user.name), current_user %></span>
+    </p>
   </div>
 </div>
 <% else %>
