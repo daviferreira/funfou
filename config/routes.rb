@@ -26,12 +26,8 @@ Funfou::Application.routes.draw do
 	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact
 
 	match "/usuario/:id",			:to => "users#show", :as => :user
-	match "/usuarios",				:to => "users#index", :as => :users	
+	match "/usuarios",				:to => "users#index"	
 	match "/cadastro",      	:to => "users#new", :as => :new_user
-	match "/meus-dados/:id",	:to	=> "users#edit", :as => :edit_user
-	
-	match "/usuarios",        :to => "users#index", :as => :users
-	match "/cadastro",        :to => "users#new", :as => :new_user
 	match "/meus-dados/:id",  :to	=> "users#edit", :as => :meus_dados
 	match "/toggle-admin/:id",  :to	=> "users#toggle_admin", :as => :toggle_admin
 
