@@ -18,10 +18,15 @@ class Answer < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :question
 	has_many :votes, :dependent => :destroy 
+<<<<<<< HEAD
 	
 	validates :content, :presence => true
 	validates :question_id, :presence => true
 	validates :user_id, :presence => true
 	
 	default_scope :order => 'answers.score DESC, answers.created_at DESC'
+=======
+
+	validates :content, :presence => true
+>>>>>>> 77059577bf768c30d7a85d1a4371d233844f48d8
 end

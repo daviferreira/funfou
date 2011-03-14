@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
 	before_filter :authenticate
 
 	def create
+<<<<<<< HEAD
 		id = params[:answer][:question_id]
 		content = params[:answer][:content]
 		@question = Question.find(id)
@@ -17,5 +18,11 @@ class AnswersController < ApplicationController
 	def destroy
 
 	end
+=======
+	end
+
+  def destroy
+  end
+>>>>>>> 77059577bf768c30d7a85d1a4371d233844f48d8
 
 end

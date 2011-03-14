@@ -16,9 +16,10 @@ class QuestionsController < ApplicationController
 
   def show
 		@question = Question.find(params[:id])
-		add_visualization	(@question.id)
+		add_visualization(@question.id)
 		@title = @question.title
 		@user = User.find(@question.user_id)
+		@answer = Answer.new if signed_in?
   end
  
 	def new
