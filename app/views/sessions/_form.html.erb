@@ -1,5 +1,4 @@
 <%= form_for(:session, :url => sessions_path) do |f| %>
-<<<<<<< HEAD
 
   <% if @question %>
     <%= f.hidden_field :question_id , { :value => @question.id } %>
@@ -17,19 +16,3 @@
     <%= f.submit "Login" %>
   </div>
 <% end %>
-=======
-	<div class="field">
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
-	</div>
-	<div class="field">
-		<%= f.label :password %><br />
-		<%= f.password_field :password %>
-	</div>
-	<div class="actions">
-		<%= f.submit "Login" %>
-	</div>
-<% end %>
-
-<p>Ainda não tem uma conta no Funfou? <%= link_to "Cadastre-se, leva menos de 10 segundos!", new_user_path %></p>
->>>>>>> 77059577bf768c30d7a85d1a4371d233844f48d8
