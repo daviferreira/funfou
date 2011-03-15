@@ -285,7 +285,7 @@ footer{
 
 footer div{ display:inline;  }
 footer ul{ float: right;}
-footer ul li{ float:left; padding:0 12px 0 0; margin: 0 12px 0 0; border-right:1px dotted #ccc;}
+footer ul li{ float:left; padding:0 6px 0 0; margin: 0 6px 0 0; border-right:1px dotted #ccc;}
 footer ul li.last{margin:0 0;padding:0 0;border:none;}
 
 /*

@@ -9,8 +9,8 @@ var greetings = function(){
 
   var greeting = '';
   if(c_hour > 6 && c_hour <= 12) greeting = 'Bom dia, '+user+'!';
-  else if(c_hour > 12 && c_hour <= 18) greeting = 'Boa tarde, '+user+'. Fugindo do trabalho?';
-  else if(c_hour > 18 && c_hour <= 23) greeting = 'Boa noite, '+user+'. Que tal uma cerveja gelada?';
+  else if(c_hour > 12 && c_hour <= 18) greeting = 'Boa tarde, '+user+'.';
+  else if(c_hour > 18 && c_hour <= 23) greeting = 'Boa noite, '+user+'.';
   else greeting = 'Tá sem sono, '+user+'? Dormir é para os fracos!';
   
   $('#greetings-time').html(greeting);
