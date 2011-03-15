@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-   before_filter :authenticate, :only => [:new, :create, :destroy]
+   before_filter :authenticate, :only => [:new, :create, :destroy, :edit, :update]
+	 before_filter :admin_user, :only => [:destroy, :edit, :update]
 
 	def index
 		@title = "Perguntas"
@@ -24,31 +25,46 @@ class QuestionsController < ApplicationController
  
 	def new
 		@title = "Fazer uma pergunta"
-		@question = Question.new if signed_in?
+		if signed_in?
+			@question = Question.new 
+			@tags = ""
+		end
+	end
+
+	def edit
+		@title = "Editar pergunta"
+		@question = Question.find_by_id(params[:id])
+		@tags = tags_to_string(@question.tags) 
 	end
 
   def create
 		@question = current_user.questions.build(params[:question])
 		if @question.save
-		  @tags = params[:question][:tags]
-		  @tags = @tags.split(",")
-		  unless @tags.empty?
-		    @tags.each do |tag|
-		      category = Category.find_by_name(tag)
-		      if category.nil?
-		        category = Category.create!(:name => tag)
-	        end
-	        Tag.create!(:question_id => @question.id, :category_id => category.id)
-	      end
-	    end
+			save_tags(@question.id, params[:question][:tags])
 			flash[:success] = "Pergunta adicionada com sucesso"
-			redirect_to @question
+			redirect_to pergunta_path(@question)
 		else
 			render 'questions/new'
 		end
   end
 
+	def update
+		@question = Question.find(params[:id])
+		if @question.update_attributes(params[:question])
+			save_tags(@question.id, params[:question][:tags])
+			flash[:success] = "Pergunta editada com sucesso"
+			redirect_to editar_pergunta_path(@question) 
+		else
+			@title = "Editar pergunta"
+			@tags = tags_to_string(@question.tags)
+			render 'edit'
+		end
+	end
+
   def destroy
+		Question.find(params[:id]).destroy
+		flash[:success] = "Pergunta excluída com sucesso."
+		redirect_to perguntas_path
   end
 
 	private
@@ -63,4 +79,35 @@ class QuestionsController < ApplicationController
 														 :browser_agent => @agent)
 			end
 		end
+
+		def tags_to_string(tags)
+			tags_as_string = ""
+			unless tags.empty? or tags.nil?
+				tags.each do |tag|
+					@category = Category.find_by_id(tag.category_id)
+					tags_as_string += @category.name + ","
+				end
+			end
+			tags_as_string.sub(/,$/, '')
+		end
+
+		def save_tags(question_id, tags)
+			tags_to_delete = Tag.where("question_id = ?", question_id)
+			unless tags_to_delete.empty?
+				tags_to_delete.each do |tag|
+					tag.destroy
+				end
+			end
+		  tags = tags.split(",")
+		  unless tags.empty?
+		    tags.each do |tag|
+		      @category = Category.find_by_name(tag)
+		      if @category.nil?
+		        @category = Category.create!(:name => tag)
+	        end
+	        Tag.create!(:question_id => question_id, :category_id => @category.id)
+	      end
+	    end
+		end
+
 end

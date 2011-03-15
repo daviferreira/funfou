@@ -12,7 +12,8 @@
 #
 
 class Question < ActiveRecord::Base
-  attr_accessible :title, :content
+	attr_accessor :tags
+	attr_accessible :title, :content
 
 	belongs_to :user
 	has_many :visualizations, :dependent => :destroy

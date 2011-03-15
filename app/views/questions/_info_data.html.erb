@@ -10,3 +10,13 @@
 												:singular => 'favorito', 
 												:plural => 'favoritos'}) %></li>
 </ul>
+<% if signed_in? and current_user.admin? %>
+	<div class="actions">
+		<%= link_to "Editar", editar_pergunta_path(question) %>
+		| <%= link_to "Excluir", question, :method => :delete,
+																:confirm => "Tem certeza?",
+																:title => "Delete #{question.title}" %>
+
+	</div>
+<% end %>
+
