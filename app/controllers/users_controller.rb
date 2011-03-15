@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update]
   before_filter :correct_user_or_admin, :only => [:edit, :update]
-  before_filter :admin_user,	:only => [:destroy, :toggle_admin]
+  before_filter :admin_user,	:only => [:destroy, :toggle_admin, :toggle_active]
   
   def index
     @title = "Usuários"
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      @user.toggle!(:active)
       sign_in @user
       flash[:success] = "Bem-vindo ao Funfou!"
       redirect_to @user
@@ -48,6 +49,17 @@ class UsersController < ApplicationController
       flash[:success] = "User toggled as admin." 
     else
       flash[:success] = "User is not an admin anymore."
+    end
+    redirect_to users_path
+  end
+  
+  def toggle_active
+    @user = User.find(params[:id])
+    @user.toggle!(:active)
+    if @user.active?
+      flash[:success] = "User activated." 
+    else
+      flash[:success] = "User de-acticated."
     end
     redirect_to users_path
   end

@@ -40,4 +40,29 @@ module QuestionsHelper
       end
     end
   end
+  
+  def get_total_answers(answers)
+    if signed_in? and current_user.admin?
+      answers.count
+    else
+      answers.published.count
+    end
+  end
+  
+  def link_to_publish(obj)
+    if signed_in? and current_user.admin?
+      name = obj.to_s.split(":").first.sub(/#</, '')
+      if name == "Answer"
+        link = publicar_resposta_path(obj)
+      else
+        link = publicar_pergunta_path(obj)
+      end
+      if obj.published?
+        link_to "Está publicada", link, :class => 'unpublish'
+      else
+        link_to "Não está publicada", link, :class => 'publish'
+      end
+    end
+  end
+  
 end

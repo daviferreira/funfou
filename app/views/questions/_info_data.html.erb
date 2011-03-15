@@ -3,7 +3,7 @@
 	<li class="view"><%= meta_in_words(question.visualizations.count, {
 												:singular => 'visualização', 
 												:plural => 'visualizações'}) %></li>
-	<li class="res"><%= link_to meta_in_words(question.answers.count, {
+	<li class="res"><%= link_to meta_in_words(get_total_answers(question.answers), {
 												:singular => 'resposta', 
 												:plural => 'respostas'}), question %></li>
 	<li class="omega fav"><%= meta_in_words(question.favorites.count, {
@@ -16,7 +16,6 @@
 		| <%= link_to "Excluir", question, :method => :delete,
 																:confirm => "Tem certeza?",
 																:title => "Delete #{question.title}" %>
-
+    | <%= link_to_publish(question) %>
 	</div>
 <% end %>
-

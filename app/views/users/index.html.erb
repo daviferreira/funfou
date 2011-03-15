@@ -10,6 +10,7 @@
 																 :confirm => "Tem certeza?",
 																 :title => "Delete #{user.name}" %>
 			 | <%= link_to "Admin #{user.admin}", toggle_admin_path(user) %>
+			 | <%= link_to "Ativo #{user.active}", toggle_active_path(user) %>
 			 | <%= link_to "Editar", edit_user_path(user) %>
 			<% end %>
     </li>

@@ -17,5 +17,11 @@ class AnswersController < ApplicationController
 	def destroy
 
 	end
+	
+	def toggle_published
+    @answer = Answer.find(params[:id])
+    @answer.toggle!(:published)
+    redirect_to pergunta_path(@answer.question_id)
+  end
 
 end

@@ -21,6 +21,8 @@ Funfou::Application.routes.draw do
 	match "/pesquisar",     :to => "questions#index", :as => :search
 	match "/pergunta/editar/:id", :to => "questions#edit", :as => :editar_pergunta
 	match "/pergunta/:id",	:to => "questions#show", :as => :pergunta
+	match "/publicar-pergunta/:id",  :to	=> "questions#toggle_published", :as => :publicar_pergunta
+	match "/publicar-resposta/:id",  :to	=> "answers#toggle_published", :as => :publicar_resposta
 	
 	match "/sobre", 				:to => "pages#about", :as => :about
 	match "/ajuda", 				:to => "pages#help", :as => :help
@@ -31,6 +33,7 @@ Funfou::Application.routes.draw do
 	match "/cadastro",      	:to => "users#new", :as => :new_user
 	match "/meus-dados/:id",  :to	=> "users#edit", :as => :meus_dados
 	match "/toggle-admin/:id",  :to	=> "users#toggle_admin", :as => :toggle_admin
+	match "/toggle-active/:id",  :to	=> "users#toggle_active", :as => :toggle_active
 
 	match "/favoritos",       :to => "favorites#index"
 	

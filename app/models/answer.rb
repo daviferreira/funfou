@@ -24,4 +24,5 @@ class Answer < ActiveRecord::Base
 	validates :user_id, :presence => true
 	
 	default_scope :order => 'answers.score DESC, answers.created_at DESC'
+	named_scope :published, :conditions => { :published => true }
 end

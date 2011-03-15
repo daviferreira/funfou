@@ -1,14 +1,19 @@
 class QuestionsController < ApplicationController
    before_filter :authenticate, :only => [:new, :create, :destroy, :edit, :update]
 	 before_filter :admin_user, :only => [:destroy, :edit, :update]
+	 before_filter :is_published, :only => [:show]
 
 	def index
 		@title = "Perguntas"
 		if params[:keywords].nil?
-		  @questions = Question.all.paginate(:page => params[:page])
+		  if signed_in? and current_user.admin?
+		    @questions = Question.all.paginate(:page => params[:page])
+	    else
+		    @questions = Question.published.paginate(:page => params[:page])
+	    end
 	  else
 	    keywords = '%' + params[:keywords] + '%';
-	    @questions = Question.where("title LIKE ? OR content LIKE ?", keywords, keywords).paginate(:page => params[:page])
+	    @questions = Question.published.where("title LIKE ? OR content LIKE ?", keywords, keywords).paginate(:page => params[:page])
 		  if @questions.count == 1
 		    redirect_to @questions.first
 	    end
@@ -20,7 +25,11 @@ class QuestionsController < ApplicationController
 		add_visualization(@question.id)
 		@title = @question.title
 		@user = User.find(@question.user_id)
-		@answer = Answer.new if signed_in?
+		@answers = @question.answers.published
+		if signed_in?
+		  @answer = Answer.new 
+		  @answers = @question.answers if current_user.admin?
+	  end
   end
  
 	def new
@@ -40,6 +49,7 @@ class QuestionsController < ApplicationController
   def create
 		@question = current_user.questions.build(params[:question])
 		if @question.save
+		  @question.toggle!(:published)
 			save_tags(@question.id, params[:question][:tags])
 			flash[:success] = "Pergunta adicionada com sucesso"
 			redirect_to pergunta_path(@question)
@@ -65,6 +75,12 @@ class QuestionsController < ApplicationController
 		Question.find(params[:id]).destroy
 		flash[:success] = "Pergunta excluída com sucesso."
 		redirect_to perguntas_path
+  end
+  
+  def toggle_published
+    @question = Question.find(params[:id])
+    @question.toggle!(:published)
+    redirect_to pergunta_path(@question)
   end
 
 	private
@@ -109,5 +125,15 @@ class QuestionsController < ApplicationController
 	      end
 	    end
 		end
+
+    def is_published
+      unless signed_in? and current_user.admin?
+        question = Question.find_by_id(params[:id])
+        if not question.published?
+          redirect_to root_path
+        end
+      end
+      true
+    end
 
 end

@@ -206,8 +206,13 @@ div.question ul.tags li.omega{ margin: 0 0 0 6px; }
 div.question ul.tags li{ font-size:12px;}
 div.question ul.tags li a{ color: #fff; text-decoration: none; font-weight:900; display:inline-block;
  background-color: #1e92ff; padding:6px; 
-font-family: Helvetica, Arial, sans-serif;
+font-family: Helvetica, Arial, sans-serif;}
 
+a.publish, a.unpublish{ color:#fff !important; background-color:red; -webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px; padding:4px; font-size:12px!important; margin:8px;text-align:center; text-decoration:none; }
+
+a.unpublish{ background:green!important; }
 
 /*
 -webkit-border-radius: 3px;

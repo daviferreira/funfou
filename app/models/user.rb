@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
  
  def self.authenticate(email, submitted_password)
    user = find_by_email(email)
-   return nil  if user.nil?
+   return nil  if user.nil? or !user.active?
    return user if user.has_password?(submitted_password)
  end
 
@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
 	end
 
 	def answer!(question, content)
-		answers.create!(:question_id => question.id, :content => content)
+		answers.create!(:question_id => question.id, :content => content, :published => true)
 	end
 	
 	def vote!(question, answer, value)

@@ -2,7 +2,11 @@ class PagesController < ApplicationController
   def home
 		@title = "Página inicial"
 		if signed_in?
-			@questions = Question.all.paginate(:page => params[:page])
+			if current_user.admin?
+		    @questions = Question.all.paginate(:page => params[:page])
+	    else
+		    @questions = Question.published.paginate(:page => params[:page])
+	    end
 		end
 	end
 

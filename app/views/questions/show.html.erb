@@ -19,10 +19,10 @@
 		<%= @question.content %>
 	</div>
 	
-	<% unless @question.answers.empty? %>
+	<% unless @answers.empty? %>
 	  <h3>Respostas</h3>
 	  <ul class="question-answers">
-	  <% @question.answers.each do |answer| %>
+	  <% @answers.each do |answer| %>
 	    <%= render answer %>
 	  <% end %>
 	  </ul>

@@ -12,7 +12,7 @@ class VotesController < ApplicationController
     current_user.vote!(question, answer, 1)
     answer.update_attributes(:score => score)
     
-    redirect_to question
+    redirect_to pergunta_path(question)
   end
   
   def down
@@ -26,7 +26,7 @@ class VotesController < ApplicationController
     current_user.vote!(question, answer, -1)
     answer.update_attributes(:score => score)
     
-    redirect_to question
+    redirect_to pergunta_path(question)
   end
   
   private
