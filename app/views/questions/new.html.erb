@@ -1,20 +1,3 @@
 <h2>Fazer uma pergunta</h2>
 
-<%= form_for @question do |f| %>
-	<%= render 'shared/error_messages', :object => f.object %>
-	<div class="field">
-		<%= f.label :title %>
-		<%= f.text_field :title %>
-	</div>
-	<div class="field">
-		<%= f.label :content %>
-		<%= f.text_area :content %>
-	</div>
-	<div class="field">
-		<%= f.label :tags %>
-		<%= f.text_field :tags %>
-	</div>
-	<div class="actions">
-		<%= f.submit "Submit" %>
-	</div>
-<% end %>
+<%= render 'form' %>

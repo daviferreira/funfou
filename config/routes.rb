@@ -4,7 +4,7 @@ Funfou::Application.routes.draw do
 
 	resources :users, :only => [:create, :update, :destroy]
 	resources :sessions, :only => [:create, :destroy]
-	resources :questions, :only => [:create, :destroy]
+	resources :questions, :only => [:create, :update, :destroy]
 	resources :favorites, :only => [:create, :destroy]
 	resources :answers, :only => [:create, :destroy]
 
@@ -19,13 +19,14 @@ Funfou::Application.routes.draw do
 	match "/perguntas",			:to => "questions#index", :as => :perguntas
 	match "/perguntar",			:to => "questions#new", :as => :new_question
 	match "/pesquisar",     :to => "questions#index", :as => :search
-	match "/pergunta/:id",	:to => "questions#show", :as => :question
+	match "/pergunta/editar/:id", :to => "questions#edit", :as => :editar_pergunta
+	match "/pergunta/:id",	:to => "questions#show", :as => :pergunta
 	
 	match "/sobre", 				:to => "pages#about", :as => :about
 	match "/ajuda", 				:to => "pages#help", :as => :help
 	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact
 
-	match "/usuario/:id",			:to => "users#show", :as => :user
+	match "/usuario/:id",			:to => "users#show", :as => :usuario
 	match "/usuarios",				:to => "users#index"	
 	match "/cadastro",      	:to => "users#new", :as => :new_user
 	match "/meus-dados/:id",  :to	=> "users#edit", :as => :meus_dados

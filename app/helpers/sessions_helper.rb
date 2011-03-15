@@ -31,6 +31,10 @@ module SessionsHelper
     deny_access unless signed_in?
   end
 
+	def admin_user
+		redirect_to(root_path) unless current_user.admin? 
+	end
+
   def deny_access
     store_location
     redirect_to login_path, :notice => "Please sign in to access this page."
