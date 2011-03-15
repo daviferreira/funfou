@@ -45,5 +45,5 @@ Funfou::Application.routes.draw do
 	
 	match "/favoritar/:id",   :to => "favorites#new", :as => :new_favorite
 	
-	match "/categoria/:id",   :to => "categories#index", :as => :category
+	match "/categoria/:id",   :to => "categories#show", :as => :category
 end

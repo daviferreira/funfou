@@ -1,9 +1,9 @@
 <h2><%= @category.name %></h2>
 
-<% if @category.questions.empty? %>
+<% if @questions.empty? %>
   <p>Nenhuma pergunta encontrada.</p>
 <% else %>
-  <% @category.questions.each do |question| %>
+  <% @questions.each do |question| %>
   	<div class="user-questions">
   		<%= render question %>
   	</div>
