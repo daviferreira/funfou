@@ -14,4 +14,6 @@ class Category < ActiveRecord::Base
   
   has_many :tags, :dependent => :destroy
   has_many :questions, :through => :tags
+
+  default_scope :order => 'categories.name ASC'
 end

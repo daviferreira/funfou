@@ -3,7 +3,7 @@
 	<% unless @question.categories.empty? %>
 	<ul class="categories clearfix">
 	  <% @question.categories.each do |category| %>
-	    <li><%= link_to category.name, category %></li>
+	    <li><%= link_to category.name, categoria_path(category) %></li>
 	  <% end %>
 	</ul>
 	<% end %>

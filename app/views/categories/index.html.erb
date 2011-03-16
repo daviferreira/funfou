@@ -1,0 +1,11 @@
+<h2>Categorias</h2>
+
+<% if @categories.empty? %>
+	<p>Nenhuma categoria encontrada.</p>
+<% else %>
+	<ul id="categories">
+	<% @categories.each do |category| %>
+		<li><%= link_to category.name, categoria_path(category) %> (<%=total_questions(category)%>)</li>
+	<% end %>
+</ul>
+<% end %>
