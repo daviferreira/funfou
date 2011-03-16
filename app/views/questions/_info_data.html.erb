@@ -5,7 +5,7 @@
 												:plural => 'visualizações'}) %></li>
 	<li class="res"><%= link_to meta_in_words(get_total_answers(question.answers), {
 												:singular => 'resposta', 
-												:plural => 'respostas'}), question %></li>
+												:plural => 'respostas'}), pergunta_path(question) + "#answers" %></li>
 	<li class="omega fav"><%= meta_in_words(question.favorites.count, {
 												:singular => 'favorito', 
 												:plural => 'favoritos'}) %></li>
