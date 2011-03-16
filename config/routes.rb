@@ -28,12 +28,17 @@ Funfou::Application.routes.draw do
 	match "/ajuda", 				:to => "pages#help", :as => :help
 	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact
 
+	match "/usuario/senha",		:to => "users#new_password", :as => :esqueceu
+
 	match "/usuario/:id",			:to => "users#show", :as => :usuario
 	match "/usuarios",				:to => "users#index"	
 	match "/cadastro",      	:to => "users#new", :as => :new_user
 	match "/meus-dados/:id",  :to	=> "users#edit", :as => :meus_dados
+
+
 	match "/toggle-admin/:id",  :to	=> "users#toggle_admin", :as => :toggle_admin
 	match "/toggle-active/:id",  :to	=> "users#toggle_active", :as => :toggle_active
+
 
 	match "/favoritos",       :to => "favorites#index"
 	

@@ -84,7 +84,11 @@ class UsersController < ApplicationController
   def questions
     @questions = Question.where("user_id = ?", params[:id]).paginate(:page => params[:page])
   end
-  
+
+	def new_password
+		@title = "Nova senha"
+	end
+
   private
 
     def correct_user

@@ -1,5 +1,4 @@
 <%= form_for(:session, :url => sessions_path) do |f| %>
-
   <% if @question %>
     <%= f.hidden_field :question_id , { :value => @question.id } %>
   <% end %>
@@ -16,3 +15,5 @@
     <%= f.submit "Login" %>
   </div>
 <% end %>
+
+<%= link_to "Esqueceu sua senha?", esqueceu_path %>
