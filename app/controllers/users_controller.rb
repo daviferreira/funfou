@@ -87,7 +87,26 @@ class UsersController < ApplicationController
 
 	def new_password
 		@title = "Nova senha"
+		@user = User.new
 	end
+	
+	def password_instructions
+	  email = params[:instructions][:email]
+	  error = true
+	  unless email.nil? or email.empty?
+      user = User.find_by_email(email)
+      unless user.nil? or !user.active
+        UserMailer.password_instructions(user).deliver
+	      flash[:success] = "As instruções foram enviadas para o e-mail #{email}."
+        redirect_to esqueceu_path
+        error = false
+      end
+    end
+    if error
+      flash[:error] = "Seu e-mail não foi encontrado em nossa base."
+      redirect_to esqueceu_path
+    end
+  end
 
   private
 

@@ -29,6 +29,7 @@ Funfou::Application.routes.draw do
 	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact
 
 	match "/usuario/senha",		:to => "users#new_password", :as => :esqueceu
+	match "/instrucoes",      :to => "users#password_instructions", :as => :instrucoes
 
 	match "/usuario/:id",			:to => "users#show", :as => :usuario
 	match "/usuarios",				:to => "users#index"	
