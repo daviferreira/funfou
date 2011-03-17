@@ -3,7 +3,7 @@ $(function(){
   $('.question pre').each(function(){
     $(this).snippet($(this).attr('class'),{
               style:"vim",
-              clipboard:"flash/ZeroClipboard.swf"
+              clipboard:"/flash/ZeroClipboard.swf"
     });
   });
 });
