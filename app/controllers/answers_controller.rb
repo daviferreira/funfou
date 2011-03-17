@@ -11,7 +11,7 @@ class AnswersController < ApplicationController
 	    flash[:success] = "Sua resposta foi publicada."
 		  current_user.answer!(@question, content)
 	  end
-    redirect_to @question
+    redirect_to pergunta_path(@question)
 	end
 
 	def destroy

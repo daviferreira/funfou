@@ -82,7 +82,9 @@ class User < ActiveRecord::Base
 	end
 
 	def answer!(question, content)
-		answers.create!(:question_id => question.id, :content => content, :published => true)
+		answers.create!(:question_id => question.id, :content => content)
+		answer = Answer.first
+		answer.toggle!(:published)
 	end
 	
 	def vote!(question, answer, value)
