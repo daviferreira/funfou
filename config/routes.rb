@@ -30,6 +30,8 @@ Funfou::Application.routes.draw do
 
 	match "/usuario/senha",		:to => "users#new_password", :as => :esqueceu
 	match "/instrucoes",      :to => "users#password_instructions", :as => :instrucoes
+	match "/senha/:salt",			:to => "users#reset_password", :as => :redefinir_senha
+	match "/usuario/nova_senha", :to => "users#save_password", :as => :nova_senha
 
 	match "/usuario/:id",			:to => "users#show", :as => :usuario
 	match "/usuarios",				:to => "users#index"	

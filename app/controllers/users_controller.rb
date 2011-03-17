@@ -96,7 +96,7 @@ class UsersController < ApplicationController
 	  unless email.nil? or email.empty?
       user = User.find_by_email(email)
       unless user.nil? or !user.active
-        UserMailer.password_instructions(user).deliver
+        UserMailer.password_instructions(user, request.host_with_port).deliver
 	      flash[:success] = "As instruções foram enviadas para o e-mail #{email}."
         redirect_to esqueceu_path
         error = false
@@ -107,6 +107,41 @@ class UsersController < ApplicationController
       redirect_to esqueceu_path
     end
   end
+
+	def reset_password
+		@user = User.find_by_salt(params[:salt])
+		if @user.nil? or not @user.active?
+			flash[:error] = "Usuário inválido."
+			redirect_to root_path
+		else
+			@title = "Redefinir senha"
+		end
+	end
+
+	def save_password
+		password = params[:user][:password]
+		confirmation = params[:user][:password_confirmation]
+		error = nil
+		if password.length < 6
+			error = "Sua senha deve possuir no mínimo 6 caracteres."
+		elsif password != confirmation
+			error = "As senhas digitadas não conferem."
+		end
+		if error.nil?
+			@user = User.find_by_salt(params[:user][:salt])
+			if @user.update_attributes(:password => password)
+				sign_in @user
+				flash[:success] = "Sua senha foi redefinida com sucesso."
+				redirect_to usuario_path(@user)
+			else
+				flash[:error] = "Erro ao salvar sua senha."
+				redirect_to redefinir_senha_path(params[:user][:salt])
+			end
+		else
+			flash[:error] = error
+			redirect_to redefinir_senha_path(params[:user][:salt])
+		end
+	end
 
   private
 
