@@ -1,5 +1,11 @@
 $(function(){
   greetings();
+  $('.question pre').each(function(){
+    $(this).snippet($(this).attr('class'),{
+              style:"vim",
+              clipboard:"flash/ZeroClipboard.swf"
+    });
+  });
 });
 
 var greetings = function(){

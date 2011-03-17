@@ -27,6 +27,6 @@ class Question < ActiveRecord::Base
   validates :user_id, :presence => true
   
   default_scope :order => 'questions.created_at DESC'
-  named_scope :published, :conditions => { :published => true }
+  scope :published, :conditions => { :published => true }
   
 end
