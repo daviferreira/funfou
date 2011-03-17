@@ -15,7 +15,8 @@ Funfou::Application.routes.draw do
   end
 
 	root :to => "pages#home"
-  
+ 
+  match "/perguntas/:order", :to => "questions#index", :as => :perguntas_ordem	
 	match "/perguntas",			:to => "questions#index", :as => :perguntas
 	match "/perguntar",			:to => "questions#new", :as => :new_question
 	match "/pesquisar",     :to => "questions#index", :as => :search

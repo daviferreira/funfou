@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
 
 	def index
 		@title = "Perguntas"
+
 		if params[:keywords].nil?
 		  if signed_in? and current_user.admin?
 		    @questions = Question.all.paginate(:page => params[:page])

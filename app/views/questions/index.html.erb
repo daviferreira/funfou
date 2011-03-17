@@ -1,9 +1,12 @@
 <p class="btn-ask"><%= link_to "Perguntar!", new_question_path %></p>
 <h2>Perguntas</h2>
+
+
 <% if @questions.empty? %>
   <p>Nenhuma pergunta encontrada.</p>
 <% else %>
-  <% @questions.each do |question| %>
+	<%= render 'filters' %>
+	<% @questions.each do |question| %>
   	<div class="user-questions">
   		<%= render question %>
   	</div>
