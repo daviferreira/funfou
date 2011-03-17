@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
 
 		if params[:keywords].nil?
 		  if signed_in? and current_user.admin?
-		    @questions = Question.all.paginate(:page => params[:page])
+		    @questions = Question.all.sort_by{|question| question.answers.count}.reverse.paginate(:page => params[:page])
 	    else
 		    @questions = Question.published.paginate(:page => params[:page])
 	    end
