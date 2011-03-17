@@ -1,7 +1,21 @@
+<div id="user-sidebar" class="sidebar">
+  <p><strong>Name</strong> <%= @user.name %><br />
+  <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
+  <strong>Perguntas</strong> <%= @user.questions.count %></p>
+  <hr />
+  <p><strong><%= @user.bio %></strong><br />
+  <strong><%= @user.cidade %></strong></p>
+  <%= link_to "Site pessoal", valid_url_for(@user.site), :target => "_blank" if not @user.site.blank? or @user.site.nil? %>
+  <%= link_to "Twitter", "http://twitter.com/" + @user.twitter, :target => "_blank" if not @user.twitter.blank? or @user.twitter.nil? %>
+  <%= link_to "Github", "http://github.com/" + @user.github, :target => "_blank" if not @user.github.blank? or @user.github.nil? %>
+</div>
+
 <%= gravatar_for @user %>
+
 <h2>
   <%= @user.name %>
 </h2>
+
 
 <% unless @user.questions.empty? %>
   <div class="user-questions">
@@ -9,9 +23,3 @@
   </div>
   <%= will_paginate @questions %>
 <% end %>
-
-<div id="user-sidebar" class="sidebar">
-  <strong>Name</strong> <%= @user.name %><br />
-  <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
-  <strong>Perguntas</strong> <%= @user.questions.count %>
-</div>

@@ -160,6 +160,16 @@ div#account-info ul#user-options li{
   background-color:#df0d34;
 }
 
+#user-sidebar{
+  float:right;
+  background-color:#f2f2f2;
+  padding:12px;
+  width:250px;
+  border-left:12px solid #DFE6F6;
+  border-top:12px solid #DFE6F6;
+  border-bottom:12px solid #DFE6F6;
+}
+
 /*
     Menu
 \* ......................................................................................................................................... */

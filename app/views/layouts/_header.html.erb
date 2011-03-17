@@ -1,21 +1,19 @@
 <% if signed_in? %>
 <div id="account-info" class="clearfix">
   <ul id="user-options" class="clearfix">
+    <li>
+      <%= link_to gravatar_for current_user, :size => 30 %> 
+      <span id="greetings-time"><%= link_to first_name(current_user.name), current_user %></span>
+    </li>
     <li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
   	<li><%= link_to "Favoritos", favoritos_path %></li>
     <li><%= link_to "Meus dados", meus_dados_path(current_user) %></li>
     <li><%= link_to "Sair", logout_path, :method => :delete %></li>
   </ul>
-  <div id="user-info">
-    <p>
-      <%= link_to gravatar_for current_user, :size => 30 %> 
-      <span id="greetings-time"><%= link_to first_name(current_user.name), current_user %></span>
-    </p>
-  </div>
 </div>
 <% else %>
   <div class="info">
-      <p>Boa tarde. <%= link_to "Crie uma conta", new_user_path %> (leva menos de 10 segundos!) para ter acesso a todos os recursos do <strong>Funfou</strong> ou <%= link_to "efetue login", login_path %>.</p>
+      <p><span id="greetings-time-guest"></span> <%= link_to "Crie uma conta", new_user_path %> (leva menos de 10 segundos!) para ter acesso a todos os recursos do <strong>Funfou</strong> ou <%= link_to "efetue login", login_path %>.</p>
   </div>
   <% end %>
 
