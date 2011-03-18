@@ -22,19 +22,11 @@ class QuestionsController < ApplicationController
 	end
 
   def show
+    require 'nokogiri'
+    
 		@question = Question.find_using_slug(params[:id])
 		add_visualization(@question.id)
-		languages = ["c", "cpp", "csharp", "css", "flex", 
-		              "html", "java", "javascript", "javascript", 
-		              "dom", "perl", "php", "python", "ruby", "sql", 
-		              "xml"]
-		classe = "random"
-		unless @question.tags.empty?
-		  @question.categories.each do |c|
-		    classe = c.name if classe == "random" and languages.include? c.name
-	    end
-		end
-		@question.content = @question.content.gsub("<pre>", "<pre class=\"#{classe}\">")
+		@question.content = @question.content.gsub("<pre>", "<pre class=\"dom\">")
 		@title = @question.title
 		@user = User.find(@question.user_id)
 		@answers = @question.answers.published
