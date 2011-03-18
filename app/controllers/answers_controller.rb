@@ -21,7 +21,8 @@ class AnswersController < ApplicationController
 	def toggle_published
     @answer = Answer.find(params[:id])
     @answer.toggle!(:published)
-    redirect_to pergunta_path(@answer.question_id)
+		@question = Question.find_by_id(@answer.question_id)
+    redirect_to pergunta_path(@question)
   end
 
 end
