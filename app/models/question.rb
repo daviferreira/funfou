@@ -14,6 +14,7 @@
 class Question < ActiveRecord::Base
 	attr_accessor :tags
 	attr_accessible :title, :content
+	is_sluggable :title
 
 	belongs_to :user
 	has_many :visualizations, :dependent => :destroy
