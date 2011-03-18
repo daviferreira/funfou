@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_using_slug(params[:id])
     @questions = @user.questions.paginate(:page => params[:page])
     @title = @user.name
   end
@@ -23,9 +23,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       @user.toggle!(:active)
+			@user.generate_slug!
       sign_in @user
       flash[:success] = "Bem-vindo ao Funfou!"
-      redirect_to @user
+      redirect_to usuario_path(@user)
     else
       @title = "Cadastre-se"
       render 'new'
@@ -37,13 +38,13 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    User.find(params[:id]).destroy 
+    User.find_using_slug(params[:id]).destroy 
     flash[:success] = "User destroyed." 
     redirect_to users_path
   end
 
   def toggle_admin
-    @user = User.find(params[:id])
+    @user = User.find_using_slug(params[:id])
     @user.toggle!(:admin)
     if @user.admin?
       flash[:success] = "User toggled as admin." 
@@ -54,7 +55,7 @@ class UsersController < ApplicationController
   end
   
   def toggle_active
-    @user = User.find(params[:id])
+    @user = User.find_using_slug(params[:id])
     @user.toggle!(:active)
     if @user.active?
       flash[:success] = "User activated." 
@@ -65,16 +66,17 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
-    
+    @user = User.find_using_slug(params[:id])
+   	 
     vars = params[:user]
     if vars[:password].blank? && vars[:password_confirmation].blank?
       vars.delete('password')
       vars.delete('password_confirmation')
     end
     if @user.update_attributes(vars)
+			@user.generate_slug!
       flash[:success] = "Seus dados foram atualizados com sucesso."
-      redirect_to @user
+      redirect_to usuario_path(@user)
     else
       @title = "Meus dados"
       render 'edit'
@@ -146,12 +148,12 @@ class UsersController < ApplicationController
   private
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find_using_slug(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
 
     def correct_user_or_admin
-      @user = User.find(params[:id])
+      @user = User.find_using_slug(params[:id])
       redirect_to(root_path) unless current_user?(@user) or current_user.admin?
     end
     

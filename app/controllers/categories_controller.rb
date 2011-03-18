@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
 	end
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find_using_slug(params[:id])
     @title = @category.name
     if signed_in? and current_user.admin?
       @questions = @category.questions

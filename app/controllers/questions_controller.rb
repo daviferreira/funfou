@@ -124,6 +124,7 @@ class QuestionsController < ApplicationController
 		      @category = Category.find_by_name(tag)
 		      if @category.nil?
 		        @category = Category.create!(:name => tag)
+						@category.generate_slug!
 	        end
 	        Tag.create!(:question_id => question_id, :category_id => @category.id)
 	      end

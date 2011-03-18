@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
 	attr_accessible :name, :email, :password, :password_confirmation, :last_login,
 	                :site, :twitter, :github, :cidade, :bio
-	
+	is_sluggable :name
+
 	has_many :questions, :dependent => :destroy
 	has_many :answers, :dependent => :destroy
 	has_many :favorites, :dependent => :destroy

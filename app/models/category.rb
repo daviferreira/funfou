@@ -11,7 +11,8 @@
 
 class Category < ActiveRecord::Base
   attr_accessible :name
-  
+	is_sluggable :name
+
   has_many :tags, :dependent => :destroy
   has_many :questions, :through => :tags
 

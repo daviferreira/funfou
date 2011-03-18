@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318012101) do
+ActiveRecord::Schema.define(:version => 20110318173112) do
 
   create_table "answers", :force => true do |t|
     t.text     "content"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(:version => 20110318012101) do
     t.text     "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
+
+  add_index "categories", ["cached_slug"], :name => "index_categories_on_cached_slug"
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -90,8 +93,10 @@ ActiveRecord::Schema.define(:version => 20110318012101) do
     t.string   "github"
     t.string   "cidade"
     t.string   "bio"
+    t.string   "cached_slug"
   end
 
+  add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
   create_table "visualizations", :force => true do |t|
