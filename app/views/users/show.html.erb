@@ -5,9 +5,9 @@
   <hr />
   <p><strong><%= @user.bio %></strong><br />
   <strong><%= @user.cidade %></strong></p>
-  <%= link_to "Site pessoal", valid_url_for(@user.site), :target => "_blank" if not @user.site.blank? or @user.site.nil? %>
-  <%= link_to "Twitter", "http://twitter.com/" + @user.twitter, :target => "_blank" if not @user.twitter.blank? or @user.twitter.nil? %>
-  <%= link_to "Github", "http://github.com/" + @user.github, :target => "_blank" if not @user.github.blank? or @user.github.nil? %>
+  <%= link_to "Site pessoal", valid_url_for(@user.site), :target => "_nil" if not @user.site.blank? %>
+  <%= link_to "Twitter", "http://twitter.com/" + @user.twitter, :target => "_nil" if not @user.twitter.blank? %>
+  <%= link_to "Github", "http://github.com/" + @user.github, :target => "_nil" if not @user.github.blank? %>
 </div>
 
 <%= gravatar_for @user %>
