@@ -21,7 +21,7 @@ Funfou::Application.routes.draw do
 	match "/perguntar",			:to => "questions#new", :as => :new_question
 	match "/pesquisar",     :to => "questions#index", :as => :search
 	match "/pergunta/editar/:id", :to => "questions#edit", :as => :editar_pergunta
-	match "/pergunta/:queston_slug/:id",	:to => "questions#show", :as => :pergunta
+	match "/pergunta/:id",	:to => "questions#show", :as => :pergunta
 	match "/publicar-pergunta/:id",  :to	=> "questions#toggle_published", :as => :publicar_pergunta
 	match "/publicar-resposta/:id",  :to	=> "answers#toggle_published", :as => :publicar_resposta
 	

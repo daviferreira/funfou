@@ -2,7 +2,7 @@ class VotesController < ApplicationController
 	before_filter :authenticate
 
   def up    
-    question = Question.find(params[:id])
+    question = Question.find_using_slug(params[:id])
 
     recalculate_answers_scores(question)
     
@@ -16,7 +16,7 @@ class VotesController < ApplicationController
   end
   
   def down
-    question = Question.find(params[:id])
+    question = Question.find_using_slug(params[:id])
 
     recalculate_answers_scores(question)
     

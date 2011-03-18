@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
 	end
 
   def show
-		@question = Question.find(params[:id])
+		@question = Question.find_using_slug(params[:id])
 		add_visualization(@question.id)
 		languages = ["c", "cpp", "csharp", "css", "flex", 
 		              "html", "java", "javascript", "javascript", 
@@ -54,13 +54,14 @@ class QuestionsController < ApplicationController
 
 	def edit
 		@title = "Editar pergunta"
-		@question = Question.find_by_id(params[:id])
-		@tags = tags_to_string(@question.tags) 
+		@question = Question.find_using_slug(params[:id])
+		@tags = tags_to_s(@question.tags) 
 	end
 
   def create
 		@question = current_user.questions.build(params[:question])
 		if @question.save
+		  @question.generate_slug!
 		  @question.toggle!(:published)
 			save_tags(@question.id, params[:question][:tags])
 			flash[:success] = "Pergunta adicionada com sucesso"
@@ -71,26 +72,27 @@ class QuestionsController < ApplicationController
   end
 
 	def update
-		@question = Question.find(params[:id])
+		@question = Question.find_using_slug(params[:id])
 		if @question.update_attributes(params[:question])
 			save_tags(@question.id, params[:question][:tags])
+			@question.generate_slug!
 			flash[:success] = "Pergunta editada com sucesso"
 			redirect_to pergunta_path(@question)
 		else
 			@title = "Editar pergunta"
-			@tags = tags_to_string(@question.tags)
+			@tags = tags_to_s(@question.tags)
 			render 'edit'
 		end
 	end
 
   def destroy
-		Question.find(params[:id]).destroy
+		Question.find_using_slug(params[:id]).destroy
 		flash[:success] = "Pergunta excluída com sucesso."
 		redirect_to perguntas_path
   end
   
   def toggle_published
-    @question = Question.find(params[:id])
+    @question = Question.find_using_slug(params[:id])
     @question.toggle!(:published)
     redirect_to pergunta_path(@question)
   end
@@ -108,7 +110,7 @@ class QuestionsController < ApplicationController
 			end
 		end
 
-		def tags_to_string(tags)
+		def tags_to_s(tags)
 			tags_as_string = ""
 			unless tags.empty? or tags.nil?
 				tags.each do |tag|
@@ -140,8 +142,11 @@ class QuestionsController < ApplicationController
 
     def is_published
       unless signed_in? and current_user.admin?
-        question = Question.find_by_id(params[:id])
-        if not question.published?
+        question = Question.find_using_slug(params[:id])
+        if question.nil? 
+          flash[:error] = question
+          redirect_to root_path
+        elsif not question.published?
           redirect_to root_path
         end
       end
