@@ -22,8 +22,6 @@ class QuestionsController < ApplicationController
 	end
 
   def show
-    require 'nokogiri'
-    
 		@question = Question.find_using_slug(params[:id])
 		add_visualization(@question.id)
 		@question.content = @question.content.gsub("<pre>", "<pre class=\"dom\">")
