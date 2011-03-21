@@ -134,10 +134,7 @@ class QuestionsController < ApplicationController
     def is_published
       unless signed_in? and current_user.admin?
         question = Question.find_using_slug(params[:id])
-        if question.nil? 
-          flash[:error] = question
-          redirect_to root_path
-        elsif not question.published?
+        if question.nil? or not question.published? 
           redirect_to root_path
         end
       end
