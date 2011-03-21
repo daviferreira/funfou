@@ -6,7 +6,7 @@ Funfou::Application.routes.draw do
 	resources :sessions, :only => [:create, :destroy]
 	resources :questions, :only => [:create, :update, :destroy]
 	resources :favorites, :only => [:create, :destroy]
-	resources :answers, :only => [:create, :destroy]
+	resources :answers, :only => [:create, :destroy, :update]
 
 	resources :users do
 	  member do
@@ -24,7 +24,10 @@ Funfou::Application.routes.draw do
 	match "/pergunta/:id",	:to => "questions#show", :as => :pergunta
 	match "/publicar-pergunta/:id",  :to	=> "questions#toggle_published", :as => :publicar_pergunta
 	match "/publicar-resposta/:id",  :to	=> "answers#toggle_published", :as => :publicar_resposta
-	
+
+	match "/resposta/editar/:id", :to => "answers#edit", :as => :editar_resposta
+
+
 	match "/sobre", 				:to => "pages#about", :as => :about
 	match "/ajuda", 				:to => "pages#help", :as => :help
 	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact
@@ -56,5 +59,4 @@ Funfou::Application.routes.draw do
 	
 	match "/categorias",			:to => "categories#index", :as => :categorias
 	match "/categoria/:id",   :to => "categories#show", :as => :categoria
-
 end

@@ -66,7 +66,7 @@ class QuestionsController < ApplicationController
 		if @question.update_attributes(params[:question])
 			save_tags(@question.id, params[:question][:tags])
 			@question.generate_slug!
-			flash[:success] = "Pergunta editada com sucesso"
+			flash[:success] = "Pergunta editada com sucesso."
 			redirect_to pergunta_path(@question)
 		else
 			@title = "Editar pergunta"

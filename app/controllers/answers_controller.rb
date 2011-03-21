@@ -16,8 +16,26 @@ class AnswersController < ApplicationController
     redirect_to pergunta_path(@question)
 	end
 
+	def edit
+		@title = "Editar resposta"
+		@answer = Answer.find(params[:id])
+	end
+
+	def update
+		@answer = Answer.find(params[:id])	
+		if @answer.update_attributes(params[:answer])
+			flash[:success] = "Resposta editada com sucesso."
+			@question = Question.find(@answer.question_id)
+			redirect_to pergunta_path(@question)
+		else
+			@title = "Editar resposta"
+			render 'edit'
+		end
+	end
+
 	def destroy
 		@answer = Answer.find(params[:id])
+		@answer.destroy
 		@question = Question.find(@answer.question_id)
 		flash[:success] = "Resposta excluída com sucesso"
 		redirect_to pergunta_path(@question)

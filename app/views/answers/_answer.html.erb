@@ -3,7 +3,7 @@
   <div class="answer"><%= answer.content %></div>
 	<div class="info-data">Enviada <%= time_ago_in_words(answer.created_at) %> atrás por <%= author_name(answer.user_id) %></div>
 	<% if signed_in? and current_user.admin? %>
-		<%= link_to "Editar", "#" %>
+		<%= link_to "Editar", editar_resposta_path(answer) %>
 		| <%= link_to "Excluir", answer, :method => :delete,
 														 :confirm => "Tem certeza?",
 												 		 :title => "Delete #{answer.content}" %>
