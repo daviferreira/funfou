@@ -1,5 +1,16 @@
 <h2><%= @category.name %></h2>
 
+<div class="breadcrumb-container">
+	<ul class="breadcrumb clearfix">
+		<li><%= link_to "home", root_path, :title => "Página inicial" %></li>
+		<li class="separator">/</li>
+		<li><%= link_to "categorias", categorias_path, :title => "Categorias" %></li>
+		<li class="separator">/</li>
+		<li><%= link_to @category.name, categoria_path(@category), :title => @category.name%></li>
+	</ul>
+</div>
+
+
 <% if @questions.empty? %>
   <p>Nenhuma pergunta encontrada.</p>
 <% else %>

@@ -1,6 +1,13 @@
 <p class="btn-ask"><%= link_to "Perguntar!", new_question_path %></p>
 <h2>Perguntas</h2>
 
+<div class="breadcrumb-container">
+	<ul class="breadcrumb clearfix">
+		<li><%= link_to "home", root_path, :title => "Página inicial" %></li>
+		<li class="separator">/</li>
+		<li><%= link_to "perguntas", perguntas_path, :title => "Perguntas" %></li>
+	</ul>
+</div>
 
 <% if @questions.empty? %>
   <p>Nenhuma pergunta encontrada.</p>

@@ -1,5 +1,14 @@
 <h2>Categorias</h2>
 
+<div class="breadcrumb-container">
+	<ul class="breadcrumb clearfix">
+		<li><%= link_to "home", root_path, :title => "Página inicial" %></li>
+		<li class="separator">/</li>
+		<li><%= link_to "categorias", categorias_path, :title => "Categorias" %></li>
+	</ul>
+</div>
+
+
 <% if @categories.empty? %>
 	<p>Nenhuma categoria encontrada.</p>
 <% else %>
