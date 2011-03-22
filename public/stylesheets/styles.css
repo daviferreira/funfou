@@ -175,6 +175,11 @@ div#account-info ul#user-options li{
   margin:0 12px 0 0;
 }
 
+div#account-info ul#user-options li.omega{
+  margin:0 0;
+  padding:0 0 ;
+}
+
 .btn-ask{
   padding:24px;
   float:right;
@@ -205,11 +210,7 @@ div#account-info ul#user-options li{
 }
 
 div.breadcrumb-container{
-	background:#f2f2f2 url(/images/bg-bread.png) 0 0 repeat-x;
-	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border:1px solid #ccc;
+display:block!important;
 }
 
 ul.breadcrumb li{
@@ -222,13 +223,13 @@ ul.breadcrumb li{
 }
 
 ul.breadcrumb li.separator{
-  color:#ccc;
-  background:url(/images/separator.png)  0 1px no-repeat;
-  text-indent:-9000px;
+  color:#333;
   width:15px;
   padding:0 0;
-  margin:0 0 0 22px;
+  margin:0 0 0 36px;
   height:28px;
+  border-left:1px dotted #333;
+  text-indent:-9999px;
 }
 
 ul.breadcrumb li.active a{
@@ -252,10 +253,11 @@ display:block;
 section#content h2{
 	font-size:36px;
 	color:#666;
-	letter-spacing:-1.5px; 
+	letter-spacing:-1px; 
 	text-shadow: 2px 2px 0px #fff;
-	text-transform:lowercase;
-	margin-top:24px;
+	margin:12px 0 0;
+	border-bottom:1px dotted #666;
+	padding:6px 0 6px 0;
 }
 
 div.content-single{padding:12px;}
@@ -315,12 +317,14 @@ a.publish, a.unpublish{ color:#fff !important; background-color:red; -webkit-bor
 border-radius: 3px; padding:4px; font-size:12px!important; margin:8px;text-align:center; text-decoration:none; }
 
 a.unpublish{ background:green!important; }
-
+div#filters{
+	margin:24px 0 0;
+}
+/*
 div#filters{
 	border-bottom:1px solid #ccc;
 	margin:12px 0 0;
 }
-
 ul#question-filters li{
 	float:left;
 	padding:12px;
@@ -333,14 +337,16 @@ ul#question-filters li{
 	-moz-border-radius-topleft: 6px;
 	border-top-left-radius: 6px;
 	font-size:14px;
+	background:#e2e2e2 url(/images/bg-bread.png) 0 0 repeat-x;
 }
 
 ul#question-filters li.alpha{
-	border-left:2px solid #ccc;
+	border-left:1px solid #ccc;
 }
 
 ul#question-filters li.active{
-	background-color:#f2f2f2;
+  background:#f3f3f3 url(/images/bg-bread-active.png) 0 0 repeat-x;
+  border-color:#ccc;
 }
 
 ul#question-filters li.active a{
@@ -351,34 +357,31 @@ ul#question-filters li.active a{
 ul#question-filters li.perguntar{
 	float:right;
 	border:none;
-	background-color:#1D5123;
-	border-bottom:1px solid #1d5123;
+	background:#1d3c21 url(/images/bg-perguntar.png) 0 0 repeat-x;
+	border-top:1px solid #1d5123;
 }
 
-ul#question-filters li.perguntar:hover{
-	background-color:#F64448;
-	border-bottom-color:#F64448;
-}
 
 ul#question-filters li.perguntar a{
 	color:#fff;
 	font-weight:900;
 }
-/*
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
 */
 
-
--webkit-border-top-left-radius: 3px;
--webkit-border-bottom-right-radius: 3px;
--moz-border-radius-topleft: 3px;
--moz-border-radius-bottomright: 3px;
-border-top-left-radius: 3px;
-border-bottom-right-radius: 3px;
+ul#question-filters li.perguntar{
+	float:right!important;
 
 }
+
+ul#question-filters li.perguntar a{
+  padding:0 0 !important;
+  margin-top:-10px;
+}
+
+ul#question-filters li.perguntar a span{
+    font-size:12px !important;  
+}
+
 div.question ul.tags li a:hover{ background-color: #F64448; }
 
 div.question h2{
@@ -433,21 +436,31 @@ ul.question-answers li div.info-data{
 footer{
 
 	display:block;
+	margin:0 auto;
 	font-size:12px;
-	padding: 24px;
 	background-color:#333;
 	color:#f2f2f2;
+	width:1060px;
 }
 
 footer a{color:#F64448;}
 
 footer div{ 
-  margin: 0 auto;
-	width: 1060px;
+  	padding: 24px;
 }
 footer ul{ float: right;}
 footer ul li{ float:left; padding:0 6px 0 0; margin: 0 6px 0 0; border-right:1px dotted #ccc;}
 footer ul li.last{margin:0 0;padding:0 0;border:none;}
+
+footer a:hover{
+  border-bottom:1px dotted #f64448;
+}
+
+#account-info a:hover{
+  border-bottom:1px dotted #f64448;
+}
+
+#account-info a.ui-button{border:none!important;font-size:12px!important;}
 
 /*
     Paginação 
@@ -647,3 +660,5 @@ form.inline p { margin-bottom:0; }
 
 
 div#debug { width: 1060px; margin: 24px auto; display:block; background-color:#fff; padding:12px; }
+
+input[type="submit"], input[type="button"]{ cursor:pointer; }
