@@ -2,7 +2,7 @@ $(function(){
   greetings();
   $('.question pre').each(function(){
     $(this).snippet($(this).attr('class'),{
-              style:"vim",
+              style:"vim-dark",
               clipboard:"/flash/ZeroClipboard.swf"
     });
   });

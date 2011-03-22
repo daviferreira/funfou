@@ -54,26 +54,24 @@ table {
 	border-spacing: 0;
 }
 
-/*	
-    TITULO
-    URL
-    
-    por: M2BRNET (http://www.m2brnet.com)
-\* ......................................................................................................................................... */
-
 
 /*
     Globais
 \* ......................................................................................................................................... */
-body{ background-color: #edf2fd; font-family:'Droid Serif', Georgia, "Times New Roman", serif; }
+body{ background-color: #fff; font-family:Arial, Helvetica, sans-serif; }
 
-a{ color: #1e92ff; }
+a{ color: #0d89df;outline: medium none;
+text-decoration: none; }
 a:hover{ color: #df0d34; }
+
 
 h1{ font-weight:900; font-size: 55px; color: #000; font-family: Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:-1.5px; text-shadow: 2px 2px 0px #fff; }
 
 h1 a{ color: #000; text-decoration: none; }
 h1 a:hover{ color: #333; }
+
+div#logo a{float:left;}
+div#logo span{font-size:13px;font-weight:900;margin:20px 0 0 12px; color:#F26901;display:block;float:left;}
 
 /*
     Layout
@@ -85,7 +83,7 @@ h1 a:hover{ color: #333; }
 
 header{ width: 1060px; margin: 24px auto; display:block; }
 
-header div#search{ float:right; margin:15px 0 0; }
+header div#search{ float:right; margin:0 0 0; }
 
 header div#search input#fld-search{border:1px solid #ccc;padding:6px;width:270px;
 
@@ -99,7 +97,7 @@ header div#search input#btn-search{
     padding:6px;
     color: #fff;
     font-weight:900;
-    background-color:#1e92ff;
+    background-color:#0d89df;
     border: none;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
@@ -118,18 +116,45 @@ color:#666;
 width: 1060px;
 }
 
+div#user-greetings{
+  line-height:28px;
+  float:left;
+}
+
 div#account-info{
-  background-color:#ffffdf;
-  padding:12px;
-  border-bottom: 1px solid #ccc;
+  border-top:1px solid #000;
+  background-color:#333;
+  padding:0 0;
+  font-size:12px;
+  color:#ccc;
+  padding:4px;
+}
+
+div#account-info a{
+  color:#fff;
+}
+
+div#account-info a:hover{
+  color:#f2f2f2;
 }
 
 div#account-info ul#user-options{
   float:right;
 }
 
+div#user-greetings img{
+  margin:0 12px 0 0;
+  border:1px solid #666;
+}
+
+div#account-info ul#user-options li{
+line-height:28px;
+padding:0 4px 0 4px;
+display:inline-block;
+}
+
 div#account-info ul#user-options li.perguntar a{
-  color:#df0d32;
+  color:#f26901;
 }
 
 div#account-info img {
@@ -150,7 +175,7 @@ div#account-info ul#user-options li{
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  background-color:#1E92FF;
+  background-color:#0d89df;
   color:#fff;
   text-decoration:none;
   padding:6px;
@@ -171,9 +196,7 @@ div#account-info ul#user-options li{
 }
 
 div.breadcrumb-container{
-	background-color:#ccc;
-	margin:24px;
-	padding:12px;
+	background-color:#def4f1;
 	border-radius:6px;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
@@ -181,12 +204,19 @@ div.breadcrumb-container{
 
 ul.breadcrumb li{
 	float:left;
-	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	background-color:#f2f2f2;
-	padding:6px;
+	padding:12px;
 	margin:1px;
+	font-size:12px;
+	font-weight:900;
+}
+
+ul.breadcrumb li.separator{
+  padding:12px 0 12px 0;
+  color:#ccc;
+}
+
+ul.breadcrumb li.active a{
+  color:#f26901;
 }
 
 /*
@@ -198,24 +228,20 @@ ul.breadcrumb li{
     Conteúdo
 \* ......................................................................................................................................... */
 
-section#content{ background-color: #fff; margin:3px auto;  width:1060px;
-padding: 12px 0 12px 0;
-border: 12px solid #dfe6f6;
--webkit-border-radius: 12px;
--moz-border-radius: 12px;
-border-radius: 12px;
+section#content{ background: #fff; margin:0 auto;  width:1060px;
+padding: 0 0 12px 0;
 display:block;
 }
 
-section#content h2{font-size:36px;padding:12px 0 0 24px;color:#333;letter-spacing:-1.5px; text-shadow: 2px 2px 0px #fff}
+section#content h2{font-size:36px;padding:12px 0 0 24px;color:#00589B;letter-spacing:-1.5px; text-shadow: 2px 2px 0px #fff}
 
-div.question{ padding:12px; margin: 12px; border-bottom: 1px dashed #dfe6f6; }
+div.question{ padding:12px 0 12px 0; margin: 12px 0 12px 0; }
 
 div.question span.question-updates{ margin:0 0 0 -12px; background-color:red; color:#fff; -moz-border-radius:30px; width:13px; height:13px; padding:5px; display:inline-block; font-size:12px; text-align:center; }
 
 div.question p{ font-size: 20px; font-weight: 500; color: #333; line-height:26px; }
 div.question p a{ color: #333; text-decoration: none;font-family:'Droid Serif', Georgia, "Times New Roman", serif; }
-div.question p a:hover{ color: #1e92ff; }
+div.question p a:hover{ color: #0d89df; }
 
 div.question p a pre{ font-size:12px; font-family:'Droid Sans Mono', monospace;}
 
@@ -234,7 +260,7 @@ div.question ul.tags li.alpha{ margin: 0 6px 0 0; }
 div.question ul.tags li.omega{ margin: 0 0 0 6px; }
 div.question ul.tags li{ font-size:12px;}
 div.question ul.tags li a{ color: #fff; text-decoration: none; font-weight:900; display:inline-block;
- background-color: #1e92ff; padding:6px; 
+ background-color: #0d89df; padding:6px; 
 font-family: Helvetica, Arial, sans-serif;}
 
 a.publish, a.unpublish{ color:#fff !important; background-color:red; -webkit-border-radius: 3px;
@@ -271,10 +297,15 @@ div.question h2{
 
 div.question div.description{
   padding:12px;
-  background-color:#f2f2f2;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+
+div.question pre{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 
 div.question h3{
@@ -305,14 +336,20 @@ ul.question-answers li div.info-data{
 \* ......................................................................................................................................... */
 
 footer{
-	margin: 0 auto;
-	width: 1060px;
+
 	display:block;
 	font-size:12px;
 	padding: 24px;
+	background-color:#333;
+	color:#f2f2f2;
 }
 
-footer div{ display:inline;  }
+footer a{color:#f26901;}
+
+footer div{ 
+  margin: 0 auto;
+	width: 1060px;
+}
 footer ul{ float: right;}
 footer ul li{ float:left; padding:0 6px 0 0; margin: 0 6px 0 0; border-right:1px dotted #ccc;}
 footer ul li.last{margin:0 0;padding:0 0;border:none;}

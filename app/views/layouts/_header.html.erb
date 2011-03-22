@@ -1,10 +1,11 @@
 <% if signed_in? %>
 <div id="account-info" class="clearfix">
+  <div id="user-greetings">
+    <%= link_to gravatar_for current_user, :size => 30 %> 
+    <span id="greetings-time"><%= link_to first_name(current_user.name), usuario_path(current_user) %></span>
+  </div>
+
   <ul id="user-options" class="clearfix">
-    <li>
-      <%= link_to gravatar_for current_user, :size => 30 %> 
-      <span id="greetings-time"><%= link_to first_name(current_user.name), usuario_path(current_user) %></span>
-    </li>
     <li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
   	<li><%= link_to "Favoritos", favoritos_path %></li>
     <li><%= link_to "Meus dados", meus_dados_path(current_user) %></li>
@@ -24,5 +25,5 @@
             <input type="submit" value="OK" id="btn-search" />
         </form>
     </div>
-    <h3><%= link_to "Funfou", root_path %></h3>
+    <div id="logo" class="clearfix"><%= link_to logo, root_path %><span>De programador para programador.</span></div>
 </header>
