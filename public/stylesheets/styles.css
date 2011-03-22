@@ -238,7 +238,16 @@ padding: 0 0 12px 0;
 display:block;
 }
 
-section#content h2{font-size:36px;padding:12px 0 0 24px;color:#00589B;letter-spacing:-1.5px; text-shadow: 2px 2px 0px #fff}
+section#content h2{
+	font-size:36px;
+	color:#666;
+	letter-spacing:-1.5px; 
+	text-shadow: 2px 2px 0px #fff;
+	text-transform:lowercase;
+	margin-top:24px;
+}
+
+div.content-single{padding:12px;}
 
 div.question{ padding:12px 0 12px 0; margin: 12px 0 12px 0;}
 

@@ -1,11 +1,17 @@
-<h2>Favoritos</h2>
+<div class="breadcrumb-container">
+	<ul class="breadcrumb clearfix">
+		<li><%= link_to "home", root_path, :title => "Página inicial" %></li>
+		<li class="separator">/</li>
+		<li class="active"><%= link_to "favoritos", favoritos_path %></li>
+	</ul>
+</div>
 
-<% unless @favorites.empty? %>
-  <% @favorites.each do |question| %>
-  	<div class="user-questions">
-  		<%= render question %>
-  	</div>
-  <% end %>
+	<% unless @favorites.empty? %>
+		<% @favorites.each do |question| %>
+			<div class="user-questions">
+				<%= render question %>
+			</div>
+		<% end %>
 
-  <%= will_paginate %>
-<% end %>
+		<%= will_paginate %>
+	<% end %>
