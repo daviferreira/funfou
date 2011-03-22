@@ -5,10 +5,10 @@
 	<li <%if params[:order].nil? and params[:keywords].nil? %>class="active"<% end %>><%= link_to "perguntas", perguntas_path, :title => "Perguntas" %></li>
 		<% if not params[:order].nil? %>
 		<li class="separator">/</li>
-		<li class="active"><%= params[:order].sub("_", " ") %></li>
+		<li class="active"><%= link_to params[:order].sub("_", " "), perguntas_ordem_path(params[:order]) %></li>
 		<% elsif not params[:keywords].nil? %>
 		<li class="separator">/</li>
-		<li class="active">busca por <%= params[:keywords].downcase %></li>
+		<li class="active"><%= link_to "busca por " + params[:keywords].downcase, search_path+"?keywords="+params[:keywords] %></li>
 		<% end %>
 	</ul>
 </div>

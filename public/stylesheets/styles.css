@@ -205,23 +205,30 @@ div#account-info ul#user-options li{
 }
 
 div.breadcrumb-container{
-	background-color:#f2f2f2;
-	border-radius:6px;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
+	background:#f2f2f2 url(/images/bg-bread.png) 0 0 repeat-x;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border:1px solid #ccc;
 }
 
 ul.breadcrumb li{
 	float:left;
-	padding:12px;
-	margin:1px;
 	font-size:12px;
 	font-weight:900;
+	height:28px;
+	line-height:28px;
+	padding:0 0 0 22px;
 }
 
 ul.breadcrumb li.separator{
-  padding:12px 0 12px 0;
   color:#ccc;
+  background:url(/images/separator.png)  0 1px no-repeat;
+  text-indent:-9000px;
+  width:15px;
+  padding:0 0;
+  margin:0 0 0 22px;
+  height:28px;
 }
 
 ul.breadcrumb li.active a{
@@ -310,15 +317,15 @@ border-radius: 3px; padding:4px; font-size:12px!important; margin:8px;text-align
 a.unpublish{ background:green!important; }
 
 div#filters{
-	border-bottom:2px solid #ccc;
+	border-bottom:1px solid #ccc;
 	margin:12px 0 0;
 }
 
 ul#question-filters li{
 	float:left;
 	padding:12px;
-	border-top:2px solid #ccc;
-	border-right:2px solid #ccc;
+	border-top:1px solid #ccc;
+	border-right:1px solid #ccc;
 	-webkit-border-top-right-radius: 6px;
 	-moz-border-radius-topright: 6px;
 	border-top-right-radius: 6px;
@@ -345,11 +352,12 @@ ul#question-filters li.perguntar{
 	float:right;
 	border:none;
 	background-color:#1D5123;
-	margin-top:2px;
+	border-bottom:1px solid #1d5123;
 }
 
 ul#question-filters li.perguntar:hover{
 	background-color:#F64448;
+	border-bottom-color:#F64448;
 }
 
 ul#question-filters li.perguntar a{
