@@ -20,12 +20,18 @@
 	<div class="error" style="margin:24px 0 24px 0;">Não foi encontrara nenhuma pergunta com o termo <em><%= params[:keywords] %></em>. <strong><%= link_to "Que tal perguntar?", new_question_path %></strong></div>
 <% else %>
 	<%= render 'filters' %>
-	<% @questions.each do |question| %>
-  	<div class="user-questions">
-  		<%= render question %>
-  	</div>
-	<% end %>
-	<div class="apple_pagination">
-		<%= will_paginate @questions, :next_label => "próximo &raquo;", :previous_label => "&laquo; anterior" %>
+	<div id="questions-sidebar">
+		RSS<br />
+		Categorias<br />
+		Interações de usuários<br />
+		Share is care<br />
+	</div>
+  <div id="questions-list">
+		<% @questions.each do |question| %>
+				<%= render question %>
+		<% end %>
+		<div class="apple_pagination">
+			<%= will_paginate @questions, :next_label => "próximo &raquo;", :previous_label => "&laquo; anterior" %>
+		</div>
 	</div>
 <% end %>

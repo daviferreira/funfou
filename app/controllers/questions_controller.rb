@@ -7,6 +7,8 @@ class QuestionsController < ApplicationController
 		@title = "Perguntas"
 		@questions = index_with_order
 		@questions = @questions.paginate(:page => params[:page])
+
+
 	end
 
   def show

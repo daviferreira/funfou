@@ -13,6 +13,12 @@ $(function(){
 	$('#fld-search').focus(function(){
 		if($(this).val() == $(this).attr('title')) $(this).val('');
 	});
+	if($('#questions-sidebar').length > 0){
+		if($('#questions-sidebar').height() <= $('#questions-list').height())
+			$('#questions-sidebar').height($('#questions-list').height());
+		else
+			$('#questions-list').height($('#questions-sidebar').height());
+	}
 });
 
 var greetings = function(){
