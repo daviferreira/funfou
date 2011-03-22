@@ -19,7 +19,7 @@ $(function(){
 		else
 			$('#questions-list').height($('#questions-sidebar').height());
 	}
-	$('li.perguntar a').button();
+	$('li.perguntar a, .questions-admin a').button();
 	//if($('#filters').length > 0) $('#filters').tabs();
 });
 

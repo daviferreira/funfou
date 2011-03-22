@@ -16,34 +16,35 @@
     <%= f.label :password_confirmation, "Confirmation" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
-  
-  <hr />
 
-  <div class="field">
-    <%= f.label :site, "Site pessoal ou blog" %><br />
-    <%= f.text_field :site %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :github, "Nome de usuário no github" %><br />
-    <%= f.text_field :github %>
-  </div>
+  <% if @user.id %>  
+    <hr />
 
-  <div class="field">
-    <%= f.label :twitter, "Nome de usuário no twitter" %><br />
-    <%= f.text_field :twitter %>
-  </div>
+    <div class="field">
+      <%= f.label :site, "Site pessoal ou blog" %><br />
+      <%= f.text_field :site %>
+    </div>
   
-  <div class="field">
-    <%= f.label :cidade %><br />
-    <%= f.text_field :cidade %>
-  </div>
+    <div class="field">
+      <%= f.label :github, "Nome de usuário no github" %><br />
+      <%= f.text_field :github %>
+    </div>
+
+    <div class="field">
+      <%= f.label :twitter, "Nome de usuário no twitter" %><br />
+      <%= f.text_field :twitter %>
+    </div>
   
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio %>
-  </div>
+    <div class="field">
+      <%= f.label :cidade %><br />
+      <%= f.text_field :cidade %>
+    </div>
   
+    <div class="field">
+      <%= f.label :bio %><br />
+      <%= f.text_area :bio %>
+    </div>
+  <% end %>
   
   <div class="actions">
     <%= f.submit "OK, manda!" %>

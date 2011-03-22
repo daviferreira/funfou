@@ -59,9 +59,9 @@ module QuestionsHelper
         link = publicar_pergunta_path(obj)
       end
       if obj.published?
-        link_to "Está publicada", link, :class => 'unpublish'
+        link_to "Está publicada", link
       else
-        link_to "Não está publicada", link, :class => 'publish'
+        link_to "Não está publicada", link
       end
     end
   end
