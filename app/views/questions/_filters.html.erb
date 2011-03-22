@@ -1,6 +1,7 @@
 <div id="filters">
 	<ul id="question-filters" class="clearfix">
-	<li class="alpha<% if params[:keywords].nil? and (params[:order].nil? or params[:order] == 'mais_recentes')  %> active <% end %>"><%= link_to "Mais recentes", perguntas_ordem_path("mais_recentes") %></li>
+		<li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
+		<li class="alpha<% if params[:keywords].nil? and (params[:order].nil? or params[:order] == 'mais_recentes')  %> active <% end %>"><%= link_to "Mais recentes", perguntas_ordem_path("mais_recentes") %></li>
 		<li <% if params[:order] == 'mais_visualizadas' %>class="active"<% end %>><%= link_to "Visualizações", perguntas_ordem_path("mais_visualizadas") %></li>
 		<li <% if params[:order] == 'mais_respostas' %>class="active"<% end %>><%= link_to "Respostas", perguntas_ordem_path("mais_respostas") %></li>
 		<li <% if params[:order] == 'mais_favoritos' %>class="active"<% end %>><%= link_to "Favoritos", perguntas_ordem_path("mais_favoritos") %></li>

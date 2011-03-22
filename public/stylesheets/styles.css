@@ -325,6 +325,21 @@ ul#question-filters li.active a{
 	font-weight:900;
 }
 
+ul#question-filters li.perguntar{
+	float:right;
+	border:none;
+	background-color:#1D5123;
+	margin-top:2px;
+}
+
+ul#question-filters li.perguntar:hover{
+	background-color:#F64448;
+}
+
+ul#question-filters li.perguntar a{
+	color:#fff;
+	font-weight:900;
+}
 /*
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
