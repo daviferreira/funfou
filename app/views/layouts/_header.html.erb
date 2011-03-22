@@ -18,8 +18,7 @@
 <header>
     <div id="search">
         <form id="frm-search" action="<%= search_path %>" method="GET">
-            <input type="text" id="fld-search" name="keywords" value="Pesquisar..." />
-            <input type="submit" value="OK" id="btn-search" />
+					<input type="text" id="fld-search" name="keywords" title="Pesquisar..." value="<%= params[:keywords] %>" /><input type="submit" value="OK" id="btn-search" />
         </form>
     </div>
 		<div id="logo" class="clearfix"><%= link_to logo, root_path %><span>De programador para programador.</span></div>

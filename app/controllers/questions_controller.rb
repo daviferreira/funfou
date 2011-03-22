@@ -5,8 +5,8 @@ class QuestionsController < ApplicationController
 
 	def index
 		@title = "Perguntas"
-		questions = index_with_order
-		@questions = questions.paginate(:page => params[:page])
+		@questions = index_with_order
+		@questions = @questions.paginate(:page => params[:page])
 	end
 
   def show
@@ -130,11 +130,23 @@ class QuestionsController < ApplicationController
     end
 
 		def index_with_order
+			keywords = nil
+			if params[:keywords]
+				keywords = '%' + params[:keywords] + '%'
+			end
 
 			if signed_in? and current_user.admin?
-				questions = Question.all
+				if keywords.nil?
+					questions = Question.all
+				else
+					questions = Question.where("title LIKE ? OR content LIKE ?", keywords, keywords)
+				end
 			else
-				questions = Question.published
+				if keywords.nil?
+					questions = Question.published
+				else
+					questions = Question.published.where("title LIKE ? OR content LIKE ?", keywords, keywords)
+				end
 			end
 
 			if params[:order] == 'mais_visualizadas'
@@ -149,14 +161,6 @@ class QuestionsController < ApplicationController
 					tmp.push(q) if q.answers.count == 0
 				end	
 				questions = tmp
-			end
-
-			if params[:keywords]
-				keywords = '%' + params[:keywords] + '%';
-				questions = questions.where("title LIKE ? OR content LIKE ?", keywords, keywords).paginate(:page => params[:page])
-				if questions.count == 1
-					redirect_to pergunta_path(questions.first)
-				end
 			end
 
 			questions

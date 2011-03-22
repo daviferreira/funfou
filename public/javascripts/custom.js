@@ -6,6 +6,13 @@ $(function(){
               clipboard:"/flash/ZeroClipboard.swf"
     });
   });
+	if($('#fld-search').val() == "") $('#fld-search').val($('#fld-search').attr('title'));
+	$('#fld-search').blur(function(){
+		if($(this).val() == "")	 $(this).val($(this).attr('title'));
+	});
+	$('#fld-search').focus(function(){
+		if($(this).val() == $(this).attr('title')) $(this).val('');
+	});
 });
 
 var greetings = function(){
