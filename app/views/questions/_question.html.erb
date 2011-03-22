@@ -1,4 +1,12 @@
 <div class="question">
-  <h3><%= link_to question.title, pergunta_path(question) %><%= updates_since_last_login(question) %></h3>
+	<% unless question.categories.empty? %>
+	<ul class="categories clearfix">
+		<% question.categories.each do |category| %>
+			<li><%= link_to category.name, categoria_path(category) %></li>
+		<% end %>
+	</ul>
+	<% end %>
+
+	<h3><%= link_to question.title, pergunta_path(question) %><%= updates_since_last_login(question) %></h3>
 	<%= render 'questions/info_data', :question => question %>
 </div>

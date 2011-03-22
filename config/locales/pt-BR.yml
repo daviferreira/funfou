@@ -19,6 +19,7 @@
       long: "%A, %d de %B de %Y, %H:%M h"
     am: ''
     pm: ''
+
   
   # distancia do tempo em palavras
   datetime:

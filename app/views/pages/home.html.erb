@@ -1,11 +1,16 @@
 <% if signed_in? %>
-  <p class="btn-ask"><%= link_to "Perguntar!", new_question_path %></p>
+	<%= render 'questions/filters' %>
 
 	<% @questions.each do |question| %>
+
 		<div class="user-questions">
 			<%= render question %>
 		</div>
 	<% end %>
+	
+	<div class="apple_pagination">
+		<%= will_paginate @questions, :next_label => "próximo &raquo;", :previous_label => "&laquo; anterior" %>
+	</div>
 
 <% else %>
 	<%= link_to "Cadastre-se", new_user_path %>

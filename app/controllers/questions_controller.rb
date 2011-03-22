@@ -5,20 +5,8 @@ class QuestionsController < ApplicationController
 
 	def index
 		@title = "Perguntas"
-
-		if params[:keywords].nil?
-		  if signed_in? and current_user.admin?
-		    @questions = Question.all.sort_by{|question| question.answers.count}.reverse.paginate(:page => params[:page])
-	    else
-		    @questions = Question.published.paginate(:page => params[:page])
-	    end
-	  else
-	    keywords = '%' + params[:keywords] + '%';
-	    @questions = Question.published.where("title LIKE ? OR content LIKE ?", keywords, keywords).paginate(:page => params[:page])
-		  if @questions.count == 1
-		    redirect_to @questions.first
-	    end
-	  end
+		questions = index_with_order
+		@questions = questions.paginate(:page => params[:page])
 	end
 
   def show
@@ -140,5 +128,40 @@ class QuestionsController < ApplicationController
       end
       true
     end
+
+		def index_with_order
+
+			if signed_in? and current_user.admin?
+				questions = Question.all
+			else
+				questions = Question.published
+			end
+
+			if params[:order] == 'mais_visualizadas'
+				questions = questions.sort_by{|question| question.visualizations.count}.reverse
+			elsif params[:order] == 'mais_respostas'
+				questions = questions.sort_by{|question| question.answers.count}.reverse
+			elsif params[:order] == 'mais_favoritos'
+				questions = questions.sort_by{|question| question.favorites.count}.reverse
+			elsif params[:order] == 'sem_respostas'
+				tmp = []
+				questions.each do |q|
+					tmp.push(q) if q.answers.count == 0
+				end	
+				questions = tmp
+			end
+
+			if params[:keywords]
+				keywords = '%' + params[:keywords] + '%';
+				questions = questions.where("title LIKE ? OR content LIKE ?", keywords, keywords).paginate(:page => params[:page])
+				if questions.count == 1
+					redirect_to pergunta_path(questions.first)
+				end
+			end
+
+			questions
+
+		end
+
 
 end
