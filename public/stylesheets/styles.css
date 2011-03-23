@@ -224,15 +224,37 @@ ul.breadcrumb li{
 
 ul.breadcrumb li.separator{
   color:#333;
-  width:15px;
+  width:21px;
   padding:0 0;
   margin:0 0 0 12px;
   height:28px;
   color:#666;
+  background:url(/images/separator.png) 0 0 no-repeat;
+  text-indent:-9999px;
 }
 
 ul.breadcrumb li.active a{
-  color:#F64448;
+  color:#000;
+}
+
+ul.breadcrumb li a:hover {
+  color:#f64448;
+  border-bottom:1px dotted #f64448;
+}
+
+ul.breadcrumb li.home a:hover{
+  border:none;
+}
+
+#filters a:hover{
+  color:#f64448;
+  
+}
+
+ul.breadcrumb li.home a{
+  margin:0 0;
+  display:inline-block;
+  padding:3px 0 0;
 }
 
 /*
@@ -269,8 +291,8 @@ div#questions-sidebar{
 
 div#questions-list{
 	float:left;
-	width:780px;
-	margin:0 20px 0 0;
+	width:788px;
+	margin:0 12px 0 0;
 }
 
 div.question{ padding:12px 0 12px 0; margin: 12px 0 12px 0;}

@@ -1,0 +1,9 @@
+<div class="breadcrumb-container ui-button ui-widget ui-state-default ui-corner-all">
+	<ul class="breadcrumb clearfix">
+		<li class="home"><%= link_to image_tag("/images/icons/home.png"), root_path, :title => "Página inicial" %></li>
+		<li class="separator">/</li>
+		<% @crumbs.each do |c| %>
+		  <%= render "layouts/breadcrumb_item", :crumb => c %>
+		<% end %>
+	</ul>
+</div>

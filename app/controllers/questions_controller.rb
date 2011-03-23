@@ -4,10 +4,11 @@ class QuestionsController < ApplicationController
 	 before_filter :is_published, :only => [:show]
 
 	def index
+	  @per_page = 20
 		@title = "Perguntas"
 		@questions = index_with_order
-		@questions = @questions.paginate(:page => params[:page])
-
+		@questions = @questions.paginate(:page => params[:page], :per_page => @per_page)
+		@crumbs = [{ "label" => "Perguntas", "path"   => perguntas_path, "active" => false }]
 
 	end
 
@@ -152,7 +153,7 @@ class QuestionsController < ApplicationController
 			end
 
 			if params[:order] == 'mais_visualizadas'
-				questions = questions.sort_by{|question| question.visualizations.count}.reverse
+				questions = questions.sort_by{|question| question.visualizations.count }.reverse
 			elsif params[:order] == 'mais_respostas'
 				questions = questions.sort_by{|question| question.answers.count}.reverse
 			elsif params[:order] == 'mais_favoritos'
