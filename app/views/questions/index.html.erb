@@ -1,5 +1,3 @@
-
-
 <% if @questions.empty? %>
 	<div class="error" style="margin:24px 0 24px 0;">Não foi encontrara nenhuma pergunta com o termo <em><%= params[:keywords] %></em>. <strong><%= link_to "Que tal perguntar?", new_question_path %></strong></div>
 <% else %>

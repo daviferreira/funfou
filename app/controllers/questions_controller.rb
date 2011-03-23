@@ -27,7 +27,7 @@ class QuestionsController < ApplicationController
 	end
 	
 	def feed
-	  @questions = Question.published.order("created_at DESC").limit(20).includes(:user)
+	  @questions = Question.published.order("created_at DESC").limit(20)
   end
 
   def show
@@ -178,7 +178,7 @@ class QuestionsController < ApplicationController
 			if params[:order] == 'mais_acessadas'
 				questions = questions.sort_by{|question| question.visualizations.count }.reverse
 			elsif params[:order] == 'mais_respostas'
-				questions = questions.sort_by{|question| question.answers.count}.reverse
+				questions = questions.sort_by{|question| question.answers.published.count}.reverse
 			elsif params[:order] == 'mais_favoritos'
 				questions = questions.sort_by{|question| question.favorites.count}.reverse
 			elsif params[:order] == 'sem_respostas'
