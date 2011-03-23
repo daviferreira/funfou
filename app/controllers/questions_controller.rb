@@ -8,8 +8,22 @@ class QuestionsController < ApplicationController
 		@title = "Perguntas"
 		@questions = index_with_order
 		@questions = @questions.paginate(:page => params[:page], :per_page => @per_page)
-		@crumbs = [{ "label" => "Perguntas", "path"   => perguntas_path, "active" => false }]
+		
+		@crumbs = [{"label" => "Perguntas", "path"   => perguntas_path, "last" => false, "active" => false}]
 
+		if not params[:order].nil?
+		  @crumbs.push({"label" => params[:order].sub("_", " "),
+		                "path" => perguntas_ordem_path(params[:order]),
+		                "last" => false, "active" => false})
+		elsif not params[:keywords].nil?
+		  @crumbs.push({"label" => "busca por " + params[:keywords],
+		                "path" => search_path + "?keywords=" + params[:keywords],
+		                "last" => false, "active" => false})
+	  end
+    c = @crumbs.last
+    c['last'] = true
+    c['active'] = true
+    
 	end
 
   def show
@@ -152,7 +166,7 @@ class QuestionsController < ApplicationController
 				end
 			end
 
-			if params[:order] == 'mais_visualizadas'
+			if params[:order] == 'mais_acessadas'
 				questions = questions.sort_by{|question| question.visualizations.count }.reverse
 			elsif params[:order] == 'mais_respostas'
 				questions = questions.sort_by{|question| question.answers.count}.reverse

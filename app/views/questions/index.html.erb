@@ -1,23 +1,5 @@
 <%= render "layouts/breadcrumb" %>
 
-<div class="breadcrumb-container ui-button ui-widget ui-state-default ui-corner-all">
-	<ul class="breadcrumb clearfix">
-		<li class="home"><%= link_to image_tag("/images/icons/home.png"), root_path, :title => "Página inicial" %></li>
-		<li class="separator">/</li>
-	<li <%if params[:order].nil? and params[:keywords].nil? %>class="active"<% end %>><%= link_to "perguntas", perguntas_path, :title => "Perguntas" %></li>
-		<% if not params[:order].nil? %>
-		<li class="separator">/</li>
-		<li class="active"><%= link_to params[:order].sub("_", " "), perguntas_ordem_path(params[:order]) %></li>
-		<% elsif not params[:keywords].nil? %>
-		<li class="separator">/</li>
-		<li class="active"><%= link_to "busca por " + params[:keywords].downcase, search_path+"?keywords="+params[:keywords] %></li>
-		<% end %>
-	</ul>
-</div>
-
-
-
-
 <% if @questions.empty? %>
 	<div class="error" style="margin:24px 0 24px 0;">Não foi encontrara nenhuma pergunta com o termo <em><%= params[:keywords] %></em>. <strong><%= link_to "Que tal perguntar?", new_question_path %></strong></div>
 <% else %>

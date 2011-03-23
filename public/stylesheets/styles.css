@@ -92,21 +92,36 @@ header div#search input#fld-search{border:1px solid #ccc;padding:6px;width:270px
 -moz-border-radius-bottomleft: 3px;
 border-top-left-radius: 3px;
 border-bottom-left-radius: 3px;
+-webkit-border-top-right-radius: 0!important;
+-webkit-border-bottom-right-radius: 0!important;
+-moz-border-radius-topright: 0!important;
+-moz-border-radius-bottomright: 0!important;
+border-top-right-radius: 0!important;
+border-bottom-right-radius: 0!important;
 }
 
 header div#search input#btn-search{
-    padding:6px;
-    color: #fff;
-    font-weight:900;
-    background-color:#333;
-    border: none;
--webkit-border-top-right-radius: 3px;
--webkit-border-bottom-right-radius: 3px;
--moz-border-radius-topright: 3px;
--moz-border-radius-bottomright: 3px;
-border-top-right-radius: 3px;
-border-bottom-right-radius: 3px;
-		cursor:pointer;
+  padding:6px;
+  color: #fff;
+  font-weight:900;
+  background:#333 url(/images/search.png) 6px 5px no-repeat;
+  border: none;
+  width:28px;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  
+  -webkit-border-top-left-radius: 0!important;
+  -webkit-border-bottom-left-radius: 0!important;
+  -moz-border-radius-topleft: 0!important;
+  -moz-border-radius-bottomleft: 0!important;
+  border-top-left-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+  
+  cursor:pointer;
 }
 
 header div#search input#btn-search:hover{
