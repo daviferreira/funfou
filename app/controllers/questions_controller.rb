@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 		@questions = index_with_order
 		@questions = @questions.paginate(:page => params[:page], :per_page => @per_page)
 		
-		@crumbs = [{"label" => "Perguntas", "path"   => perguntas_path}]
+		@crumbs = default_crumb
 
 		if not params[:order].nil?
 		  @crumbs.push({"label" => params[:order].sub("_", " "),
@@ -18,8 +18,17 @@ class QuestionsController < ApplicationController
 		  @crumbs.push({"label" => "busca por " + params[:keywords],
 		                "path" => search_path + "?keywords=" + params[:keywords]})
 	  end
-	    
+	  
+	  respond_to do |format|
+      format.html
+      format.atom { render :action => "feed", :layout => false }
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+    end  
 	end
+	
+	def feed
+	  @questions = Question.published.order("created_at DESC").limit(20).includes(:user)
+  end
 
   def show
 		@question = Question.find_using_slug(params[:id])
@@ -32,10 +41,8 @@ class QuestionsController < ApplicationController
 		  @answer = Answer.new 
 		  @answers = @question.answers if current_user.admin?
 	  end
-		@crumbs = [
-			{"label" => "Perguntas", "path"   => perguntas_path},
-			{"label" => @question.title.downcase, "path" => pergunta_path(@question)}
-		]
+		@crumbs = default_crumb
+		@crumbs.push({"label" => @question.title.downcase, "path" => pergunta_path(@question)})
 
 	end
  
@@ -45,6 +52,8 @@ class QuestionsController < ApplicationController
 			@question = Question.new 
 			@tags = ""
 		end
+		@crumbs = default_crumb
+		@crumbs.push({"label" => "enviar uma nova pergunta", "path" => new_question_path})
 	end
 
 	def edit
@@ -184,5 +193,8 @@ class QuestionsController < ApplicationController
 
 		end
 
+    def default_crumb
+      [{"label" => "Perguntas", "path"   => perguntas_path}]
+    end
 
 end

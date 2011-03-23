@@ -9,6 +9,7 @@
 		<%= javascript_include_tag "custom" %>
 		<%= javascript_include_tag "jquery.snippet.min" %>
 		<%= render 'layouts/stylesheets' %>
+		<%= auto_discovery_link_tag(:atom, {:controller => "questions", :action => "feed"}) %>
   </head>
   <body>
     <%= render 'layouts/header' %>
