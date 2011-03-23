@@ -38,6 +38,7 @@ Funfou::Application.routes.draw do
 	match "/usuario/nova_senha", :to => "users#save_password", :as => :nova_senha
 
 	match "/usuario/:id",			:to => "users#show", :as => :usuario
+	match "/usuario/:id/perguntas",			:to => "users#questions", :as => :usuario_perguntas
 	match "/usuarios",				:to => "users#index"	
 	match "/cadastro",      	:to => "users#new", :as => :new_user
 	match "/meus-dados/:id",  :to	=> "users#edit", :as => :meus_dados

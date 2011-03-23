@@ -1,8 +1,18 @@
+
+
+<h2>
+  <%= gravatar_for @user, :size => 28 %> <%= @user.name %>
+</h2>
+
 <div id="user-sidebar" class="sidebar">
-	<%= gravatar_for @user %>
+	
 	<p><strong>Name</strong> <%= @user.name %><br />
   <strong>URL</strong>  <%= link_to usuario_path(@user), @user %><br />
-  <strong>Perguntas</strong> <%= @user.questions.count %></p>
+  <strong>Perguntas</strong> <%= @user.questions.published.count %><br />
+  <strong>Respostas</strong> <%= @user.answers.published.count %><br />
+  <strong>Favoritos</strong> <%= @user.favorites.count %><br />
+  <strong>Último login</strong> <%= time_ago_in_words(@user.last_login) %> atrás
+  </p>
   <hr />
   <p><strong><%= @user.bio %></strong><br />
   <strong><%= @user.cidade %></strong></p>
@@ -12,14 +22,9 @@
 </div>
 
 
-<h2>
-  <%= @user.name %>
-</h2>
-
-
-<% unless @user.questions.empty? %>
+<% unless @questions.empty? %>
+  <h2>Últimas perguntas</h2>
   <div class="user-questions">
     <%= render @questions %>
   </div>
-  <%= will_paginate @questions %>
 <% end %>

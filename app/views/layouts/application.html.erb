@@ -12,7 +12,9 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    
     <section id="content" class="clearfix">
+      <%= render "layouts/breadcrumb" %>
       <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
       <% end %>

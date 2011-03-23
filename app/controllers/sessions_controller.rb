@@ -2,15 +2,16 @@ class SessionsController < ApplicationController
 
   def new
     @title = "Log in"
-		@crumbs = [{"label" => "login", "path"   => login_path , "last" => true, "active" => true}]
+		@crumbs = default_crumb
   end
   
   def create
     user = User.authenticate(params[:session][:email],
                              params[:session][:password])
     if user.nil?
-      flash.now[:error] = "Invalid email/password combination."
-      @title = "Sign in"
+      flash.now[:error] = "Usuário e/ou senha inválidos."
+      @title = "Log in"
+      @crumbs = default_crumb
       render 'new'
     else
       sign_in user
@@ -26,4 +27,10 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_path
   end
+  
+  private
+  
+    def default_crumb
+      [{"label" => "login", "path" => login_path}]
+    end
 end

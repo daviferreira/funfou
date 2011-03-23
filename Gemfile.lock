@@ -1,3 +1,11 @@
+GIT
+  remote: http://github.com/thoughtbot/paperclip.git
+  revision: 1738ea1dcaf65860c53088cc62ad7f0887e629ca
+  specs:
+    paperclip (2.3.8)
+      activerecord
+      activesupport
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -111,6 +119,7 @@ DEPENDENCIES
   faker (= 0.3.1)
   gravatar_image_tag (= 1.0.0.pre2)
   mail (= 2.2.15)
+  paperclip!
   rails (= 3.0.4)
   rspec (= 2.5.0)
   rspec-rails (= 2.5.0)

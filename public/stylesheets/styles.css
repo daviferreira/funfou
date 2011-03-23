@@ -71,7 +71,7 @@ h1 a{ color: #000; text-decoration: none; }
 h1 a:hover{ color: #333; }
 
 div#logo a{float:left;}
-div#logo span{font-size:14px;font-weight:900;margin:19px 0 0 12px; color:#1D5123;display:block;float:left;}
+div#logo span{font-size:14px;font-weight:900;margin:19px 0 0 12px; color:#205791;display:block;float:left;}
 
 /*
     Layout
@@ -215,10 +215,8 @@ div#account-info ul#user-options li.omega{
 }
 
 #user-sidebar{
-  float:right;
   background-color:#f2f2f2;
   padding:12px;
-  width:250px;
   border-left:12px solid #DFE6F6;
   border-top:12px solid #DFE6F6;
   border-bottom:12px solid #DFE6F6;
@@ -469,52 +467,55 @@ ul.question-answers li div.info-data{
 
 input[type="submit"], input[type="button"]{ cursor:pointer; }
 
-h2.alt{text-align:center;border:none!important;color:#1D5123!important;}
+h2.alt{text-align:center;border:none!important;color:#999!important;}
 
 div.box-form{
-background-color:#f2f2f2;
 width:500px;
 margin:20px auto;
 padding:24px;
-box-shadow: 1px 2px 2px #ccc;
-border:1px solid #b6b6b6;
--webkit-border-top-right-radius: 6px;
--webkit-border-bottom-left-radius: 6px;
--moz-border-radius-topright: 6px;
--moz-border-radius-bottomleft: 6px;
-border-top-right-radius: 6px;
-border-bottom-left-radius: 6px;
-	background: url(aristo/images/bg_fallback.png) 0 0 repeat-x;
-	background: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(1, rgb(237,237,237)),
-		color-stop(0, rgb(196,196,196))
-	);
-	background: -moz-linear-gradient(
-		center top,
-		rgb(237,237,237),
-		rgb(196,196,196)
-	);
+background:#fff;
+border:8px solid #eee;
+width:500px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+border-radius:5px;
+-moz-box-shadow:0 0 10px #4e707c;
+-webkit-box-shadow:0 0 10px #4e707c;
+box-shadow:0 0 10px #4e707c;
+text-align:left;
+position:relative;
 
 }
 
 div.box-form label {
 	color:#666;
+	font-weight:900;
+}
+
+div.box-form div.field{
+  margin:0 0 24px 0;
 }
 
 div.box-form div.actions{
 	margin:12px 0 0;
 }
 
-div#user-form input[type="submit"]{
+div.box-form input[type="submit"]{
 	font-size:14px;
 	font-weight:900;
+	padding:8px!important;
 }
 
-div#user-form input[type="submit"]:hover{
+div.box-form input[type="submit"]:hover{
 	color:#f64448;
+}
+
+div#login-form input[type="text"], div#login-form input[type="password"],
+div#password-form input[type="text"]{
+  width:400px;
+  padding:12px;
+  font-size:14px;
+  font-weight:900;
 }
 
 p.member-login{
@@ -561,52 +562,6 @@ footer a:hover{
 
 #account-info a.ui-button{border:none!important;font-size:12px!important;}
 
-/*
-    Paginação 
-\* ......................................................................................................................................... */
-
-.lista-paginacao li{
-    border:0; margin:0; padding:0;
-    list-style:none;
-    margin-right:2px;
-}
-.lista-paginacao a{
-    border:solid 1px #9aafe5;
-    margin-right:2px;
-}
-.lista-paginacao .previous-off,
-.lista-paginacao .next-off {
-    border:solid 1px #DEDEDE
-    color:#888888
-    display:block;
-    float:left;
-    font-weight:bold;
-    margin-right:2px;
-    padding:3px 4px;
-}
-.lista-paginacao .next a,
-.lista-paginacao .previous a {
-    font-weight:bold;
-}
-.lista-paginacao .active{
-    background:#2e6ab1;
-    color:#FFFFFF;
-    font-weight:bold;
-    display:block;
-    float:left;
-    padding:4px 6px;
-}
-.lista-paginacao a:link,
-.lista-paginacao a:visited {
-    color:#0e509e
-    display:block;
-    float:left;
-    padding:3px 6px;
-    text-decoration:none;
-}
-.lista-paginacao a:hover{
-    border:solid 1px #0e509e;
-}
 
 /*
     Útil
@@ -616,15 +571,13 @@ footer a:hover{
 * html .clearfix                { zoom: 1; } /* IE6 */
 *:first-child+html .clearfix    { zoom: 1; } /* IE7 */
 
-.field_with_errors {
-  margin-top: 10px;
-  padding: 2px;
-  background-color: red;
-  display: table;
+.field_with_errors{
+  display:inline;
 }
 
 .field_with_errors label {
-  color: #fff;
+  background-color:red!important;
+  color: #fff!important;
 }
 
 #error_explanation {
@@ -651,104 +604,47 @@ footer a:hover{
   color: #333;
   margin-bottom: 0;
   padding: 5px;
+  font-weight:900;
+  color:red;
+}
+
+#error_explanation ul{
+  margin:12px;
 }
 
 #error_explanation ul li {
   font-size: 12px;
-  list-style: square;
 }
-
-/* --------------------------------------------------------------
-
-   forms.css
-   * Sets up some default styling for forms
-   * Gives you classes to enhance your forms
-
-   Usage:
-   * For text fields, use class .title or .text
-   * For inline forms, use .inline (even when using columns)
-
--------------------------------------------------------------- */
-
-/* 
-	A special hack is included for IE8 since it does not apply padding 
-	correctly on fieldsets
- */ 
-label       { font-weight: bold; }
-fieldset    { padding:0 1.4em 1.4em 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; }
-legend      { font-weight: bold; font-size:1.2em; margin-top:-0.2em; margin-bottom:1em; }
-
-fieldset, #IE8#HACK { padding-top:1.4em; } 
-legend, #IE8#HACK { margin-top:0; margin-bottom:0; }
-
-/* Form fields
--------------------------------------------------------------- */
-
-/* 
-  Attribute selectors are used to differentiate the different types 
-  of input elements, but to support old browsers, you will have to 
-  add classes for each one. ".title" simply creates a large text  
-  field, this is purely for looks.
- */
-input[type=text], input[type=password],
-input.text, input.title,
-textarea {
-  background-color:#fff;
-  border:1px solid #bbb;
-}
-input[type=text]:focus, input[type=password]:focus,
-input.text:focus, input.title:focus,
-textarea:focus {
-  border-color:#666;
-}
-select { background-color:#fff; border-width:1px; border-style:solid; }
-
-input[type=text], input[type=password],
-input.text, input.title,
-textarea, select {
-  margin:0.5em 0;
-}
-
-input.text,
-input.title   { width: 300px; padding:5px; }
-input.title   { font-size:1.5em; }
-textarea      { width: 390px; height: 250px; padding:5px; }
-
-/* 
-  This is to be used on forms where a variety of elements are 
-  placed side-by-side. Use the p tag to denote a line. 
- */
-form.inline { line-height:3; }
-form.inline p { margin-bottom:0; }
 
 .apple_pagination {
   background: #F1F1F1;
   border: 1px solid #E5E5E5;
   text-align: center;
   padding: 1em; }
-  .apple_pagination a, .apple_pagination span, .apple_pagination em {
-    padding: .2em .3em; color:#1D5123; }
-	  .apple_pagination span.disabled {
+  em{
+    color: #f64448!important;
+  }
+  .apple_pagination a, .apple_pagination span {
+    padding: .2em .3em; }
+  .apple_pagination span.disabled {
     color: #AAA; }
-	  .apple_pagination em {
+  .apple_pagination span.current {
     font-weight: bold;
     background: transparent url(apple-circle.gif) no-repeat 50% 50%; }
-	  .apple_pagination a {
+  .apple_pagination a {
     text-decoration: none;
     color: black; }
-	    .apple_pagination a:hover, .apple_pagination a:focus {
+    .apple_pagination a:hover, .apple_pagination a:focus {
       text-decoration: underline; }
 
 
 /* Success, info, notice and error/alert boxes
 -------------------------------------------------------------- */
-
 .error,
 .alert, 
 .notice,
 .success, 
-.info 			{ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
-
+.info 			{ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd;margin:12px 0 0 0;text-align:center; }
 .error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
 .notice     { background: #fff6bf; color: #514721; border-color: #ffd324; }
 .success    { background: #e6efc2; color: #264409; border-color: #c6d880; }

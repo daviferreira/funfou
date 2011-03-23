@@ -9,21 +9,15 @@ class QuestionsController < ApplicationController
 		@questions = index_with_order
 		@questions = @questions.paginate(:page => params[:page], :per_page => @per_page)
 		
-		@crumbs = [{"label" => "Perguntas", "path"   => perguntas_path, "last" => false, "active" => false}]
+		@crumbs = [{"label" => "Perguntas", "path"   => perguntas_path}]
 
 		if not params[:order].nil?
 		  @crumbs.push({"label" => params[:order].sub("_", " "),
-		                "path" => perguntas_ordem_path(params[:order]),
-		                "last" => false, "active" => false})
+		                "path" => perguntas_ordem_path(params[:order])})
 		elsif not params[:keywords].nil?
 		  @crumbs.push({"label" => "busca por " + params[:keywords],
-		                "path" => search_path + "?keywords=" + params[:keywords],
-		                "last" => false, "active" => false})
+		                "path" => search_path + "?keywords=" + params[:keywords]})
 	  end
-    c = @crumbs.last
-    c['last'] = true
-    c['active'] = true
-    
 	end
 
   def show
@@ -38,8 +32,8 @@ class QuestionsController < ApplicationController
 		  @answers = @question.answers if current_user.admin?
 	  end
 		@crumbs = [
-			{"label" => "Perguntas", "path"   => perguntas_path, "last" => false, "active" => false},
-			{"label" => @question.title.downcase, "path" => pergunta_path(@question), "last" => true, "active" => true}
+			{"label" => "Perguntas", "path"   => perguntas_path},
+			{"label" => @question.title.downcase, "path" => pergunta_path(@question)}
 		]
 
 	end

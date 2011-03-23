@@ -19,7 +19,6 @@
       long: "%A, %d de %B de %Y, %H:%M h"
     am: ''
     pm: ''
-
   
   # distancia do tempo em palavras
   datetime:
@@ -190,6 +189,13 @@
       even: "deve ser par"
     
   activerecord:
+
+    attributes:
+      user:
+        name: "O campo nome"
+        email: "O campo e-mail"
+        password: "O campo senha"
+        
     errors:
       template:
         header:

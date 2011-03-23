@@ -10,14 +10,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_using_slug(params[:id])
-    @questions = @user.questions.paginate(:page => params[:page])
+    @questions = @user.questions.published.limit(5)
+    @answers = @user.answers.published.limit(5)
     @title = @user.name
+    @crumbs = default_crumb
+    @crumbs.push({"label" => @user.name.downcase, "path" => usuario_path(@user)})
   end
 
   def new
     @user = User.new
     @title = "Cadastre-se"
-		@crumbs = [{"label" => "cadastro", "path"   => new_user_path , "last" => true, "active" => true}]
+		@crumbs = [{"label" => "cadastro", "path"   => new_user_path}]
 	end
   
   def create
@@ -30,7 +33,7 @@ class UsersController < ApplicationController
       redirect_to usuario_path(@user)
     else
       @title = "Cadastre-se"
- 			@crumbs = [{"label" => "cadastro", "path"   => new_user_path , "last" => true, "active" => true}]
+ 			@crumbs = [{"label" => "cadastro", "path"   => new_user_path}]
  			render 'new'
 		end
   end
@@ -86,12 +89,14 @@ class UsersController < ApplicationController
   end
   
   def questions
-    @questions = Question.where("user_id = ?", params[:id]).paginate(:page => params[:page])
+    user = User.find_using_slug(params[:id])
+    @questions = Question.published.where("user_id = ?", user.id).paginate(:page => params[:page])
   end
 
 	def new_password
 		@title = "Nova senha"
 		@user = User.new
+		@crumbs = [{"label" => "criar uma nova senha", "path"   => instrucoes_path}]
 	end
 	
 	def password_instructions
@@ -157,6 +162,10 @@ class UsersController < ApplicationController
     def correct_user_or_admin
       @user = User.find_using_slug(params[:id])
       redirect_to(root_path) unless current_user?(@user) or current_user.admin?
+    end
+    
+    def default_crumb
+      [{"label" => "usuários", "path" => usuarios_path}]
     end
     
 end
