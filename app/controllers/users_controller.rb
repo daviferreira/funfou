@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @title = "Cadastre-se"
-  end
+		@crumbs = [{"label" => "cadastro", "path"   => new_user_path , "last" => true, "active" => true}]
+	end
   
   def create
     @user = User.new(params[:user])
@@ -29,8 +30,9 @@ class UsersController < ApplicationController
       redirect_to usuario_path(@user)
     else
       @title = "Cadastre-se"
-      render 'new'
-    end
+ 			@crumbs = [{"label" => "cadastro", "path"   => new_user_path , "last" => true, "active" => true}]
+ 			render 'new'
+		end
   end
   
   def edit

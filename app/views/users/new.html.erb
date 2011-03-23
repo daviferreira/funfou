@@ -1,5 +1,15 @@
-<h2>Cadastre-se!</h2>
+<%= render "layouts/breadcrumb" %>
 
-<%= render "form" %>
+<h2 class="alt">Cadastre-se!</h2>
 
-<p>Já é cadastrado? <%= link_to "Efetue login!", login_path %></p>
+<div id="user-form" class="box-form">
+	<%= render "form" %>
+	<p class="member-login">Já é cadastrado? <%= link_to "Efetue login!", login_path %></p>
+</div>
+
+<script>
+$(function(){
+	$('#user-form :submit').button();
+	$('#user-form').find('input:text:first').focus();
+});
+</script>

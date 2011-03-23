@@ -466,6 +466,68 @@ ul.question-answers li div.info-data{
   border-top:1px solid #ccc;
 }
 
+
+input[type="submit"], input[type="button"]{ cursor:pointer; }
+
+h2.alt{text-align:center;border:none!important;color:#1D5123!important;}
+
+div.box-form{
+background-color:#f2f2f2;
+width:500px;
+margin:20px auto;
+padding:24px;
+box-shadow: 1px 2px 2px #ccc;
+border:1px solid #b6b6b6;
+-webkit-border-top-right-radius: 6px;
+-webkit-border-bottom-left-radius: 6px;
+-moz-border-radius-topright: 6px;
+-moz-border-radius-bottomleft: 6px;
+border-top-right-radius: 6px;
+border-bottom-left-radius: 6px;
+	background: url(aristo/images/bg_fallback.png) 0 0 repeat-x;
+	background: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(1, rgb(237,237,237)),
+		color-stop(0, rgb(196,196,196))
+	);
+	background: -moz-linear-gradient(
+		center top,
+		rgb(237,237,237),
+		rgb(196,196,196)
+	);
+
+}
+
+div.box-form label {
+	color:#666;
+}
+
+div.box-form div.actions{
+	margin:12px 0 0;
+}
+
+div#user-form input[type="submit"]{
+	font-size:14px;
+	font-weight:900;
+}
+
+div#user-form input[type="submit"]:hover{
+	color:#f64448;
+}
+
+p.member-login{
+	margin:24px 0 0;
+	font-size:12px;
+	color:#666;
+}
+
+div#user-form input[type="text"]{
+	width:400px;
+	padding:5px;
+}
+
 /*
     Footer
 \* ......................................................................................................................................... */
@@ -578,10 +640,11 @@ footer a:hover{
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
-  font-size: 12px;
+  font-size: 14px!important;
   margin: -7px;
   background-color: #c00;
-  color: #fff;
+  color: #fff!important;
+	text-shadow:none!important;
 }
 
 #error_explanation p {
@@ -697,5 +760,3 @@ form.inline p { margin-bottom:0; }
 
 
 div#debug { width: 1060px; margin: 24px auto; display:block; background-color:#fff; padding:12px; }
-
-input[type="submit"], input[type="button"]{ cursor:pointer; }

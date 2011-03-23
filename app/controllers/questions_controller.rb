@@ -37,7 +37,12 @@ class QuestionsController < ApplicationController
 		  @answer = Answer.new 
 		  @answers = @question.answers if current_user.admin?
 	  end
-  end
+		@crumbs = [
+			{"label" => "Perguntas", "path"   => perguntas_path, "last" => false, "active" => false},
+			{"label" => @question.title.downcase, "path" => pergunta_path(@question), "last" => true, "active" => true}
+		]
+
+	end
  
 	def new
 		@title = "Fazer uma pergunta"

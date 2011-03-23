@@ -1,17 +1,21 @@
 <% if signed_in? %>
+
+	<%= render "layouts/breadcrumb" %>
+
 	<%= render 'questions/filters' %>
 
-	<% @questions.each do |question| %>
-
-		<div class="user-questions">
-			<%= render question %>
-		</div>
-	<% end %>
-	
-	<div class="apple_pagination">
-		<%= will_paginate @questions, :next_label => "próximo &raquo;", :previous_label => "&laquo; anterior" %>
+	<div id="questions-sidebar">
+		sidebar home
 	</div>
 
+  <div id="questions-list">
+		<% @questions.each do |question| %>
+				<%= render question %>
+		<% end %>
+		<div class="apple_pagination">
+			<%= will_paginate @questions, :next_label => "próximo &raquo;", :previous_label => "&laquo; anterior" %>
+		</div>
+	</div>
 <% else %>
 	<%= link_to "Cadastre-se", new_user_path %>
 <% end %>

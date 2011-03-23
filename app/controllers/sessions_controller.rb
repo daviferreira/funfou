@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     @title = "Log in"
+		@crumbs = [{"label" => "login", "path"   => login_path , "last" => true, "active" => true}]
   end
   
   def create

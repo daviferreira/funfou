@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 	    else
 		    @questions = Question.published.paginate(:page => params[:page])
 	    end
+			@crumbs = [{"label" => "Perguntas", "path"   => perguntas_path, "last" => true, "active" => true}]
 		end
 	end
 

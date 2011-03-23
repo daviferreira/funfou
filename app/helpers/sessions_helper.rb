@@ -18,6 +18,15 @@ module SessionsHelper
   def signed_in?
     !current_user.nil?
   end
+
+	def invite_to_register?
+		c = controller.controller_name
+		if c == "users" or c == "sessions"
+			false	
+		else
+		 	true	
+		end
+	end
   
   def current_user=(user)
     @current_user = user
