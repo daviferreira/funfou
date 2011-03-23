@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
 		  @crumbs.push({"label" => "busca por " + params[:keywords],
 		                "path" => search_path + "?keywords=" + params[:keywords]})
 	  end
+	    
 	end
 
   def show
