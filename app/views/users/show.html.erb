@@ -1,7 +1,9 @@
 
 
 <h2>
-  <%= gravatar_for @user, :size => 28 %> <%= @user.name %>
+  <% if @user.avatar.exists? then %>
+  	<%= link_to(image_tag(@user.avatar.url(:thumb), :width => 42), @user.avatar.url(:original)) %>
+  <% end %> <%= @user.name %>
 </h2>
 
 <div id="user-sidebar" class="sidebar">
@@ -10,8 +12,11 @@
   <strong>URL</strong>  <%= link_to usuario_path(@user), @user %><br />
   <strong>Perguntas</strong> <%= @user.questions.published.count %><br />
   <strong>Respostas</strong> <%= @user.answers.published.count %><br />
-  <strong>Favoritos</strong> <%= @user.favorites.count %><br />
+  <strong>Favoritos</strong> <%= @user.favorites.count %>
+  <% unless @user.last_login.nil? %>
+  <br />
   <strong>Último login</strong> <%= time_ago_in_words(@user.last_login) %> atrás
+  <% end %>
   </p>
   <hr />
   <p><strong><%= @user.bio %></strong><br />

@@ -18,7 +18,7 @@
   </div>
 
   <% if @user.avatar.exists? then %>
-  	<%= image_tag @user.avatar.url(:small) %>
+  	<%= image_tag @user.avatar.url(:thumb) %>
   <% end %>
 
   <div class="field">
