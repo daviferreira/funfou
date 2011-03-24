@@ -1,4 +1,4 @@
-<li <%if crumb == last %>class="active"<% end %>><%= link_to crumb['label'].downcase, crumb['path'], :title => crumb['label'] %></li>
+<li <%if crumb == last %>class="active"<% end %>><%= link_to crumb[:label].downcase, crumb[:path], :title => crumb[:label] %></li>
 <% if crumb != last %>
 <li class="separator">/</li>  
 <% end %>

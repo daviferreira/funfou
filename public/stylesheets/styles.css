@@ -316,6 +316,12 @@ div#questions-list{
 
 div.question{ padding:12px 0 12px 0; margin: 12px 0 12px 0;}
 
+div.question h2{border:none!important;color:#333!important;
+    letter-spacing: -0.05em!important;
+		    line-height: 42px!important;
+				font-size:42px!important;
+}
+
 div.question h3 a{color:#333;}
 div.question h3 a:hover{color:#F64448;}
 
@@ -435,16 +441,31 @@ div.question h2{
 }
 
 div.question div.description{
-  padding:12px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+font-size:13px;
+line-height:18px;
+margin:24px 0 24px 0;
+color:#333;
 }
+
+h3.answers{
+	background-color:#F9FFC2;
+	padding:6px;
+}
+
+div.votes, div.answer{
+	float:left;
+}
+
+div.votes li.value{font-size:48px;font-weight:900;}
+
+div.info-data{display:block;clear:both;}
 
 div.question pre{
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+		line-height:12px;
+		margin:12px 0 12px 0;
 }
 
 div.question h3{

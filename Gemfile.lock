@@ -1,11 +1,3 @@
-GIT
-  remote: http://github.com/thoughtbot/paperclip.git
-  revision: 1738ea1dcaf65860c53088cc62ad7f0887e629ca
-  specs:
-    paperclip (2.3.8)
-      activerecord
-      activesupport
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -58,6 +50,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     nokogiri (1.4.4)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -119,7 +114,7 @@ DEPENDENCIES
   faker (= 0.3.1)
   gravatar_image_tag (= 1.0.0.pre2)
   mail (= 2.2.15)
-  paperclip!
+  paperclip
   rails (= 3.0.4)
   rspec (= 2.5.0)
   rspec-rails (= 2.5.0)

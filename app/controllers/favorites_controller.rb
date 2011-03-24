@@ -17,6 +17,17 @@ class FavoritesController < ApplicationController
       params = params + "-1"
       @favorites = Question.where("id IN (#{params})").paginate(:page => params[:page])
     end
+
+		url = request.url.split('/').last
+		if url == 'meus-favoritos'
+			@crumbs = [{:label => "meus favoritos", :path => meus_favoritos_path}]
+		else
+			@crumbs = [
+				{:label => "usuários", :path => usuarios_path},
+				{:label => user.name.downcase, :path => usuario_path(user) },
+				{:label => "favoritos", :path => usuario_favoritos_path(user)}
+			]
+		end
   end
 
 	def create

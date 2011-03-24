@@ -18,12 +18,12 @@
 	<%= render 'info_data', :question => @question %>
 
 	<div class="description">
-		<%= sanitize_pre(@question.content) %>
+		<%= sanitize_pre(@question.content).sub("\n", "<br /><br />") %>
 	</div>
 	
 	<% unless @answers.empty? %>
 	  <a name="answers"></a>
-	  <h3>Respostas</h3>
+		<h3 class="answers"><%=meta_in_words(@answers.count, {:singular => "resposta", :plural => "respostas"})%></h3>
 	  <ul class="question-answers">
 	  <% @answers.each do |answer| %>
 	    <%= render answer %>

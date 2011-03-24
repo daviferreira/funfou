@@ -31,6 +31,6 @@ class SessionsController < ApplicationController
   private
   
     def default_crumb
-      [{"label" => "login", "path" => login_path}]
+      [{:label => "login", :path => login_path}]
     end
 end

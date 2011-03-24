@@ -12,11 +12,11 @@ class QuestionsController < ApplicationController
 		@crumbs = default_crumb
 
 		if not params[:order].nil?
-		  @crumbs.push({"label" => params[:order].sub("_", " "),
-		                "path" => perguntas_ordem_path(params[:order])})
+		  @crumbs.push({:label => params[:order].sub("_", " "),
+		                :path => perguntas_ordem_path(params[:order])})
 		elsif not params[:keywords].nil?
-		  @crumbs.push({"label" => "busca por " + params[:keywords],
-		                "path" => search_path + "?keywords=" + params[:keywords]})
+		  @crumbs.push({:label => "busca por " + params[:keywords],
+		                :path => search_path + "?keywords=" + params[:keywords]})
 	  end
 	  
 	  respond_to do |format|
@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
 		  @answers = @question.answers if current_user.admin?
 	  end
 		@crumbs = default_crumb
-		@crumbs.push({"label" => @question.title.downcase, "path" => pergunta_path(@question)})
+		@crumbs.push({:label => @question.title.downcase, :path => pergunta_path(@question)})
 
 	end
  
@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
 			@tags = ""
 		end
 		@crumbs = default_crumb
-		@crumbs.push({"label" => "enviar uma nova pergunta", "path" => new_question_path})
+		@crumbs.push({:label => "enviar uma nova pergunta", :path => new_question_path})
 	end
 
 	def edit
@@ -194,7 +194,7 @@ class QuestionsController < ApplicationController
 		end
 
     def default_crumb
-      [{"label" => "Perguntas", "path"   => perguntas_path}]
+      [{:label => "Perguntas", :path => perguntas_path}]
     end
 
 end

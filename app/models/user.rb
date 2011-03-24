@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
 
 	def answer!(question, content)
 		answers.create!(:question_id => question.id, :content => content)
-		answer = Answer.first
+		answer = Answer.not_published.first
 		answer.toggle!(:published)
 	end
 	

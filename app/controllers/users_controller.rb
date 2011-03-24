@@ -14,13 +14,13 @@ class UsersController < ApplicationController
     @answers = @user.answers.published.limit(5)
     @title = @user.name
     @crumbs = default_crumb
-    @crumbs.push({"label" => @user.name.downcase, "path" => usuario_path(@user)})
+    @crumbs.push({:label => @user.name.downcase, :path => usuario_path(@user)})
   end
 
   def new
     @user = User.new
     @title = "Cadastre-se"
-		@crumbs = [{"label" => "cadastro", "path"   => new_user_path}]
+		@crumbs = [{:label => "cadastro", :path   => new_user_path}]
 	end
   
   def create
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       redirect_to usuario_path(@user)
     else
       @title = "Cadastre-se"
- 			@crumbs = [{"label" => "cadastro", "path"   => new_user_path}]
+ 			@crumbs = [{:label => "cadastro", :path   => new_user_path}]
  			render 'new'
 		end
   end
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   def edit
     @title = "Meus dados"
     @user = current_user
+		@crumbs = [{:label => "editar perfil", :path => meus_dados_path}] 
   end
   
   def destroy
@@ -97,7 +98,7 @@ class UsersController < ApplicationController
 	def new_password
 		@title = "Nova senha"
 		@user = User.new
-		@crumbs = [{"label" => "criar uma nova senha", "path"   => instrucoes_path}]
+		@crumbs = [{:label => "criar uma nova senha", :path   => instrucoes_path}]
 	end
 	
 	def password_instructions
@@ -166,7 +167,7 @@ class UsersController < ApplicationController
     end
     
     def default_crumb
-      [{"label" => "usuários", "path" => usuarios_path}]
+      [{:label => "usuários", :path => usuarios_path}]
     end
     
 end

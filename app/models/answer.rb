@@ -25,4 +25,5 @@ class Answer < ActiveRecord::Base
 	
 	default_scope :order => 'answers.score DESC, answers.created_at DESC'
 	scope :published, :conditions => { :published => true }
+	scope :not_published, :order => 'created_at DESC', :conditions => { :published => nil }
 end
