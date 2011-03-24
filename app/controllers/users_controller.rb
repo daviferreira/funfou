@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   
   def edit
     @title = "Meus dados"
+    @user = current_user
   end
   
   def destroy

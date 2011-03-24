@@ -2,7 +2,13 @@ class FavoritesController < ApplicationController
 	before_filter :authenticate
 
   def index
-    @favorites = Favorite.where("user_id = ?", current_user.id)
+    if not params[:id].nil?
+      user = User.find_using_slug(params[:id])
+      id = user.id
+    else 
+      id = current_user.id ? current_user.id : nil
+    end
+    @favorites = Favorite.where("user_id = ?", id)
     unless @favorites.empty?
       params = ""
       @favorites.each do |f|

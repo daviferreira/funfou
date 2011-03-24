@@ -19,8 +19,9 @@ $(function(){
 		else
 			$('#questions-list').height($('#questions-sidebar').height());
 	}
-	$('li.perguntar a, .questions-admin a').button();
-	//if($('#filters').length > 0) $('#filters').tabs();
+	$('li.perguntar a, .questions-admin a, #btn-change-image, .j-button').button();
+	
+
 });
 
 var greetings = function(){

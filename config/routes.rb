@@ -41,16 +41,14 @@ Funfou::Application.routes.draw do
 
 	match "/usuario/:id",			:to => "users#show", :as => :usuario
 	match "/usuario/:id/perguntas",			:to => "users#questions", :as => :usuario_perguntas
+		match "/usuario/:id/favoritos",  :to => "favorites#index", :as => :usuario_favoritos
 	match "/usuarios",				:to => "users#index"	
 	match "/cadastro",      	:to => "users#new", :as => :new_user
-	match "/meus-dados/:id",  :to	=> "users#edit", :as => :meus_dados
-
+	match "/meus-dados",      :to	=> "users#edit", :as => :meus_dados
+	match "/meus-favoritos",       :to => "favorites#index", :as => :meus_favoritos
 
 	match "/toggle-admin/:id",  :to	=> "users#toggle_admin", :as => :toggle_admin
 	match "/toggle-active/:id",  :to	=> "users#toggle_active", :as => :toggle_active
-
-
-	match "/favoritos",       :to => "favorites#index"
 	
 	match "/login",           :to => "sessions#new", :as => :login
 	match "/sair",            :to => "sessions#destroy", :as => :logout
