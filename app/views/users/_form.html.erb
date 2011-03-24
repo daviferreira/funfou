@@ -19,12 +19,25 @@
 
   <% if @user.avatar.exists? then %>
   	<%= image_tag @user.avatar.url(:thumb) %>
+  	<p><%= link_to "Excluir imagem", "#" %>
+  	<p><%= link_to "Trocar imagem", "#", {:id => "btn-change-image"} %></p>
+  	
+  	
+  	<script>
+  	$('#btn-change-image').click(function(e){
+  	  if($('#avatar-field').length > 0){
+  	    $('#avatar-field').fadeOut(function(){$(this).remove();});
+  	  }else{
+  	    $('<%= escape_javascript(render('users/avatar_field', :f => f, :display => false)) %>').insertAfter($(this).parent());
+  	    $('#avatar-field').fadeIn();
+  	  }
+  	});
+  	</script>
+  	  
+  <% else %>
+  	<%= render "avatar_field", :f => f, :display => true %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-  </div>
 
 
 
