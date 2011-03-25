@@ -2,7 +2,10 @@
 		<div class="container">
 			<div id="user-greetings">
 				<% if signed_in? %>
-					<span id="greetings-time"><%= link_to first_name(current_user.name), usuario_path(current_user) %></span>
+					<span id="greetings-time">
+				    <%=avatar(current_user)%>
+						<%= link_to first_name(current_user.name), usuario_path(current_user) %>
+					</span>
 				<% elsif invite_to_register? %>
 					<span id="greetings-time-guest"></span> 
 					<strong><%= link_to "Crie uma conta", new_user_path %></strong> 

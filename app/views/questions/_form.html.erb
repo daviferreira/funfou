@@ -1,18 +1,18 @@
 <%= form_for(@question) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
 	<div class="field">
-		<%= f.label :title %>
-		<%= f.text_field :title %>
+		<%= f.label :title, "Título (140 caracteres)" %>
+		<%= f.text_field :title, :size => 60 %>
 	</div>
 	<div class="field">
-		<%= f.label :content %>
-		<%= f.text_area :content %>
+		<%= f.label :content, "Sua pergunta" %>
+		<%= f.text_area :content, :cols => 60, :rows => 20 %>
 	</div>
 	<div class="field">
-		<%= f.label :tags %>
-		<%= f.text_field :tags, :value => @tags %>
+		<%= f.label :tags, "Tags separadas por vírgula" %>
+		<%= f.text_field :tags, :value => @tags, :size => 60 %>
 	</div>
 	<div class="actions">
-		<%= f.submit "Submit" %>
+		<%= f.submit "Enviar pergunta" %>
 	</div>
 <% end %>

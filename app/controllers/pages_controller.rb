@@ -14,10 +14,12 @@ class PagesController < ApplicationController
 
   def contact
 		@title = "Fale conosco"
-  end
+		@crumbs = [{:label => "contato", :path => contact_path}]
+	end
 
   def about
 		@title = "Sobre"
+		@crumbs = [{:label => "sobre o funfou", :path => about_path}]
   end
 
 end

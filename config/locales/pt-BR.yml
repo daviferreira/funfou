@@ -195,6 +195,12 @@
         name: "O campo nome"
         email: "O campo e-mail"
         password: "O campo senha"
+
+      question:
+        title: "O campo título"
+        content: "O campo conteúdo"
+        tags: "O campo tags"
+
         
     errors:
       template:

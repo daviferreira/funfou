@@ -302,6 +302,31 @@ section#content h2{
 
 div.content-single{padding:12px;}
 
+div#box-form-question{
+	margin:12px;
+}
+
+div#box-form-question div.field{
+	margin:0 0 24px 0;
+}
+
+div#box-form-question div.field label{
+	display:block;
+	font-weight:900;
+	color:#666;
+	margin:0 0 6px 0;
+}
+
+div#box-form-question div.actions{
+
+}
+
+div#box-form-question input[type="submit"]{
+font-size:14px;
+font-weight:900;
+padding:6px;
+}
+
 div#questions-sidebar{
 	float:right;
 	width:260px;
