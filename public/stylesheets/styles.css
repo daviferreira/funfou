@@ -71,7 +71,7 @@ h1 a{ color: #000; text-decoration: none; }
 h1 a:hover{ color: #333; }
 
 div#logo a{float:left;}
-div#logo span{font-size:14px;font-weight:900;margin:19px 0 0 12px; color:#205791;display:block;float:left;}
+div#logo span{font-size:14px;font-weight:900;margin:19px 0 0 12px; color:#666;display:block;float:left;}
 
 /*
     Layout
@@ -496,7 +496,7 @@ div.votes li.up{padding-top:8px;}
 
 div.votes li.down a{color:#ccc;}
 div.votes li.down a:hover{color:red;}
-div.votes li.up a:hover{color:blue;}
+div.votes li.up a:hover{color:#F64448;}
 
 div.info-data{display:block;clear:both;}
 

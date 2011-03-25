@@ -1,8 +1,5 @@
 <div class="votes" class="clearfix">
   <ul>
-    <li class="down">
-      <%= link_to "-", vote_down_path(:answer_id => answer.id) %>
-    </li>
     <li class="value">
       <% if answer.score.nil? %>
         0

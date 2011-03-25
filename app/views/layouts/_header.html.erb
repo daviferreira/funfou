@@ -1,19 +1,30 @@
-<% if signed_in? %>
 	<div id="account-info" class="clearfix">
 		<div class="container">
 			<div id="user-greetings">
-				<span id="greetings-time"><%= link_to first_name(current_user.name), usuario_path(current_user) %></span>
+				<% if signed_in? %>
+					<span id="greetings-time"><%= link_to first_name(current_user.name), usuario_path(current_user) %></span>
+				<% elsif invite_to_register? %>
+					<span id="greetings-time-guest"></span> 
+					<strong><%= link_to "Crie uma conta", new_user_path %></strong> 
+					(leva menos de 10 segundos!) para ter acesso a todos os recursos do Funfou ou 
+					<strong><%= link_to "efetue login", login_path %></strong>
+				<% end %>
 			</div>
 
 			<ul id="user-options" class="clearfix">
-			  <li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
+				<li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
+				<% if signed_in? %>
 				<li><%= link_to "Meus favoritos", meus_favoritos_path %></li>
 				<li><%= link_to "Editar perfil", meus_dados_path %></li>
 				<li class="omega"><%= link_to "Sair", logout_path, :method => :delete %></li>
+				<% else %>
+				<li><%= link_to "Cadastre-se!", new_user_path %></li>
+				<li><%= link_to "Login", login_path %></li>
+			<% end %>
 			</ul>
 	</div>
 </div>
-  <% end %>
+
 <header>
     <div id="search">
         <form id="frm-search" action="<%= search_path %>" method="GET">
@@ -21,9 +32,4 @@
         </form>
     </div>
 		<div id="logo" class="clearfix"><%= link_to logo, root_path %><span>De programador para programador</span></div>
-		<% if not signed_in? and invite_to_register? %>
-			<div class="info" style="margin-top:24px;text-align:center;">
-				<p><span id="greetings-time-guest"></span> <strong><%= link_to "Crie uma conta", new_user_path, :class => "j-button ui-state-active" %></strong> (leva menos de 10 segundos!) para ter acesso a todos os recursos do Funfou ou <strong><%= link_to "efetue login", login_path, :class => "j-button ui-state-active" %></strong></p>
-			</div>
-		<% end %>
 </header>

@@ -16,10 +16,6 @@ class PagesController < ApplicationController
 		@title = "Fale conosco"
   end
 
-  def help
-		@title = "Ajuda"
-  end
-
   def about
 		@title = "Sobre"
   end

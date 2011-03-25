@@ -16,15 +16,15 @@ class VotesController < ApplicationController
   end
   
   def down
-    question = Question.find_using_slug(params[:id])
+    #question = Question.find_using_slug(params[:id])
 
-    recalculate_answers_scores(question)
+    #recalculate_answers_scores(question)
     
-    answer = Answer.find(params[:answer_id])
-    answer.score = 0 if answer.score.nil?
-    score = answer.score - 1    
-    current_user.vote!(question, answer, -1)
-    answer.update_attributes(:score => score)
+    #answer = Answer.find(params[:answer_id])
+    #answer.score = 0 if answer.score.nil?
+    #score = answer.score - 1    
+    #current_user.vote!(question, answer, -1)
+    #answer.update_attributes(:score => score)
     
     redirect_to pergunta_path(question)
   end
