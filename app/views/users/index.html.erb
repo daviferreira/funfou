@@ -3,7 +3,7 @@
 <ul class="users">
   <% @users.each do |user| %>
     <li>
-      <% if user.avatar.exists? then %>
+      <% if user.avatar.exists? %>
       	<%= image_tag user.avatar.url(:thumb) %>
       <% end %>
 			<%= link_to user.name, usuario_path(user) %>

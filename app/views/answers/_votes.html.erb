@@ -1,7 +1,7 @@
 <div class="votes" class="clearfix">
   <ul>
-    <li class="up">
-      <%= link_to "Vote up", vote_up_path(:answer_id => answer.id) %>
+    <li class="down">
+      <%= link_to "-", vote_down_path(:answer_id => answer.id) %>
     </li>
     <li class="value">
       <% if answer.score.nil? %>
@@ -11,7 +11,7 @@
       <% end %>
     </li>
     <li class="up">
-      <%= link_to "Vote down", vote_down_path(:answer_id => answer.id) %>
+      <%= link_to "+", vote_up_path(:answer_id => answer.id) %>
     </li>
   </ul>
 </div>

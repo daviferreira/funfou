@@ -10,15 +10,12 @@
 	</ul>
 	<% end %>
 	
-	<h2>
-	  <%= render 'favorite_form' if signed_in? %>
-	  <%= @question.title %>
-	</h2>
+	<h2><%= @question.title %><%= render 'favorite_form' if signed_in? %></h2>
 
 	<%= render 'info_data', :question => @question %>
 
 	<div class="description">
-		<%= sanitize_pre(@question.content).sub("\n", "<br /><br />") %>
+		<%= sanitize_pre(@question.content).sub("\n", "<br />") %>
 	</div>
 	
 	<% unless @answers.empty? %>

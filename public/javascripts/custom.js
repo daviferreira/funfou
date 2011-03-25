@@ -1,11 +1,21 @@
 $(function(){
   greetings();
-  $('.question pre').each(function(){
+  $('.question .description pre').each(function(){
     $(this).snippet($(this).attr('class'),{
               style:"vim-dark",
               clipboard:"/flash/ZeroClipboard.swf"
     });
   });
+  
+  $('.answer pre').each(function(){
+    $(this).snippet($(this).attr('class'),{
+              style:"rand01",
+              clipboard:"/flash/ZeroClipboard.swf",
+    }).width(920);
+  });
+  
+  $('.question-answers li.answer:odd').addClass('odd');
+  
 	if($('#fld-search').val() == "") $('#fld-search').val($('#fld-search').attr('title'));
 	$('#fld-search').blur(function(){
 		if($(this).val() == "")	 $(this).val($(this).attr('title'));
@@ -19,7 +29,7 @@ $(function(){
 		else
 			$('#questions-list').height($('#questions-sidebar').height());
 	}
-	$('li.perguntar a, .questions-admin a, #btn-change-image, .j-button').button();
+	$('li.perguntar a, .questions-admin a, #btn-change-image, .j-button, .admin a').button();
 	
 
 });

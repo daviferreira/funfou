@@ -39,8 +39,13 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @title = "Meus dados"
-    @user = current_user
+    if not params[:id].nil?
+      @title = "Editar usuário"
+      @user = User.find_using_slug(params[:id])
+    else
+      @title = "Meus dados"
+      @user = current_user
+    end
 		@crumbs = [{:label => "editar perfil", :path => meus_dados_path}] 
   end
   
@@ -162,7 +167,8 @@ class UsersController < ApplicationController
     end
 
     def correct_user_or_admin
-      @user = User.find_using_slug(params[:id])
+      id = params[:id] ? params[:id] : (signed_in? ? current_user.id : nil)
+      @user = User.find_using_slug(id)
       redirect_to(root_path) unless current_user?(@user) or current_user.admin?
     end
     

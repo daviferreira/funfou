@@ -1,9 +1,10 @@
 
 
 <h2>
-  <% if @user.avatar.exists? then %>
+  <% if @user.avatar.exists? %>
   	<%= link_to(image_tag(@user.avatar.url(:thumb), :width => 42), @user.avatar.url(:original)) %>
-  <% end %> <%= @user.name %>
+  <% end %> 
+  <%= @user.name %>
 </h2>
 
 <div id="user-sidebar" class="sidebar">

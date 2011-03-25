@@ -11,4 +11,9 @@ module UsersHelper
     end
     str
   end
+  
+  def avatar(user)
+    link_to image_tag(user.avatar.url(:thumb), :width => 32), usuario_path(user) if user.avatar.exists?
+  end
+  
 end

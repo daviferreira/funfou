@@ -23,7 +23,7 @@
 		<div id="logo" class="clearfix"><%= link_to logo, root_path %><span>De programador para programador</span></div>
 		<% if not signed_in? and invite_to_register? %>
 			<div class="info" style="margin-top:24px;text-align:center;">
-				<p><span id="greetings-time-guest"></span> <strong><%= link_to "Crie uma conta", new_user_path %></strong> (leva menos de 10 segundos!) para ter acesso a todos os recursos do Funfou ou <strong><%= link_to "efetue login", login_path %></strong>.</p>
+				<p><span id="greetings-time-guest"></span> <strong><%= link_to "Crie uma conta", new_user_path, :class => "j-button ui-state-active" %></strong> (leva menos de 10 segundos!) para ter acesso a todos os recursos do Funfou ou <strong><%= link_to "efetue login", login_path, :class => "j-button ui-state-active" %></strong></p>
 			</div>
 		<% end %>
 </header>
