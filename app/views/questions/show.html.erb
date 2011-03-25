@@ -15,7 +15,7 @@
 	<%= render 'info_data', :question => @question %>
 
 	<div class="description">
-		<%= sanitize_pre(@question.content).sub("\n", "<br />") %>
+		<%= sanitize_pre(@question.content) %>
 	</div>
 	
 	<% unless @answers.empty? %>

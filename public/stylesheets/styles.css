@@ -474,12 +474,8 @@ padding:12px;
 border:2px solid #f2f2f2;
 }
 
-div.question div.description p{
-  line-height:16px;
-}
-
-div.question div.description br{
-  line-height:12px!important;
+div.question div.description{
+  line-height:20px;
 }
 
 div.question div.description pre{
