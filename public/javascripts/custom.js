@@ -1,5 +1,8 @@
 $(function(){
   greetings();
+
+	$('pre').find('br.content-nl').remove();
+
   $('.question .description pre').each(function(){
     $(this).snippet($(this).attr('class'),{
               style:"vim-dark",

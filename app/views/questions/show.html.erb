@@ -15,7 +15,7 @@
 	<%= render 'info_data', :question => @question %>
 
 	<div class="description">
-		<%= sanitize_pre(@question.content) %>
+		<%= sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />") %>
 	</div>
 	
 	<% unless @answers.empty? %>
@@ -39,4 +39,3 @@
 	</div>
 
 </div>
-
