@@ -1,35 +1,32 @@
 
 
-<h2>
+<h2 class="user">
   <% if @user.avatar.exists? %>
   	<%= link_to(image_tag(@user.avatar.url(:thumb), :width => 42), @user.avatar.url(:original)) %>
   <% end %> 
   <%= @user.name %>
+  <% unless @user.cidade.blank? %><span><%= @user.cidade %></span><% end %>
 </h2>
 
 <div id="user-sidebar" class="sidebar">
+	<p class="user-url">
+	  <strong>URL no Funfou</strong>  <%= link_to root_url.sub(/\/$/, "") + usuario_path(@user), usuario_path(@user) %>
+	  <%= link_to "Site pessoal", valid_url_for(@user.site), :target => "_nil" if not @user.site.blank? %>
+    <%= link_to "Twitter", "http://twitter.com/" + @user.twitter, :target => "_nil" if not @user.twitter.blank? %>
+    <%= link_to "Github", "http://github.com/" + @user.github, :target => "_nil" if not @user.github.blank? %>
+	</p>
 	
-	<p><strong>Name</strong> <%= @user.name %><br />
-  <strong>URL</strong>  <%= link_to usuario_path(@user), @user %><br />
-  <strong>Perguntas</strong> <%= @user.questions.published.count %><br />
-  <strong>Respostas</strong> <%= @user.answers.published.count %><br />
-  <strong>Favoritos</strong> <%= @user.favorites.count %>
-  <% unless @user.last_login.nil? %>
-  <br />
-  <strong>Último login</strong> <%= time_ago_in_words(@user.last_login) %> atrás
-  <% end %>
-  </p>
-  <hr />
-  <p><strong><%= @user.bio %></strong><br />
-  <strong><%= @user.cidade %></strong></p>
-  <%= link_to "Site pessoal", valid_url_for(@user.site), :target => "_nil" if not @user.site.blank? %>
-  <%= link_to "Twitter", "http://twitter.com/" + @user.twitter, :target => "_nil" if not @user.twitter.blank? %>
-  <%= link_to "Github", "http://github.com/" + @user.github, :target => "_nil" if not @user.github.blank? %>
+	<% unless @user.bio.blank? %>
+	  <p class="user-bio"><strong><%= @user.bio %></strong></p>
+	<% end %>
+	
+	<p><%=first_name(@user.name)%> já fez <%= @user.questions.published.count %> perguntas e participou com <%= @user.answers.published.count %> respostas. Possui <%= @user.favorites.count %> registros em seus favoritos. Foi visto pela última vez há <%= time_ago_in_words(@user.last_login) %>.</p> 
+	
 </div>
 
 
 <% unless @questions.empty? %>
-  <h2>Últimas perguntas</h2>
+  <h3>Últimas perguntas</h3>
   <div class="user-questions">
     <%= render @questions %>
   </div>
