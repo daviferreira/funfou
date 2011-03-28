@@ -7,42 +7,72 @@
   <div class="field">
     <%= f.label :email, "E-mail" %><br />
     <%= f.text_field :email %>
-  </div>
+	</div>
+
+	<% if @user.id %>
+		<div class="info" style="margin:0 0 12px 0;text-align:left;">Apenas digite uma nova senha caso deseje alterar sua senha atual.</div>
+	<% end %>
+
   <div class="field">
     <%= f.label :password, "Senha" %><br />
-    <%= f.password_field :password %>
+		<%= f.password_field :password, :autocomplete => "off" %>
   </div>
   <div class="field">
     <%= f.label :password_confirmation, "Confirme sua senha" %><br />
-    <%= f.password_field :password_confirmation %>
+		<%= f.password_field :password_confirmation, :autocomplete => "off" %>
   </div>
 
-  <% if @user.avatar.exists? then %>
-  	<%= image_tag @user.avatar.url(:thumb) %>
-  	<p><%= link_to "Excluir imagem", "#" %>
-  	<p><%= link_to "Trocar imagem", "#", {:id => "btn-change-image"} %></p>
-  	
-  	
-  	<script>
-  	$('#btn-change-image').click(function(e){
-  	  if($('#avatar-field').length > 0){
-  	    $('#avatar-field').fadeOut(function(){$(this).remove();});
-  	  }else{
-  	    $('<%= escape_javascript(render('users/avatar_field', :f => f, :display => false)) %>').insertAfter($(this).parent());
-  	    $('#avatar-field').fadeIn();
-  	  }
-  	});
-  	</script>
-  	  
+
+
+  <% if @user.id %>  
+
+		<% if @user.avatar.exists? then %>
+		<div id="box-form-avatar">
+			<%= image_tag @user.avatar.url(:thumb) %>
+			<div class="actions">
+				<div class="buttons">
+					<%= link_to "Excluir", "#", :class => "lnk-del-img" %> ou 
+					<%= link_to "trocar imagem", "#", :id => "btn-change-image" %>
+				</div>
+				<div class="confirmation" style="display:none">
+					Deseja mesmo excluir seu avatar atual?
+					<ul class="clearfix">
+						<li><%= link_to "sim!", delete_avatar_path(@user), :class => "yes" %></li>
+						<li><%= link_to "não, mudei de ideia...", "#", :class => "no" %></li>
+					</ul>
+				</div>
+			</div>
+			
+			<script>
+			$('#btn-change-image').live('click', function(e){
+				if($('#avatar-field').length > 0){
+					$('#avatar-field').fadeOut(function(){$(this).remove();});
+				}else{
+					$('<%= escape_javascript(render('users/avatar_field', :f => f, :display => false)) %>').insertAfter($(this).parent());
+					$('#avatar-field').fadeIn();
+				}
+				e.preventDefault();
+			});
+			$('.lnk-del-img').live('click', function(e){
+				$('#box-form-avatar div.actions div.buttons').fadeOut(function(){
+					$('#box-form-avatar div.actions div.confirmation').fadeIn();
+				});
+				e.preventDefault();
+			});
+			$('#box-form-avatar a.no').live('click', function(e){
+				$('#box-form-avatar div.actions div.confirmation').fadeOut(function(){
+					$('#box-form-avatar div.actions div.buttons').fadeIn();
+				});
+				e.preventDefault();
+			});
+		</script>
+		</div>  	  
   <% else %>
   	<%= render "avatar_field", :f => f, :display => true %>
   <% end %>
 
 
 
-
-  <% if @user.id %>  
-    <hr />
 
     <div class="field">
       <%= f.label :site, "Site pessoal ou blog" %><br />
@@ -66,7 +96,7 @@
   
     <div class="field">
       <%= f.label :bio, "Você em poucas palavras:" %><br />
-      <%= f.text_area :bio %>
+			<%= f.text_area :bio, :rows => 6 %>
     </div>
   <% end %>
   

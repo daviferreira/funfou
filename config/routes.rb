@@ -38,6 +38,8 @@ Funfou::Application.routes.draw do
 	match "/senha/:salt",			:to => "users#reset_password", :as => :redefinir_senha
 	match "/usuario/nova_senha", :to => "users#save_password", :as => :nova_senha
 
+	match "/usuario/:id/delete_avatar", :to => "users#destroy_avatar", :as => :delete_avatar
+
 	match "/usuario/:id",			:to => "users#show", :as => :usuario
 	match "/usuario/:id/perguntas",			:to => "users#questions", :as => :usuario_perguntas
 		match "/usuario/:id/favoritos",  :to => "favorites#index", :as => :usuario_favoritos

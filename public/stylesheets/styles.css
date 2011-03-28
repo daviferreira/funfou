@@ -306,8 +306,61 @@ div#box-form-question{
 	margin:12px;
 }
 
-div#box-form-question div.field{
+div#box-form-user{
+	margin:12px;
+}
+
+div#box-form-question div.field, div#box-form-user div.field{
 	margin:0 0 24px 0;
+}
+
+div#box-form-user div.field label{
+	font-weight:900;
+	color:#666;
+	margin:0 0 6px 0;
+	display:inline-block;
+}
+
+div#box-form-avatar{
+	margin:12px 0 12px 0;
+}
+
+div#box-form-avatar img{
+	border:2px solid #ccc;
+}
+
+div#box-form-avatar a.lnk-del-img{
+	color:red;
+	font-size:12px;
+	margin:12px 0 12px 0;
+	display:inline-block;
+}
+
+div#box-form-avatar div.actions{
+	font-size:12px;
+}
+
+div#box-form-avatar div.confirmation{
+	background-color:#f2f2f2;
+	padding:6px;
+	margin:6px;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+
+div#box-form-avatar div.confirmation ul li{
+	float:left;
+	margin:4px 12px 0 0;
+}
+
+div#box-form-avatar div.confirmation ul li a.no{
+	font-weight:900;
+	font-size:13px;
+}
+
+div#box-form-avatar div.confirmation ul li a.yes{
+	color:red;
 }
 
 div#box-form-question div.field label{
@@ -317,9 +370,6 @@ div#box-form-question div.field label{
 	margin:0 0 6px 0;
 }
 
-div#box-form-question div.actions{
-
-}
 
 div#box-form-question input[type="submit"]{
 font-size:14px;

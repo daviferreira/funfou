@@ -55,6 +55,10 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+	def destroy_avatar
+
+	end
+
   def toggle_admin
     @user = User.find_using_slug(params[:id])
     @user.toggle!(:admin)
