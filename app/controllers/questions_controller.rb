@@ -137,7 +137,7 @@ class QuestionsController < ApplicationController
 		    tags.each do |tag|
 		      @category = Category.find_by_name(tag)
 		      if @category.nil?
-		        @category = Category.create!(:name => tag)
+		        @category = Category.create!(:name => tag.strip)
 						@category.generate_slug!
 	        end
 	        Tag.create!(:question_id => question_id, :category_id => @category.id)
@@ -176,7 +176,7 @@ class QuestionsController < ApplicationController
 			end
 
 			if params[:order] == 'mais_acessadas'
-				questions = questions.sort_by{|question| question.visualizations.count }.reverse
+				questions = questions.sort_by{|question| question.visualizations.count}.reverse
 			elsif params[:order] == 'mais_respostas'
 				questions = questions.sort_by{|question| question.answers.published.count}.reverse
 			elsif params[:order] == 'mais_favoritos'

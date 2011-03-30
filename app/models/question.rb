@@ -1,14 +1,16 @@
 # == Schema Information
-# Schema version: 20110308151603
+# Schema version: 20110323211306
 #
 # Table name: questions
 #
-#  id         :integer         not null, primary key
-#  title      :string(255)
-#  content    :text
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer         not null, primary key
+#  title       :string(255)
+#  content     :text
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  published   :boolean
+#  cached_slug :string(255)
 #
 
 class Question < ActiveRecord::Base

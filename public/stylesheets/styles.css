@@ -303,6 +303,15 @@ div#box-form-question{
 	margin:12px;
 }
 
+div#box-form-answer label{
+  display:block;
+}
+
+div#box-form-answer textarea{
+  width:490px;
+  height:300px;
+}
+
 div#box-form-user{
 	margin:12px;
 }
@@ -660,6 +669,8 @@ h2.alt{
 h2.user span{
   font-size:14px;
   font-weight:normal;
+  letter-spacing:0;
+  font-style:oblique;
 }
 
 div.box-form{
@@ -851,3 +862,21 @@ footer a:hover{
 div#debug { width: 1060px; margin: 24px auto; display:block; background-color:#fff; padding:12px; }
 
 .snippet-menu{text-align:right;}
+
+ul#categories{
+  margin:12px;
+}
+
+ul#categories li{
+  float:left;
+  padding:12px;
+  width:30%;
+  font-size:12px;
+  color:#666;
+}
+
+uL#categories li a{
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:-1px;
+}

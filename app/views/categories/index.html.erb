@@ -9,11 +9,10 @@
 
 <h2>Categorias</h2>
 
-
 <% if @categories.empty? %>
-	<p>Nenhuma categoria encontrada.</p>
+	<p class="no-categories">Nenhuma categoria encontrada.</p>
 <% else %>
-	<ul id="categories">
+	<ul id="categories" class="clearfix">
 	<% @categories.each do |category| %>
 		<li><%= link_to category.name, categoria_path(category) %> (<%=total_questions(category)%>)</li>
 	<% end %>

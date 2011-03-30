@@ -1,12 +1,13 @@
 # == Schema Information
-# Schema version: 20110308151603
+# Schema version: 20110323211306
 #
 # Table name: categories
 #
-#  id         :integer         not null, primary key
-#  name       :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer         not null, primary key
+#  name        :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  cached_slug :string(255)
 #
 
 class Category < ActiveRecord::Base

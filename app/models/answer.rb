@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110308151603
+# Schema version: 20110323211306
 #
 # Table name: answers
 #
@@ -10,6 +10,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  score       :integer
+#  published   :boolean
 #
 
 class Answer < ActiveRecord::Base
