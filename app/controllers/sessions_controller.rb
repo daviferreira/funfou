@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       sign_in user
       if params[:session][:question_id]
         question = Question.find_by_id(params[:session][:question_id])
-        session[:return_to] = question
+        session[:return_to] = pergunta_path(question) + '#answer_form'
       end
       redirect_back_or usuario_path(user)
     end

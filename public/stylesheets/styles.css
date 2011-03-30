@@ -724,7 +724,7 @@ div#password-form input[type="text"]{
 
 p.member-login{
 	margin:24px 0 0;
-	font-size:12px;
+	font-size:12px!important;
 	color:#666;
 }
 
@@ -880,3 +880,5 @@ uL#categories li a{
   font-weight:900;
   letter-spacing:-1px;
 }
+
+
