@@ -6,4 +6,4 @@ doc/
 *.swp
 *~
 .DS_Store
-public/system/avatars/*
+public/system/avatars/
