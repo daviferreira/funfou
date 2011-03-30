@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
 				end
 			end
 		end
+    @crumbs = default_crumb 
 	end
 
   def show
@@ -25,6 +26,14 @@ class CategoriesController < ApplicationController
     else
       @questions = @category.questions.published
     end
+    @crumbs = default_crumb
+    @crumbs.push({:label => @category.name, :path => categoria_path(@category)})
   end
+
+  private
+    
+    def default_crumb
+      [{:label => "categorias", :path => categorias_path}]
+    end
 
 end
