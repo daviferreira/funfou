@@ -1,5 +1,5 @@
 <% if @questions.empty? %>
-	<div class="error" style="margin:24px 0 24px 0;">Não foi encontrara nenhuma pergunta com o termo <em><%= params[:keywords] %></em>. <strong><%= link_to "Que tal perguntar?", new_question_path %></strong></div>
+	<div class="error" style="margin:24px 0 24px 0;">Não foi encontrara nenhuma pergunta com o termo <em><%= params[:keywords] %></em>. <strong><%= link_to "Quer ser o primeiro a perguntar?", new_question_path %></strong></div>
 <% else %>
 	<%= render 'filters' %>
 	<div id="questions-sidebar">
