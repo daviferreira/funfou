@@ -11,6 +11,14 @@
 	<li class="omega fav"><%= meta_in_words(question.favorites.count, {
 												:singular => 'favorito', 
 												:plural => 'favoritos'}) %></li>
+	<% if params[:action] == "show" and params[:controller] == "questions" %>
+
+    <li class="share"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-text="<%= @question.title %>" data-via="funfando">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></li>
+    <li class="share fb">
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" layout="button_count" show_faces="false" width="20" font="tahoma"></fb:like>
+    </li>
+
+	<% end %>
 </ul>
 <% if signed_in? and current_user.admin? %>
 	<div class="actions questions-admin">

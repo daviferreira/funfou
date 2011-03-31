@@ -43,8 +43,17 @@ class QuestionsController < ApplicationController
 	  end
 		@crumbs = default_crumb
 		@crumbs.push({:label => @question.title.downcase, :path => pergunta_path(@question)})
-
+	  respond_to do |format|
+      format.html
+      format.atom { render :action => "feed_answers", :layout => false }
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+    end  
 	end
+	
+	def feed_answers
+	  @question = Question.find_using_slug(params[:id])
+	  @answers = @question.answers.published
+  end
  
 	def new
 		@title = "Fazer uma pergunta"

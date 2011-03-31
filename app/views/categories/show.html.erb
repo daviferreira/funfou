@@ -1,4 +1,4 @@
-<h2><%= @category.name %></h2>
+<h2 class="category"><%= @category.name %><%= link_to "assine o feed desta categoria", feed_categories_path(@category, :format => "atom") %></h2>
 
 <% if @questions.empty? %>
   <p>Nenhuma pergunta encontrada.</p>

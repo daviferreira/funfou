@@ -16,18 +16,20 @@
     <%= link_to "Github", "http://github.com/" + @user.github, :target => "_nil" if not @user.github.blank? %>
 	</p>
 	
-	<% unless @user.bio.blank? %>
-	  <p class="user-bio"><strong><%= @user.bio %></strong></p>
-	<% end %>
 	
-	<p><%=first_name(@user.name)%> já fez <%= @user.questions.published.count %> perguntas e participou com <%= @user.answers.published.count %> respostas. Possui <%= @user.favorites.count %> registros em seus favoritos. Foi visto pela última vez há <%= time_ago_in_words(@user.last_login) %>.</p> 
+	<p class="user-stats user-info">
+		<% unless @user.bio.blank? %>
+  	  <span class="round user-bio user-info"><strong><%= @user.bio %></strong></span>
+  	<% end %>
+	  <%= stats_text(@user) %>
+	</p> 
 	
 </div>
 
 
 <% unless @questions.empty? %>
-  <h3>Últimas perguntas</h3>
-  <div class="user-questions">
-    <%= render @questions %>
-  </div>
+<div class="user-content">
+  <h3 class="main">Últimas perguntas</h3>
+  <%= render @questions %>
+</div>
 <% end %>

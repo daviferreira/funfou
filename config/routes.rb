@@ -17,6 +17,8 @@ Funfou::Application.routes.draw do
 	root :to => "pages#home"
  
   match "/feed", :to => "questions#feed", :as => :feed
+  match "/pergunta/:id/feed", :to => "questions#feed_answers", :as => :feed_answers
+   match "/categoria/:id/feed", :to => "categories#feed", :as => :feed_categories
  
   match "/perguntas/:order", :to => "questions#index", :as => :perguntas_ordem	
 	match "/perguntas",			:to => "questions#index", :as => :perguntas

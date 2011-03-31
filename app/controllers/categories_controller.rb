@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
 			end
 		end
     @crumbs = default_crumb 
-	end
+  end
 
   def show
     @category = Category.find_using_slug(params[:id])
@@ -28,6 +28,17 @@ class CategoriesController < ApplicationController
     end
     @crumbs = default_crumb
     @crumbs.push({:label => @category.name, :path => categoria_path(@category)})
+
+    respond_to do |format|
+      format.html
+      format.atom { render :action => "feed", :layout => false }
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+    end  
+	end
+
+	def feed
+	  @category = Category.find_using_slug(params[:id])
+	  @questions = @category.questions.published
   end
 
   private
