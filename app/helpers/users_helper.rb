@@ -12,8 +12,14 @@ module UsersHelper
     str
   end
   
-  def avatar(user)
-    link_to image_tag(user.avatar.url(:thumb), :height => 28), usuario_path(user) if user.avatar.exists?
+  def avatar(user, height)
+    height = 28 if height.nil? or height.blank?
+    if user.avatar.exists?
+      img = image_tag(user.avatar.url(:thumb), :height => height)
+    else
+      img = image_tag("avatar.png", :height => height)
+    end
+    link_to img, usuario_path(user) 
   end
   
   def stats_text(user)

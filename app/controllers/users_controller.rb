@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def index
     @title = "Usuários"
-    @users = User.all.paginate(:page => params[:page])
+    @users = User.all.sort_by{|user| user.questions.published.count}.reverse.paginate(:page => params[:page])
     @crumbs = default_crumb
   end
 

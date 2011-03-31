@@ -33,7 +33,8 @@ $(function(){
 			$('#questions-list').height($('#questions-sidebar').height());
 	}
 	$('li.perguntar a, .questions-admin a, #btn-change-image, .j-button, .admin a').button();
-	
+	$('ul.user-list li:odd').addClass('odd');
+	$('ul.user-list img').height("auto").width(60);
 
 });
 

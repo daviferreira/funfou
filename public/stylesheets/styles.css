@@ -430,17 +430,59 @@ div.question ul.meta li.omega{ margin: 0 0 0 12px; }
 
 div.box-share{
   float:right;
-  background-color:#fff;
-  width:58px;
+  background-color:#f2f2f2;
+  width:60px;
   text-align:center;
-  padding:4px 0 4px 0;
+  padding:4px;
   border-radius:3px;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
 }
 
-div.box-share p.twitter{
-  margin:12px 0 0;
+h2.question-show{
+  clear:left;
+}
+
+ul.user-list li{
+  padding:12px;
+  margin:4px;
+  font-weight:900;
+  font-size:14px;
+}
+
+ul.user-list li p.user-info{
+  padding:12px 0 0;
+  border:none;
+  color:#666;
+}
+
+ul.user-list li.odd{
+  background-color:#f2f2f2;
+  border-radius:6px;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+}
+
+ul.user-list li p{
+  float:left;
+}
+
+ul.user-list li h3{
+  font-size:32px;
+}
+
+ul.user-list li h3 span{
+  font-size:12px;
+  color:#fff;
+  padding:5px;
+  margin:0 0 0 12px;
+  background-color:#333;
+}
+
+ul.user-list li img{
+  border:2px solid #ccc;
+  float:left;
+  margin:0 12px 0 0;
 }
 
 div.question ul.meta li.view{ background: url(../images/icons/view.png) 0 0 no-repeat;}
@@ -543,6 +585,7 @@ div.question h2{
 
 #favorite-form{
 padding:0 0;
+margin:0 0 10px 0;
 }
 
 div.question div.description{
