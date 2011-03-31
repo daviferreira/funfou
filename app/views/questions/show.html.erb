@@ -9,8 +9,16 @@
 	  <% end %>
 	</ul>
 	<% end %>
-	
-	<h2><%= @question.title %><%= render 'favorite_form' if signed_in? %></h2>
+  
+  <div class="box-share">
+    <%= render 'favorite_form' if signed_in? %>
+ 
+    <p class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-text="<%= @question.title %>" data-via="funfando">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>
+
+    <p><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" layout="button_count" show_faces="false" width="20" font="tahoma" style="margin-left:4px;"></fb:like></p>
+    
+  </div>
+  <h2><%= @question.title %></h2>
 
   <%= render 'info_data', :question => @question %>
 

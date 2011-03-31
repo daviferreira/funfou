@@ -428,6 +428,21 @@ div.question ul.meta li{ float:left; font-size:12px; color: #666; margin: 0 12px
 div.question ul.meta li.alpha{ margin: 0 12px 0 0; padding: 0 0; }
 div.question ul.meta li.omega{ margin: 0 0 0 12px; }
 
+div.box-share{
+  float:right;
+  background-color:#fff;
+  width:58px;
+  text-align:center;
+  padding:4px 0 4px 0;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+}
+
+div.box-share p.twitter{
+  margin:12px 0 0;
+}
+
 div.question ul.meta li.view{ background: url(../images/icons/view.png) 0 0 no-repeat;}
 div.question ul.meta li.fav{ background: url(../images/icons/fav.png) 0 0 no-repeat;}
 div.question ul.meta li.res{ background: url(../images/icons/res.png) 0 0 no-repeat;}
@@ -527,8 +542,7 @@ div.question h2{
 }
 
 #favorite-form{
-float:right;
-padding:0 12px 0 0;
+padding:0 0;
 }
 
 div.question div.description{
