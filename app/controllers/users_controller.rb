@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def index
     @title = "Usuários"
     @users = User.all.paginate(:page => params[:page])
+    @crumbs = default_crumb
   end
 
   def show
