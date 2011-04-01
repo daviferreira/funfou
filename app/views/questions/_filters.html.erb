@@ -1,7 +1,6 @@
 <div id="filters" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
   
 	<ul class="clearfix ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" id="question-filters">
-		<li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
 		<li class="alpha ui-state-default ui-corner-top <% if params[:keywords].nil? and (params[:order].nil? or params[:order] == 'mais_recentes')  %> ui-state-active ui-tabs-selected <% end %>"><%= link_to "Mais recentes", perguntas_ordem_path("mais_recentes") %></li>
 		<li class="ui-state-default ui-corner-top <% if params[:order] == 'mais_acessadas' %>ui-state-active ui-tabs-selected<% end %>"><%= link_to "Mais acessadas", perguntas_ordem_path("mais_acessadas") %></li>
 		<li class="ui-state-default ui-corner-top <% if params[:order] == 'mais_respostas' %>ui-state-active ui-tabs-selected<% end %>"><%= link_to "Mais respostas", perguntas_ordem_path("mais_respostas") %></li>

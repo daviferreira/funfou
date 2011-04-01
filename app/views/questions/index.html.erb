@@ -3,6 +3,11 @@
 <% else %>
 	<%= render 'filters' %>
 	<div id="questions-sidebar">
+
+    <div class="perguntar box-sidebar">
+      <%= link_to "Perguntar!", new_question_path, :class => "j-button" %>
+    </div>
+
     RSS<br />
 		Categorias<br />
 		Interações de usuários<br />

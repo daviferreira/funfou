@@ -2,9 +2,35 @@
 
 	<%= render 'questions/filters' %>
 
+
 	<div id="questions-sidebar">
-		sidebar home
-	</div>
+
+    <div class="perguntar box-sidebar">
+      <%= link_to "Perguntar!", new_question_path, :class => "j-button" %>
+    </div>
+
+    <div class="box-sidebar">
+      <h3>Categorias</h3>
+      <% unless @categories.empty? %>
+        <ul class="clearfix" id="side-categories">
+        <% @categories.each do |category| %>
+          <li><%= link_to category.name, categoria_path(category) %></li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+
+    <div class="box-sidebar">
+      <h3>Últimas interações</h3>
+
+    </div>
+
+    <div class="box-sidebar">
+      <h3>Twitter</h3>
+
+    </div>
+
+  </div>
 
   <div id="questions-list">
 		<% @questions.each do |question| %>

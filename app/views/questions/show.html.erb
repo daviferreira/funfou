@@ -2,15 +2,9 @@
 
 <div class="question">
 
-  <div class="box-share">
-    <%= render 'favorite_form' if signed_in? %>
- 
-    <p class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-text="<%= @question.title %>" data-via="funfando">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>
+  <%= render 'favorite_form' if signed_in? %>
 
-    <p><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" layout="button_count" show_faces="false" width="20" font="tahoma" style="margin-left:4px;"></fb:like></p>
-  </div>
-	
-	<% unless @question.categories.empty? %>
+  <% unless @question.categories.empty? %>
 	<ul class="categories">
 	  <% @question.categories.each do |category| %>
 	    <li><%= link_to category.name, categoria_path(category) %></li>
@@ -24,7 +18,17 @@
 
 	<div class="description">
 		<%= sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />") %>
-	</div>
+
+
+    <div class="box-share">
+      <ul class="clearfix">
+        <li><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-text="<%= @question.title %>" data-via="funfando">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></li>
+        <li><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" layout="button_count" show_faces="false" font="tahoma"></fb:like></li>
+      </ul>
+   </div>
+
+  </div>
+
 
   <h3>Perguntas relacionadas</h3>
 	<% unless @answers.empty? %>

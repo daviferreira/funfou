@@ -10,6 +10,17 @@ class PagesController < ApplicationController
 	    end
 			@crumbs = [{:label => "Perguntas", :path   => perguntas_path}]
 		end
+
+    all_categories = Category.all
+		@categories = []
+		unless all_categories.empty?
+			all_categories.each do |category|
+				questions = category.questions.published
+			  @categories.push(category) if not questions.empty?
+			end
+		end
+    @categories = @categories.shuffle.slice(0,30)
+
 	end
 
   def contact
