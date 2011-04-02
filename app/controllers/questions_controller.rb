@@ -18,6 +18,8 @@ class QuestionsController < ApplicationController
 		  @crumbs.push({:label => "busca por " + params[:keywords],
 		                :path => search_path + "?keywords=" + params[:keywords]})
 	  end
+
+    @categories = categories_for_sidebar
 	  
 	  respond_to do |format|
       format.html

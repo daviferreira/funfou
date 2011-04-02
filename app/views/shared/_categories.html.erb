@@ -1,0 +1,10 @@
+<div class="box-sidebar">
+  <h3>Categorias</h3>
+  <% unless @categories.nil? or @categories.empty? %>
+    <ul class="clearfix" id="side-categories">
+    <% @categories.each do |category| %>
+      <li><%= link_to category.name, categoria_path(category) %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>

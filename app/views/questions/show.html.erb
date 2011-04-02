@@ -17,7 +17,7 @@
   <%= render 'info_data', :question => @question %>
 
 	<div class="description">
-		<%= sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />") %>
+		<%= auto_link(sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />")) %>
 
 
     <div class="box-share">
@@ -44,7 +44,6 @@
   </div>
 
 
-  <h3>Perguntas relacionadas</h3>
 	<% unless @answers.empty? %>
 	  <a name="answers"></a>
 		<h3 class="answers"><%=meta_in_words(@answers.count, {:singular => "resposta", :plural => "respostas"})%> <%=link_to "assine o feed das respostas", feed_answers_path(@question, :format => "atom") %></h3>

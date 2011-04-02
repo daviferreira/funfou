@@ -9,7 +9,7 @@
     disse:
     </span>
     <span class="comment-text">
-      <%= sanitize(comment.content.gsub(/\n/, "<br />"), :tags => %w(br)) %>
+      <%= auto_link(sanitize(comment.content.gsub(/\n/, "<br />"), :tags => %w(br))) %>
     </span>
   </div>
 </li>

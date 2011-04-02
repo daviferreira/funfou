@@ -2,7 +2,7 @@
   <%= render 'answers/votes', :answer => answer %>
   <div class="answer">
     <div class="content">
-      <%= sanitize_pre(answer.content).gsub(/\n/, "<br class=\"content-nl\" />") %>
+      <%= auto_link(sanitize_pre(answer.content).gsub(/\n/, "<br class=\"content-nl\" />")) %>
     </div>
     <div class="info-data clearfix">
       Enviada há <%= time_ago_in_words(answer.created_at) %> atrás por <%= author_name(answer.user_id) %>
