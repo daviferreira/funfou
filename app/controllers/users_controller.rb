@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def index
     @title = "Usuários"
-    @users = User.all.sort_by{|user| user.questions.published.count}.reverse.paginate(:page => params[:page])
+    @users = User.all.paginate(:page => params[:page])
     @crumbs = default_crumb
   end
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @answers = @user.answers.published.limit(5)
     @title = @user.name
     @crumbs = default_crumb
-    @crumbs.push({:label => @user.name.downcase, :path => usuario_path(@user)})
+    @crumbs.push({:label => @user.name.downcase, :path => @user})
   end
 
   def new
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   def destroy
     User.find_using_slug(params[:id]).destroy 
     flash[:success] = "User destroyed." 
-    redirect_to users_path
+    redirect_to usuarios_path
   end
 
 	def destroy_avatar
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     else
       flash[:success] = "User is not an admin anymore."
     end
-    redirect_to users_path
+    redirect_to usuarios_path
   end
   
   def toggle_active
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     else
       flash[:success] = "User de-acticated."
     end
-    redirect_to users_path
+    redirect_to usuarios_path
   end
   
   def update
@@ -92,8 +92,8 @@ class UsersController < ApplicationController
     end
     if @user.update_attributes(vars)
 			@user.generate_slug!
-      flash[:success] = "Seus dados foram atualizados com sucesso."
-      redirect_to usuario_path(@user)
+      flash[:success] = "Dados atualizados com sucesso."
+      redirect_to @user
     else
       @title = "Meus dados"
       render 'edit'
@@ -108,7 +108,7 @@ class UsersController < ApplicationController
 	def new_password
 		@title = "Nova senha"
 		@user = User.new
-		@crumbs = [{:label => "criar uma nova senha", :path   => instrucoes_path}]
+		@crumbs = [{:label => "criar uma nova senha", :path   => password_instructions_path}]
 	end
 	
 	def password_instructions
@@ -119,13 +119,13 @@ class UsersController < ApplicationController
       unless user.nil? or !user.active
         UserMailer.password_instructions(user, request.host_with_port).deliver
 	      flash[:success] = "As instruções foram enviadas para o e-mail #{email}."
-        redirect_to esqueceu_path
+        redirect_to new_password_path
         error = false
       end
     end
     if error
       flash[:error] = "Seu e-mail não foi encontrado em nossa base."
-      redirect_to esqueceu_path
+      redirect_to new_password_path
     end
   end
 
@@ -156,11 +156,11 @@ class UsersController < ApplicationController
 				redirect_to usuario_path(@user)
 			else
 				flash[:error] = "Erro ao salvar sua senha."
-				redirect_to redefinir_senha_path(params[:user][:salt])
+				redirect_to reset_password_path(params[:user][:salt])
 			end
 		else
 			flash[:error] = error
-			redirect_to redefinir_senha_path(params[:user][:salt])
+			redirect_to reset_password_path(params[:user][:salt])
 		end
 	end
 

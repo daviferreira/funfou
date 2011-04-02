@@ -6,7 +6,8 @@ describe User do
 		@attr = { :name => "Example User", 
 		          :email => "user@example.com",
               :password => "foobar",
-              :password_confirmation => "foobar" }
+              :password_confirmation => "foobar",
+	 						:cached_slug => "example-user"	}
 	end
 
 	it "should create a new user given valid attributes" do

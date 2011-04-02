@@ -4,6 +4,7 @@ module SessionsHelper
     self.current_user = user
     session[:last_login] = current_user.last_login
     current_user.update_attributes(:last_login => Time.now)
+    self.current_user
   end
     
   def sign_out

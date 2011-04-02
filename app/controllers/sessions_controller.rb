@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         question = Question.find_by_id(params[:session][:question_id])
         session[:return_to] = pergunta_path(question) + '#answer_form'
       end
-      redirect_back_or usuario_path(user)
+      redirect_back_or user
     end
   end
   

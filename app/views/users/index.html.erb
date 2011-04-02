@@ -3,7 +3,7 @@
   <% @users.each do |user| %>
     <li class="clearfix">
       <%= avatar(user, 60) %>
-			<h3><%= link_to user.name, usuario_path(user) %><% unless user.cidade.blank? %><span class="round"><%=user.cidade%></span><% end %></h3>
+			<h3><%= link_to user.name, user  %><% unless user.cidade.blank? %><span class="round"><%=user.cidade%></span><% end %></h3>
 			<p class="user-info">
     		<% unless user.bio.blank? %>
       	  <span class="round"><strong><%= user.bio %></strong></span>
@@ -12,14 +12,14 @@
     	</p> 
     	
 			<% if current_user.admin? and user.email != "contato@daviferreira.com" %>
-			<!-- div class="admin">
+			<div class="admin">
 			 <%= link_to "Excluir", user, :method => :delete,
 																 :confirm => "Tem certeza?",
 																 :title => "Delete #{user.name}" %>
 			 <%= link_to "Admin #{user.admin}", toggle_admin_path(user) %>
 			 <%= link_to "Ativo #{user.active}", toggle_active_path(user) %>
 			 <%= link_to "Editar", edit_user_path(user) %>
-			</div -->
+			</div>
 			<% end %>
     </li>
   <% end %>
