@@ -27,6 +27,19 @@
       </ul>
    </div>
 
+   <% unless @comments.empty? %>
+   <div class="box-comments">
+     <% @comments.each do |comment| %>
+      <%= render comment %>
+     <% end %>
+     </ul>
+   </div>
+   <% end %>
+   
+   <% if signed_in? %>
+    <%= render "comments/form", :question_id => @question.id, :answer_id => nil %>
+   <% end %>
+
   </div>
 
 

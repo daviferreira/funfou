@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
 	has_many :answers, :dependent => :destroy
 	has_many :favorites, :dependent => :destroy
 	has_many :votes, :dependent => :destroy
+	has_many :comments, :dependent => :destroy 
 	
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
@@ -91,6 +92,10 @@ class User < ActiveRecord::Base
 
 	def favorite!(question)
 		favorites.create!(:question_id => question.id)
+	end
+	
+	def comment!(params)
+		comments.create!(params)
 	end
 
 	def unfavorite!(question)

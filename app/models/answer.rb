@@ -19,6 +19,7 @@ class Answer < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :question
 	has_many :votes, :dependent => :destroy 
+	has_many :comments, :dependent => :destroy 
 	
 	validates :content, :presence => true
 	validates :question_id, :presence => true

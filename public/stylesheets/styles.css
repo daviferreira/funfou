@@ -185,6 +185,10 @@ padding:0 4px 0 4px;
 display:inline-block;
 }
 
+div#account-info ul#user-options li.perguntar a{
+  color:yellow;
+}
+
 div#account-info ul#user-options li.perguntar span.ui-button-text{
   color:#000;
 }

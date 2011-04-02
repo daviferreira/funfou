@@ -32,6 +32,10 @@ class QuestionsController < ApplicationController
 
   def show
 		@question = Question.find_using_slug(params[:id])
+		@comments = []
+		@question.comments.each do |c|
+		  @comments.push(c) if c.answer_id.nil?
+	  end
 		add_visualization(@question.id)
 		@question.content = @question.content.gsub("<pre>", "<pre class=\"dom\">")
 		@title = @question.title

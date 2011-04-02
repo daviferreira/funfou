@@ -24,6 +24,7 @@ class Question < ActiveRecord::Base
 	has_many :answers, :dependent => :destroy
 	has_many :tags, :dependent => :destroy
 	has_many :categories, :through => :tags
+	has_many :comments, :dependent => :destroy 
 
   validates :title, :presence => true, :length => { :maximum => 140 }
   validates :content, :presence => true

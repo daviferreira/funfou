@@ -1,10 +1,13 @@
 Funfou::Application.routes.draw do
 
+  get "comments/new"
+
 	resources :users, :only => [:create, :update, :destroy]
 	resources :sessions, :only => [:create, :destroy]
 	resources :questions, :only => [:create, :update, :destroy]
 	resources :favorites, :only => [:create, :destroy]
 	resources :answers, :only => [:create, :destroy, :update]
+	resources :comments, :only => [:create, :destroy]
 
 	resources :users do
 	  member do

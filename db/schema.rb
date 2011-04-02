@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323211306) do
+ActiveRecord::Schema.define(:version => 20110402151912) do
 
   create_table "answers", :force => true do |t|
     t.text     "content"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20110323211306) do
   add_index "categories", ["cached_slug"], :name => "index_categories_on_cached_slug"
 
   create_table "comments", :force => true do |t|
-    t.text     "comment"
+    t.text     "content"
     t.integer  "user_id"
     t.integer  "question_id"
     t.integer  "answer_id"

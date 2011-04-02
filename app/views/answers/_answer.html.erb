@@ -8,6 +8,19 @@
       Enviada há <%= time_ago_in_words(answer.created_at) %> atrás por <%= author_name(answer.user_id) %>
       <%=avatar(User.find_using_slug(answer.user_id), 28)%>
     </div>    
+    
+    <% unless answer.comments.empty? %>
+    <div class="box-comments">
+       <% answer.comments.each do |comment| %>
+        <%= render comment %>
+       <% end %>
+       </ul>
+     </div>
+    <% end %>
+    
+    <% if signed_in? %>
+    <%= render "comments/form", :question_id => @question.id, :answer_id => answer.id %>
+    <% end %>
 
     <div class="admin">
     	<% if signed_in? and current_user.admin? %>

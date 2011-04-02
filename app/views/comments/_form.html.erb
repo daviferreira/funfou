@@ -1,0 +1,13 @@
+<div class="form-comment">
+  <%= form_for current_user.comments.build(:question_id => question_id, :answer_id => answer_id), :remote => true do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+    <%= f.hidden_field :question_id, {:value => question_id} %>
+    <%= f.hidden_field :answer_id, {:value => answer_id} %>
+    <div class="field">
+      <%= f.text_area :content, :value => "Deixe um comentário." %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Enviar" %>
+    </div>
+  <% end %>
+</div>
