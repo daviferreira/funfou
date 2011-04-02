@@ -26,12 +26,17 @@ $(function(){
 	$('#fld-search').focus(function(){
 		if($(this).val() == $(this).attr('title')) $(this).val('');
 	});
-	if($('#questions-sidebar').length > 0){
-		if($('#questions-sidebar').height() <= $('#questions-list').height())
-			$('#questions-sidebar').height($('#questions-list').height());
-		else
-			$('#questions-list').height($('#questions-sidebar').height());
-	}
+	setTimeout(function(){
+  	if($('#questions-sidebar').length > 0){
+  		if($('#questions-sidebar').height() <= $('#questions-list').height())
+  			$('#questions-sidebar').height($('#questions-list').height());
+  		else
+  			$('#questions-list').height($('#questions-sidebar').height());
+  	}
+	}, 1000);
+	$('div.apple_pagination').each(function(){
+	  if($(this).html().replace(/[\n\r\s]/g, '') == "") $(this).remove();
+	});
 	$('.questions-admin a, #btn-change-image, .j-button, .admin a, .perguntar a').button();
 	$('ul.user-list li:odd').addClass('odd');
 	$('ul.user-list img').height("auto").width(60);
