@@ -51,7 +51,7 @@ describe UsersController do
         @user.toggle!(:admin)
         other_user = User.all.second
         get :index
-        response.should have_selector('a', :href => usuario_path(other_user),
+        response.should have_selector('a', :href => user_path(other_user),
                                            :content => "Excluir")
       end
 
@@ -87,61 +87,27 @@ describe UsersController do
     end
   
     it "should be successful" do
-      get :show, :id => @user
+      get :show, :id => @user.id
       response.should be_success
     end
     
     it "should find the right user" do
-      get :show, :id => @user
+      get :show, :id => @user.id
       assigns(:user).should == @user
     end
     
-    it "should have the right title" do
-      get :show, :id => @user
-      response.should have_selector('title', :content => @user.name)
-    end
     
     it "should have the user's name" do
-      get :show, :id => @user
-      response.should have_selector('h1', :content => @user.name)
+      get :show, :id => @user.id
+      response.should have_selector('h2', :content => @user.name)
     end
+
     
-    it "should have a profile image" do
-      get :show, :id => @user
-      response.should have_selector('h1>img', :class => "gravatar")
-    end
-    
-    it "should have the right URL" do
-      get :show, :id => @user
-      response.should have_selector('td>a', :content => user_path(@user),
-                                            :href    => user_path(@user))
-    end
-    
-    it "should show the user's microposts" do
-      mp1 = Factory(:micropost, :user => @user, :content => "Foo bar")
-      mp2 = Factory(:micropost, :user => @user, :content => "Baz quux")
-      get :show, :id => @user
-      response.should have_selector('span.content', :content => mp1.content)
-      response.should have_selector('span.content', :content => mp2.content)
-    end
-    
-    it "should paginate microposts" do
-      35.times { Factory(:micropost, :user => @user, :content => "foo") }
-      get :show, :id => @user
-      response.should have_selector('div.pagination')
-    end
-    
-    it "should display the micropost count" do
-      10.times { Factory(:micropost, :user => @user, :content => "foo") }
-      get :show, :id => @user
-      response.should have_selector('td.sidebar',
-                                    :content => @user.microposts.count.to_s)
-    end
     
     describe "when signed in as another user" do
       it "should be successful" do
         test_sign_in(Factory(:user, :email => Factory.next(:email)))
-        get :show, :id => @user
+        get :show, :id => @user.id
         response.should be_success
       end
     end
@@ -154,10 +120,6 @@ describe UsersController do
       response.should be_success
     end
     
-    it "should have the right title" do
-      get :new
-      response.should have_selector('title', :content => "Sign up")
-    end
   end
   
   describe "POST 'create'" do
@@ -169,10 +131,6 @@ describe UsersController do
                   :password_confirmation => "" }
       end
       
-      it "should have the right title" do
-        post :create, :user => @attr
-        response.should have_selector('title', :content => "Sign up")
-      end
 
       it "should render the 'new' page" do
         post :create, :user => @attr
@@ -201,12 +159,12 @@ describe UsersController do
       
       it "should redirect to the user show page" do
         post :create, :user => @attr
-        response.should redirect_to(user_path(assigns(:user)))
+        response.should redirect_to(usuario_path(assigns(:user)))
       end
 
       it "should have a welcome message" do
         post :create, :user => @attr
-        flash[:success].should =~ /welcome to the sample app/i
+        flash[:success].should =~ /bem-vindo ao Funfou/i
       end
       
       it "should sign the user in" do
@@ -224,20 +182,11 @@ describe UsersController do
     end
     
     it "should be successful" do
-      get :edit, :id => @user
+      get :edit, :id => @user.id
       response.should be_success
     end
     
-    it "should have the right title" do
-      get :edit, :id => @user
-      response.should have_selector('title', :content => "Edit user")
-    end
-    
-    it "should have a link to change the Gravatar" do
-      get :edit, :id => @user
-      response.should have_selector('a', :href => 'http://gravatar.com/emails',
-                                         :content => "change")
-    end
+
   end
 
   describe "PUT 'update'" do
@@ -255,14 +204,10 @@ describe UsersController do
       end
       
       it "should render the 'edit' page" do
-        put :update, :id => @user, :user => @attr
+        put :update, :id => @user.id, :user => @attr
         response.should render_template('edit')
       end
       
-      it "should have the right title" do
-        put :update, :id => @user, :user => @attr
-        response.should have_selector('title', :content => "Edit user")
-      end
     end
 
     describe "success" do
@@ -273,7 +218,7 @@ describe UsersController do
       end
       
       it "should change the user's attributes" do
-        put :update, :id => @user, :user => @attr
+        put :update, :id => @user.id, :user => @attr
         @user.reload
         @user.name.should  == @attr[:name]
         @user.email.should == @attr[:email]
@@ -281,8 +226,8 @@ describe UsersController do
       end
       
       it "should have a flash message" do
-        put :update, :id => @user, :user => @attr
-        flash[:success].should =~ /updated/
+        put :update, :id => @user.id, :user => @attr
+        flash[:success].should =~ /atualizados/
       end
     end
   end
@@ -296,14 +241,14 @@ describe UsersController do
     describe "for non-signed-in users" do
 
       it "should deny access to 'edit'" do
-        get :edit, :id => @user
-        response.should redirect_to(signin_path)
-        flash[:notice].should =~ /sign in/i
+        get :edit, :id => @user.id
+        response.should redirect_to(login_path)
+        flash[:notice].should =~ /login/i
       end
     
       it "should deny access to 'update'" do
-        put :update, :id => @user, :user => {}
-        response.should redirect_to(signin_path)
+        put :update, :id => @user.id, :user => {}
+        response.should redirect_to(login_path)
       end
     end
 
@@ -315,12 +260,12 @@ describe UsersController do
       end
       
       it "should require matching users for 'edit'" do
-        get :edit, :id => @user
+        get :edit, :id => @user.id
         response.should redirect_to(root_path)
       end
       
       it "should require matching users for 'update'" do
-        put :update, :id => @user, :user => {}
+        put :update, :id => @user.id, :user => {}
         response.should redirect_to(root_path)
       end
     end
@@ -334,15 +279,15 @@ describe UsersController do
     
     describe "as a non-signed-in user" do
       it "should deny access" do
-        delete :destroy, :id => @user
-        response.should redirect_to(signin_path)
+        delete :destroy, :id => @user.id
+        response.should redirect_to(root_path)
       end
     end
     
     describe "as non-admin user" do
       it "should protect the action" do
         test_sign_in(@user)
-        delete :destroy, :id => @user
+        delete :destroy, :id => @user.id
         response.should redirect_to(root_path)
       end
     end
@@ -356,19 +301,19 @@ describe UsersController do
 
       it "should destroy the user" do
         lambda do
-          delete :destroy, :id => @user
+          delete :destroy, :id => @user.id
         end.should change(User, :count).by(-1)
       end
       
       it "should redirect to the users page" do
-        delete :destroy, :id => @user
+        delete :destroy, :id => @user.id
         flash[:success].should =~ /destroyed/i
-        response.should redirect_to(users_path)
+        response.should redirect_to(usuarios_path)
       end
       
       it "should not be able to destroy itself" do
         lambda do
-          delete :destroy, :id => @admin
+          delete :destroy, :id => @admin.id
         end.should_not change(User, :count)
       end
     end

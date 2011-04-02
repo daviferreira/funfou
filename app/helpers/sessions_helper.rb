@@ -40,11 +40,7 @@ module SessionsHelper
   def authenticate
     deny_access unless signed_in?
   end
-
-	def admin_user
-		redirect_to(root_path) unless current_user.admin? 
-	end
-
+  
   def deny_access
     store_location
     redirect_to login_path, :notice => "Por favor, efetue login para acessar esta página."

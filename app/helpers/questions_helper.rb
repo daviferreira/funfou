@@ -15,7 +15,7 @@ module QuestionsHelper
 	    "você"
     else
       @user = User.find_by_id(user_id)
-      link_to first_name(@user.name), @user
+      link_to first_name(@user.name), usuario_path(@user)
     end
   end
   

@@ -19,7 +19,7 @@ module UsersHelper
     else
       img = image_tag("avatar.png", :height => height)
     end
-    link_to img, user
+    link_to img, usuario_path(user)
   end
   
   def stats_text(user)

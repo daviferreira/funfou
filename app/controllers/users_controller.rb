@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @answers = @user.answers.published.limit(5)
     @title = @user.name
     @crumbs = default_crumb
-    @crumbs.push({:label => @user.name.downcase, :path => @user})
+    @crumbs.push({:label => @user.name.downcase, :path => usuario_path(@user)})
   end
 
   def new
@@ -47,11 +47,17 @@ class UsersController < ApplicationController
       @title = "Meus dados"
       @user = current_user
     end
-		@crumbs = [{:label => "editar perfil", :path => meus_dados_path}] 
+    if(@user == current_user)
+		  @crumbs = [{:label => "editar perfil", :path => meus_dados_path}] 
+	  else
+	    @crumbs = default_crumb
+	    @crumbs.push({:label => @user.name, :path => usuario_path(@user)})
+	    @crumbs.push({:label => "editar", :path => edit_user_path(@user)})
+    end
   end
   
   def destroy
-    User.find_using_slug(params[:id]).destroy 
+    User.find_using_slug(params[:id]).destroy
     flash[:success] = "User destroyed." 
     redirect_to usuarios_path
   end
@@ -93,7 +99,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(vars)
 			@user.generate_slug!
       flash[:success] = "Dados atualizados com sucesso."
-      redirect_to @user
+      redirect_to usuario_path(@user)
     else
       @title = "Meus dados"
       render 'edit'
@@ -165,6 +171,11 @@ class UsersController < ApplicationController
 	end
 
   private
+  
+    def admin_user
+      @user = User.find_using_slug(params[:id])
+      redirect_to(root_path) if !signed_in? || !current_user.admin? || current_user?(@user)
+    end
 
     def correct_user
       @user = User.find_using_slug(params[:id])

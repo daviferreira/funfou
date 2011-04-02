@@ -8,7 +8,7 @@
 
 <div id="user-sidebar" class="sidebar">
 	<p class="user-url">
-	  <strong>URL no Funfou</strong>  <%= link_to root_url.sub(/\/$/, "") + user_path(@user), @user %>
+	  <strong>URL no Funfou</strong>  <%= link_to root_url.sub(/\/$/, "") + usuario_path(@user), usuario_path(@user) %>
 	  <%= link_to "Site pessoal", valid_url_for(@user.site), :target => "_nil" if not @user.site.blank? %>
     <%= link_to "Twitter", "http://twitter.com/" + @user.twitter, :target => "_nil" if not @user.twitter.blank? %>
     <%= link_to "Github", "http://github.com/" + @user.github, :target => "_nil" if not @user.github.blank? %>
