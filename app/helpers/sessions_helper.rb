@@ -40,6 +40,11 @@ module SessionsHelper
   def authenticate
     deny_access unless signed_in?
   end
+    
+  def admin_user
+    @user = User.find_using_slug(params[:id])
+    redirect_to(root_path) if !signed_in? || !current_user.admin? || current_user?(@user)
+  end
   
   def deny_access
     store_location

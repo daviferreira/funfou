@@ -171,11 +171,6 @@ class UsersController < ApplicationController
 	end
 
   private
-  
-    def admin_user
-      @user = User.find_using_slug(params[:id])
-      redirect_to(root_path) if !signed_in? || !current_user.admin? || current_user?(@user)
-    end
 
     def correct_user
       @user = User.find_using_slug(params[:id])
