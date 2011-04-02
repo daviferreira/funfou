@@ -1,0 +1,16 @@
+<div class="box-sidebar">
+  <h3 class="twitter"><a href="http://www.twitter.com/funfando" target="_blank">Siga o Funfou no Twitter!</a></h3>
+
+  <div id="tweets"></div>
+  <script>
+  $(function(){
+    $("#tweets").tweet({
+      avatar_size: 32,
+      count: 6,
+      query: "#funfou",
+      loading_text: "Aguarde, carregando tweets..."
+    });
+  });
+  </script>
+
+</div>

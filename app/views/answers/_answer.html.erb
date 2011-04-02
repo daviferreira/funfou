@@ -11,6 +11,7 @@
     
     <% unless answer.comments.empty? %>
     <div class="box-comments">
+       <ul>
        <% answer.comments.each do |comment| %>
         <%= render comment %>
        <% end %>

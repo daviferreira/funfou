@@ -29,6 +29,7 @@
 
    <% unless @comments.empty? %>
    <div class="box-comments">
+     <ul>
      <% @comments.each do |comment| %>
       <%= render comment %>
      <% end %>

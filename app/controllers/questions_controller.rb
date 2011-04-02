@@ -63,7 +63,7 @@ class QuestionsController < ApplicationController
 		@title = "Fazer uma pergunta"
 		if signed_in?
 			@question = Question.new 
-			@tags = ""
+			@tags = "[]"
 		end
 		@crumbs = default_crumb
 		@crumbs.push({:label => "enviar uma nova pergunta", :path => new_question_path})
@@ -72,7 +72,7 @@ class QuestionsController < ApplicationController
 	def edit
 		@title = "Editar pergunta"
 		@question = Question.find_using_slug(params[:id])
-		@tags = tags_to_s(@question.tags) 
+		@tags = tags_to_json(@question.tags) 
 	end
 
   def create
@@ -84,6 +84,7 @@ class QuestionsController < ApplicationController
 			flash[:success] = "Pergunta adicionada com sucesso"
 			redirect_to pergunta_path(@question)
 		else
+			@tags = params[:question][:tags].to_json		  
 			render 'questions/new'
 		end
   end
@@ -97,7 +98,7 @@ class QuestionsController < ApplicationController
 			redirect_to pergunta_path(@question)
 		else
 			@title = "Editar pergunta"
-			@tags = tags_to_s(@question.tags)
+			@tags = params[:question][:tags].to_json
 			render 'edit'
 		end
 	end
@@ -138,6 +139,18 @@ class QuestionsController < ApplicationController
 			tags_as_string.sub(/,$/, '')
 		end
 
+		def tags_to_json(tags)
+			res = []
+			unless tags.empty? or tags.nil?
+				tags.each do |tag|
+					@category = Category.find_by_id(tag.category_id)
+					res.push(@category.name)
+				end
+			end
+			res.to_json
+		end
+
+
 		def save_tags(question_id, tags)
 			tags_to_delete = Tag.where("question_id = ?", question_id)
 			unless tags_to_delete.empty?
@@ -145,13 +158,12 @@ class QuestionsController < ApplicationController
 					tag.destroy
 				end
 			end
-		  tags = tags.split(",")
 		  unless tags.empty?
 		    tags.each do |tag|
 		      @category = Category.find_by_name(tag)
-		      if @category.nil?
-		        @category = Category.create!(:name => tag.strip)
-						@category.generate_slug!
+		      if @category.nil?		        
+	          @category = Category.create!(:name => tag.strip)
+					  @category.generate_slug!
 	        end
 	        Tag.create!(:question_id => question_id, :category_id => @category.id)
 	      end

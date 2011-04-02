@@ -9,10 +9,31 @@
 		<%= f.text_area :content, :cols => 60, :rows => 20 %>
 	</div>
 	<div class="field">
-		<%= f.label :tags, "Tags separadas por vírgula" %>
-		<%= f.text_field :tags, :value => @tags, :size => 60 %>
+		<%= f.label :tags, "Tags" %>
+		<ul id="question_tags"></ul>
 	</div>
 	<div class="actions">
 		<%= f.submit "Enviar pergunta" %>
 	</div>
 <% end %>
+<script>
+var tags = <%= raw(@tags) %>;
+$(function(){
+	$("#question_tags").tagit({
+		availableTags: [<%= categories_for_tags_field %>]
+	});
+
+  if(tags.length > 0){
+    for(x in tags){
+      var el = "";
+			el  = "<li class=\"tagit-choice\">\n";
+			el += tags[x] + "\n";
+			el += "<a class=\"close\">x</a>\n";
+			el += "<input type=\"hidden\" style=\"display:none;\" value=\""+tags[x]+"\" name=\"question[tags][]\">\n";
+			el += "</li>\n";
+			$(el).insertBefore($('.tagit-input:first').parent());
+    }
+  }
+
+});
+</script>

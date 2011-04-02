@@ -29,7 +29,6 @@ class Question < ActiveRecord::Base
   validates :title, :presence => true, :length => { :maximum => 140 }
   validates :content, :presence => true
   validates :user_id, :presence => true
-	validates :tags, :presence => true
   
   default_scope :order => 'questions.created_at DESC'
   scope :published, :conditions => { :published => true }, :order => 'questions.created_at DESC'

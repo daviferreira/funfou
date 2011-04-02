@@ -10,6 +10,16 @@ module QuestionsHelper
 		end
 	end	
 	
+	def categories_for_tags_field
+	  categories = Category.all
+	  tags = ""
+	  last = categories.last
+	  categories.each do |category, last|
+	    tags += "\"#{category.name}\","
+    end
+    raw(tags.sub(/,$/, ""))
+  end
+	
 	def author_name(user_id)
 	  if signed_in? && user_id == current_user.id
 	    "você"

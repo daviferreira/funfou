@@ -1,1 +1,15 @@
-<li><%= comment.content %></li>
+<li class="clearfix">
+  <div class="comment-avatar">
+    <%= link_to avatar(comment.user, 20), usuario_path(comment.user) %> 
+  </div>
+  <div class="comment-content">
+    <span class="comment-info">
+    Há <%= time_ago_in_words(comment.created_at) %> atrás
+    <%= link_to first_name(comment.user.name), usuario_path(comment.user) %> 
+    disse:
+    </span>
+    <span class="comment-text">
+      <%= sanitize(comment.content.gsub(/\n/, "<br />"), :tags => %w(br)) %>
+    </span>
+  </div>
+</li>
