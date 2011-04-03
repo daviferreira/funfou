@@ -1,12 +1,10 @@
 <div class="form-comment">
-  <%= form_for current_user.comments.build(:question_id => question_id, :answer_id => answer_id), :remote => true do |f| %>
+  <%= form_for current_user.comments.build(:question_id => question_id, :answer_id => answer_id), :remote => true, :html => { :id => "form_comment_#{question_id}_#{answer_id}" } do |f| %>
     <%= render 'shared/error_messages', :object => f.object %>
     <%= f.hidden_field :question_id, {:value => question_id} %>
     <%= f.hidden_field :answer_id, {:value => answer_id} %>
     <div class="field">
-      <%= f.text_area :content, :value => "Deixe um comentário.", :autocomplete => "off" %>
-    </div>
-    <div class="actions">
+      <%= f.text_area :content, :title => "Deixe um comentário.", :autocomplete => "off" %>
       <%= f.submit "Enviar" %>
     </div>
   <% end %>

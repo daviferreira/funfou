@@ -24,7 +24,7 @@ Funfou::Application.routes.draw do
   match "/categoria/:id/feed",    :to => "categories#feed", :as => :feed_categories
 
 	match "/sobre", 				:to => "pages#about", :as => :about
-	match "/fale-conosco",	:to	=> "pages#contact", :as => :contact
+	match "/contato",	      :to	=> "pages#contact", :as => :contact
 
 	match "/usuario/senha",		          :to => "users#new_password", :as => :new_password
 	match "/instrucoes",                :to => "users#password_instructions", :as => :password_instructions

@@ -1,5 +1,5 @@
 <% if @error.nil? %>
-  alert("Foi.");
+  $("#list_comments_<%=@comment.question_id%>_<%=@comment.answer_id%>").append("<%= escape_javascript(render(@comment)) %>");
 <% else %>
   alert("<%=@error%>")
 <% end %>

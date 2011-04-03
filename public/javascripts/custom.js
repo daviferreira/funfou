@@ -26,6 +26,7 @@ $(function(){
 	$('#fld-search').focus(function(){
 		if($(this).val() == $(this).attr('title')) $(this).val('');
 	});
+	
 	setTimeout(function(){
   	if($('#questions-sidebar').length > 0){
   		if($('#questions-sidebar').height() <= $('#questions-list').height())
@@ -40,6 +41,14 @@ $(function(){
 	$('.questions-admin a, #btn-change-image, .j-button, .admin a, .perguntar a').button();
 	$('ul.user-list li:odd').addClass('odd');
 	$('ul.user-list img').height("auto").width(60);
+
+	if($('.form-comment textarea').val() == "") $('.form-comment textarea').val($('.form-comment textarea').attr('title'));
+	$('.form-comment textarea').blur(function(){
+		if($(this).val() == "")	 $(this).val($(this).attr('title'));
+	});
+	$('.form-comment textarea').focus(function(){
+		if($(this).val() == $(this).attr('title')) $(this).val('');
+	});
 
 });
 

@@ -2,6 +2,7 @@
   <%= form_for @answer do |f| %>
     <%= render 'shared/error_messages', :object => f.object %>
     <%= f.hidden_field :question_id, {:value => @question.id} %>
+    <a name="form_answer"></a>
     <div class="field">
       <%= f.label :content, "Sua resposta" %>
       <%= f.text_area :content %>

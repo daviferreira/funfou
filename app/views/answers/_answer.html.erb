@@ -4,6 +4,17 @@
     <div class="content">
       <%= auto_link(sanitize_pre(answer.content).gsub(/\n/, "<br class=\"content-nl\" />")) %>
     </div>
+    
+    <div class="admin">
+    	<% if signed_in? and current_user.admin? %>
+    		<%= link_to "Editar", editar_resposta_path(answer) %>
+    		<%= link_to "Excluir", answer, :method => :delete,
+    														 :confirm => "Tem certeza?",
+    												 		 :title => "Delete #{answer.content}" %>
+    		<%= link_to_publish(answer) %>
+    	<% end %>      
+    </div>
+
     <div class="info-data clearfix">
       Enviada há <%= time_ago_in_words(answer.created_at) %> atrás por <%= author_name(answer.user_id) %>
       <%=avatar(User.find_using_slug(answer.user_id), 28)%>
@@ -11,7 +22,7 @@
     
     <% unless answer.comments.empty? %>
     <div class="box-comments">
-       <ul>
+       <ul id="list_comments_<%=@question.id%>_<%=answer.id%>">
        <% answer.comments.each do |comment| %>
         <%= render comment %>
        <% end %>
@@ -23,14 +34,5 @@
     <%= render "comments/form", :question_id => @question.id, :answer_id => answer.id %>
     <% end %>
 
-    <div class="admin">
-    	<% if signed_in? and current_user.admin? %>
-    		<%= link_to "Editar", editar_resposta_path(answer) %>
-    		<%= link_to "Excluir", answer, :method => :delete,
-    														 :confirm => "Tem certeza?",
-    												 		 :title => "Delete #{answer.content}" %>
-    		<%= link_to_publish(answer) %>
-    	<% end %>      
-    </div>
   </div>
 </li>

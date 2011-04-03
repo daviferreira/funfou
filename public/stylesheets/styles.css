@@ -848,11 +848,11 @@ footer a{color:#F64448;}
 footer div{ 
   	padding: 24px;
 }
-footer ul{ float: right;}
+footer ul{ float: right;margin:10px 12px 0 0;}
 footer ul li{ float:left; padding:0 6px 0 0; margin: 0 6px 0 0; border-right:1px dotted #ccc;}
 footer ul li.last{margin:0 0;padding:0 0;border:none;}
 
-footer a:hover{
+footer ul li a:hover{
   border-bottom:1px dotted #f64448;
 }
 
@@ -1158,4 +1158,38 @@ ul.tagit input[type="text"] {
   display:block;
   color:#999;
   margin:0 0 6px 0;
+}
+
+.box-share .j-button{
+  float:right;
+}
+
+.form-comment{
+  margin:40px 0 0;
+}
+
+.form-comment input[type="submit"]{
+  float:right;
+  margin-top:22px;
+  font-size:13px;
+  font-weight:900;
+  width:80px;
+}
+
+.form-comment textarea{
+  width:90%;
+  height:40px;
+  margin:0 0;
+}
+
+#new_question input[type="text"]{
+  width:792px;
+  font-size:18px;
+  color:#333;
+}
+
+#new_question textarea{
+  width:784px;
+  font-family:Arial, Helvetica, sans-serif;
+  padding:8px;
 }

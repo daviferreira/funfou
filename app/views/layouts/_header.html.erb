@@ -4,7 +4,7 @@
 				<% if signed_in? %>
 					<span id="greetings-time">
 				    <%=avatar(current_user, 28)%>
-						<%= link_to first_name(current_user.name), current_user %>
+						<%= link_to first_name(current_user.name), usuario_path(current_user) %>
 					</span>
 				<% elsif invite_to_register? %>
 					<span id="greetings-time-guest"></span> 

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if content.nil? or content.blank? or content == "Deixe um comentário."
       @error = "Cadê o comentário!?"
     else
-		  current_user.comment!(params[:comment])
+		  @comment = current_user.comment!(params[:comment])
 	  end
 		respond_to do |format|
 			format.html { redirect_to @question }
