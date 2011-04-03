@@ -17,7 +17,9 @@
   <%= render 'info_data', :question => @question %>
 
 	<div class="description">
-		<%= auto_link(sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />")) %>
+	  <article>
+		  <%= auto_link(sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />")) %>
+		</article>
 
     <div class="box-share">
       <% if signed_in? %><%= link_to "Responder", "#form_answer", :class => "j-button" %><% end %>

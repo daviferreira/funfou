@@ -1,18 +1,20 @@
 
   <footer>
     <div>
-      <ul>
-				<li><%= link_to "Página inicial", root_path %></li>
-				<% if not signed_in? %>
-				<li><%= link_to "Login", login_path %></li>
-				<li><%= link_to "Cadastre-se", new_user_path %></li>
-				<% end %>
-    		 <li><%= link_to "Perguntas", perguntas_path %></li>
-    		 <li><%= link_to "Categorias", categorias_path %></li>
-    		 <li><%= link_to "Sobre", about_path %></li>
-        <li class="last"><%= link_to "Contato", contact_path %></li>
-      </ul>
-
+      <nav id="menu">
+        <ul>
+  				<li><%= link_to "Página inicial", root_path %></li>
+  				<% if not signed_in? %>
+  				<li><%= link_to "Login", login_path %></li>
+  				<li><%= link_to "Cadastre-se", new_user_path %></li>
+  				<% end %>
+      		 <li><%= link_to "Perguntas", perguntas_path %></li>
+      		 <li><%= link_to "Categorias", categorias_path %></li>
+      		 <li><%= link_to "Sobre", about_path %></li>
+          <li class="last"><%= link_to "Contato", contact_path %></li>
+        </ul>
+      </nav>
+      
       <span>
          <p id="copyright"><a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/2.5/88x31.png" /></a></p>
       </span>

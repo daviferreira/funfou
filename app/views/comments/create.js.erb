@@ -1,5 +1,11 @@
 <% if @error.nil? %>
+  if($('#list_comments_<%=@comment.question_id%>_<%=@comment.answer_id%>').length == 0){
+    var parent = $('#form_comment_<%=@comment.question_id%>_<%=@comment.answer_id%>').parent();
+    $('<div class="box-comments"><ul id="list_comments_<%=@comment.question_id%>_<%=@comment.answer_id%>"></ul></div>').insertBefore(parent);
+  }
   $("#list_comments_<%=@comment.question_id%>_<%=@comment.answer_id%>").append("<%= escape_javascript(render(@comment)) %>");
+  $('#form_comment_<%=@comment.question_id%>_<%=@comment.answer_id%> textarea').val($('#form_comment_<%=@comment.question_id%>_<%=@comment.answer_id%> textarea').attr('title'));
+  $('#form_comment_<%=@comment.question_id%>_<%=@comment.answer_id%> textarea').removeClass('errFld');
 <% else %>
-  alert("<%=@error%>")
+  $('#form_comment_<%=params[:comment][:question_id]%>_<%=params[:comment][:answer_id]%> textarea').addClass('errFld').focus();
 <% end %>

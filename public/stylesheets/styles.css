@@ -571,12 +571,28 @@ div#account-info ul#user-options,.box-share .j-button {
 /* Conteúdo
 -------------------------------------------------------------- */
 
+div#box-form-answer {
+  width:800px;
+}
+
 div#box-form-answer label {
   display:block;
 }
 
+div#box-form-answer p, div#box-form-question p {
+  font-size:12px;
+  line-height:14px;
+  margin:12px 0 12px 0;
+  color:#333;
+}
+
+div#box-form-answer p strong, div#box-form-question p strong {
+  font-size:14px;
+  font-weight:900;
+}
+
 div#box-form-answer textarea {
-  width:490px;
+  width:790px;
   height:300px;
 }
 
@@ -650,6 +666,10 @@ div#questions-list {
   float:left;
   width:788px;
   margin:0 12px 0 0;
+}
+
+div#questions-list div.question, div.user-questions div.question {
+  border-bottom:1px solid #ccc;
 }
 
 div.question {
@@ -1216,6 +1236,10 @@ footer ul li a:hover {
 
 #error_explanation ul li {
   font-size: 12px;
+}
+
+.errFld {
+  border-color:red!important;
 }
 
 /* Pagination

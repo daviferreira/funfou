@@ -87,6 +87,8 @@ class QuestionsController < ApplicationController
 			redirect_to pergunta_path(@question)
 		else
 			@tags = params[:question][:tags].to_json		  
+			@crumbs = default_crumb
+  		@crumbs.push({:label => "enviar uma nova pergunta", :path => new_question_path})
 			render 'questions/new'
 		end
   end

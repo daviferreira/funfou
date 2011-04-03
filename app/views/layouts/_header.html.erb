@@ -2,10 +2,7 @@
 		<div class="container">
 			<div id="user-greetings">
 				<% if signed_in? %>
-					<span id="greetings-time">
-				    <%=avatar(current_user, 28)%>
-						<%= link_to first_name(current_user.name), usuario_path(current_user) %>
-					</span>
+					<span id="greetings-time"><%=avatar(current_user, 28)%><%= link_to first_name(current_user.name), usuario_path(current_user) %></span>
 				<% elsif invite_to_register? %>
 					<span id="greetings-time-guest"></span> 
 					<strong><%= link_to "Crie uma conta", new_user_path %></strong> 
@@ -14,17 +11,19 @@
 				<% end %>
 			</div>
 
-			<ul id="user-options" class="clearfix">
-				<li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
-				<% if signed_in? %>
-				<li><%= link_to "Meus favoritos", meus_favoritos_path %></li>
-				<li><%= link_to "Editar perfil", meus_dados_path %></li>
-				<li class="omega"><%= link_to "Sair", logout_path, :method => :delete %></li>
-				<% else %>
-				<li><%= link_to "Cadastre-se!", new_user_path %></li>
-				<li><%= link_to "Login", login_path %></li>
-			<% end %>
-			</ul>
+      <nav id="user-actions">
+  			<ul id="user-options" class="clearfix">
+  				<li class="perguntar"><%= link_to "Perguntar!", new_question_path %></li>
+  				<% if signed_in? %>
+  				<li><%= link_to "Meus favoritos", meus_favoritos_path %></li>
+  				<li><%= link_to "Editar perfil", meus_dados_path %></li>
+  				<li class="omega"><%= link_to "Sair", logout_path, :method => :delete %></li>
+  				<% else %>
+  				<li><%= link_to "Cadastre-se!", new_user_path %></li>
+  				<li><%= link_to "Login", login_path %></li>
+  			<% end %>
+  			</ul>
+  		</nav>
 	</div>
 </div>
 
