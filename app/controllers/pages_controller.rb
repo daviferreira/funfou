@@ -18,6 +18,7 @@ class PagesController < ApplicationController
   def contact
 		@title = "Fale conosco"
 		@crumbs = [{:label => "contato", :path => contact_path}]
+    @message = Message.new
 	end
 
   def about

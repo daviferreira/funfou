@@ -1,2 +1,21 @@
 <h2>Entre em contato!</h2>
-<p>Find me in app/views/pages/contact.html.erb</p>
+
+<%= form_for(@message) do |f| %>
+  <% render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :name, "Seu nome" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "Seu e-mail" %>
+    <%= f.text_field :email%>
+  </div>
+  <div class="field">
+    <%= f.label :content, "Mensagem" %>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar" %>
+  </div>
+</div>
+<% end %>

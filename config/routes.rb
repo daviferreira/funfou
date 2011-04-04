@@ -6,6 +6,7 @@ Funfou::Application.routes.draw do
 	resources :favorites, :only => [:create, :destroy]
 	resources :answers, :only => [:create, :destroy, :update]
 	resources :comments, :only => [:create, :destroy]
+  resources :messages, :only => [:create]
 
 	root :to => "pages#home"
  
