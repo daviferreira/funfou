@@ -34,10 +34,11 @@
 					<%= link_to "Excluir", "#", :class => "lnk-del-img" %> ou 
 					<%= link_to "trocar imagem", "#", :id => "btn-change-image" %>
 				</div>
+				<%= render "avatar_field", :f => f, :display => false %>
 				<div class="confirmation" style="display:none">
 					Deseja mesmo excluir seu avatar atual?
 					<ul class="clearfix">
-						<li><%= link_to "sim!", delete_user_avatar_path(@user), :class => "yes" %></li>
+						<li><%= link_to "sim!", delete_user_avatar_path(@user), :class => "yes", :remote => true %></li>
 						<li><%= link_to "não, mudei de ideia...", "#", :class => "no" %></li>
 					</ul>
 				</div>
@@ -45,10 +46,9 @@
 			
 			<script>
 			$('#btn-change-image').live('click', function(e){
-				if($('#avatar-field').length > 0){
-					$('#avatar-field').fadeOut(function(){$(this).remove();});
+				if($('#avatar-field').is(':visible')){
+					$('#avatar-field').fadeOut();
 				}else{
-					$('<%= escape_javascript(render('users/avatar_field', :f => f, :display => false)) %>').insertAfter($(this).parent());
 					$('#avatar-field').fadeIn();
 				}
 				e.preventDefault();

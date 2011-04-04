@@ -633,6 +633,10 @@ div#box-form-avatar div.confirmation {
   padding:6px;
 }
 
+div#box-form-avatar div#avatar-field label {
+  font-size:16px!important;
+}
+
 div#box-form-avatar div.confirmation ul li {
   float:left;
   margin:4px 12px 0 0;

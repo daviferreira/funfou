@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update]
-  before_filter :correct_user_or_admin, :only => [:edit, :update]
-  before_filter :admin_user,	:only => [:destroy, :toggle_admin, :toggle_active]
+  before_filter :correct_user_or_admin, :only => [:edit, :update, :destroy_avatar]
+  before_filter :admin_user, :only => [:destroy, :toggle_admin, :toggle_active]
   
   def index
     @title = "Usuários"
@@ -63,7 +63,12 @@ class UsersController < ApplicationController
   end
 
 	def destroy_avatar
-
+    @user = User.find_using_slug(params[:id])
+    @user.update_attributes(:avatar => nil)
+    respond_to do |format|
+			format.html { redirect_to usuario_path(@user) }
+			format.js
+		end
 	end
 
   def toggle_admin
