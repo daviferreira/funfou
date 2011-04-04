@@ -3,29 +3,15 @@ class VotesController < ApplicationController
 
   def up    
     question = Question.find_using_slug(params[:id])
-
-    recalculate_answers_scores(question)
     
     answer = Answer.find(params[:answer_id])
-    answer.score = 0 if answer.score.nil?
-    score = answer.score + 1    
-    current_user.vote!(question, answer, 1)
-    answer.update_attributes(:score => score)
-    
-    redirect_to pergunta_path(question)
-  end
-  
-  def down
-    #question = Question.find_using_slug(params[:id])
-
-    #recalculate_answers_scores(question)
-    
-    #answer = Answer.find(params[:answer_id])
-    #answer.score = 0 if answer.score.nil?
-    #score = answer.score - 1    
-    #current_user.vote!(question, answer, -1)
-    #answer.update_attributes(:score => score)
-    
+    unless answer.user_id == current_user.id
+      answer.score = 0 if answer.score.nil?
+      score = answer.score + 1    
+      recalculate_answers_scores(question)
+      current_user.vote!(question, answer, 1)
+      answer.update_attributes(:score => score)
+    end 
     redirect_to pergunta_path(question)
   end
   
@@ -39,7 +25,7 @@ class VotesController < ApplicationController
         answers.each do |answer|
           answers_id += "#{answer.id},"
         end
-        answers_id += "-100"
+        answers_id.sub!(/,$/, '') 
         votes = Vote.where("user_id = #{current_user.id} AND answer_id IN (#{answers_id})")
         unless votes.empty?
           vote = votes.first
