@@ -50,6 +50,10 @@ $(function(){
 		if($(this).val() == $(this).attr('title')) $(this).val('');
 	});
 
+  $('#btn-responder').click(function(){
+    $('textarea#answer_content').focus();
+  });
+
 });
 
 var greetings = function(){

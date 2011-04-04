@@ -695,16 +695,20 @@ div.question h3 a {
 }
 
 div.question span.question-updates {
-  background-color:red;
+  background-color:#f64448;
   color:#fff;
   -moz-border-radius:30px;
-  width:13px;
-  height:13px;
+  border-radius:30px;
+  -webkit-border-radius:30px;
   display:inline-block;
   font-size:12px;
   text-align:center;
-  margin:0 0 0 -12px;
-  padding:5px;
+  border:1px solid #fff;
+  width:26px;
+  height:18px;
+  padding:8px 0 0;
+  float:right;
+  font-weight:900;
 }
 
 div.question p {
