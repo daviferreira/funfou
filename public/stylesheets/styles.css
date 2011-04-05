@@ -77,7 +77,7 @@ h1 {
   color:#000;
   font-family:Helvetica, Arial, sans-serif;
   text-transform:uppercase;
-  letter-spacing:-1.5px;
+  letter-spacing:2px;
   text-shadow:2px 2px 0 #fff;
 }
 
@@ -149,9 +149,9 @@ section#content {
 }
 
 section#content h2 {
-  font-size:42px;
+  font-size:46px;
   color:#000;
-  letter-spacing:-1px;
+  letter-spacing:-2px;
   text-shadow:2px 2px 0 #fff;
   border-bottom:1px dotted #666;
   margin:12px 0 0;
@@ -570,6 +570,47 @@ div#account-info ul#user-options,.box-share .j-button {
 
 /* Conteúdo
 -------------------------------------------------------------- */
+
+div#box-form-contact {
+  margin:24px 0 24px 0;
+}
+
+div#box-form-contact div.field label {
+  display:block;
+}
+
+div#box-form-contact input[type="text"], div#box-form-contact textarea {
+  width:480px;
+  padding:10px;
+}
+
+div#box-form-contact textarea {
+  height:200px;
+}
+
+div#contact {
+  float:right;
+  margin:24px 0 24px 24px;
+  padding:24px;
+  background-color:#f2f2f2;
+  border-radius:12px;
+  -moz-border-radius:12px;
+  -webkit-border-radius:12px;
+  width:424px;
+}
+
+div#contact h3 {
+  font-size:40px;
+  letter-spacing:-2px;
+}
+
+div#contact a{
+  font-size:30px;
+}
+
+div#contact p{
+  margin: 24px 0 24px 0;
+}
 
 div#box-form-answer {
   width:800px;

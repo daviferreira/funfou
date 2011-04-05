@@ -1,21 +1,27 @@
-<h2>Entre em contato!</h2>
-
-<%= form_for(@message) do |f| %>
-  <% render 'shared/error_messages', :object => f.object %>
-  <div class="field">
-    <%= f.label :name, "Seu nome" %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email, "Seu e-mail" %>
-    <%= f.text_field :email%>
-  </div>
-  <div class="field">
-    <%= f.label :content, "Mensagem" %>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Enviar" %>
-  </div>
+<div id="contact">
+  <h3>Via Twitter</h3>
+  <p><%= link_to "@funfando", "http://www.twitter.com/funfando", :target => "_blank" %></p>
+  <h3>Via e-mail</h3>
+  <p>Se preferir envie um e-mail para <strong>contato at funfou.com.br</strong>.</p>
 </div>
-<% end %>
+<div class="box-form" id="box-form-contact">
+  <%= form_for(@message) do |f| %>
+    <% render 'shared/error_messages', :object => f.object %>
+    <div class="field">
+      <%= f.label :name, "Seu nome" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :email, "Seu e-mail" %>
+      <%= f.text_field :email%>
+    </div>
+    <div class="field">
+      <%= f.label :content, "Mensagem" %>
+      <%= f.text_area :content %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Enviar" %>
+    </div>
+  </div>
+  <% end %>
+</div>
