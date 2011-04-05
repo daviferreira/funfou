@@ -1,19 +1,30 @@
-<h2>Funfou!</h2>
+<div id="about">
+  <h3>Uma cópia do Stack Overflow</h3>
 
-<p>Desenvolvido em Ruby on Rails 3</p>
+  <p>Antes que alguém fale alguma coisa, sim, o Funfou é uma cópia, um clone, é totalmente inspirado no site gringo <%= link_to "Stack Overflow", "http://www.stackoverflow.com" %>. E o objetivo dele é esse mesmo, virar o Stack Overflow brasileiro. Para isso contamos com vocês, programadores.</p>
 
-<p>Fonte utilizada Bold: http://www.fontspace.com/diogene/bold</p>
+  <div id="credits">
+    <h3>Créditos e afins</h3>
 
-<p>O ícone da home no breadcrumb:
-http://www.iconfinder.com/icondetails/42257/16/home_house_icon</p>
+    <p>O Funfou foi totalmente desenvolvido em <%= link_to "Ruby on Rails 3", "http://rubyonrails.org/" %>.</p>
 
-<p>Os ícones bem pequenos, nas informações das perguntas (favoritos, respostas, visualizações) http://gentleface.com/free_icon_set.html</p>
+    <p>O logo do site utiliza a fonte Bold: <%= link_to "http://www.fontspace.com/diogene/bold", "http://www.fontspace.com/diogene/bold", :tareget => "_blank"%>.</p>
 
-<p>O tema da interface é Aristo jQuery UI: http://taitems.tumblr.com/post/482577430/introducing-aristo-a-jquery-ui-theme</p>
+    <p>O ícone da home, no breadcrumb, vem do iconset <%= link_to "Wireframe Mono", "http://www.iconfinder.com/icondetails/42257/16/home_house_icon" %></p>
 
-jquery snippet
-http://www.steamdev.com/snippet/
+    <p>Os ícones nas informações das perguntas (favoritos, respostas e visualizações) fazem parte do <%= link_to "Gentleface Toolbar Icon Set", "http://gentleface.com/free_icon_set.html" %></p>
 
-http://levycarneiro.com/2010/03/tag-it-tag-suggestions-editor-and-autocomplete-in-a-jquery-ui-plugin/
+    <p>O tema da interface, principalmente dos botões, é o tema <%= link_to "Aristo para jQuery UI", "http://taitems.tumblr.com/post/482577430/introducing-aristo-a-jquery-ui-theme" %>.</p>
 
-http://tweet.seaofclouds.com/
+    <p>Agora os plugins <%= link_to "jQuery", "http://www.jquery.com" %>:</p>
+
+    <p><strong>jQuery snippet</strong><br />
+    <%= link_to "http://www.steamdev.com/snippet/", "http://www.steamdev.com/snippet/" %></p>
+
+    <p><strong>Tag-it</strong><br />
+    <%= link_to "http://levycarneiro.com/2010/03/tag-it-tag-suggestions-editor-and-autocomplete-in-a-jquery-ui-plugin/", "http://levycarneiro.com/2010/03/tag-it-tag-suggestions-editor-and-autocomplete-in-a-jquery-ui-plugin/" %></p>
+
+    <p><strong>Tweet!</strong><br />
+    <%= link_to "http://tweet.seaofclouds.com/", "http://tweet.seaofclouds.com/" %></p>
+  </div>
+</div>

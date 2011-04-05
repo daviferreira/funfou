@@ -588,7 +588,7 @@ div#box-form-contact textarea {
   height:200px;
 }
 
-div#contact {
+div#contact, div#about div#credits {
   float:right;
   margin:24px 0 24px 24px;
   padding:24px;
@@ -597,6 +597,95 @@ div#contact {
   -moz-border-radius:12px;
   -webkit-border-radius:12px;
   width:424px;
+}
+
+div#about div#credits{
+  float:none;
+  width:960px;
+}
+
+div#teaser div#last-updates {
+  margin:24px 0 24px 0;
+}
+
+div#teaser div#last-updates div.list {
+  float:left;
+  width:329.33px;
+  padding:0 12px 0 12px;
+}
+
+div#teaser div#last-updates div.list h2 {
+  font-size:22px;
+  letter-spacing:-1.5px;
+  color:#333;
+}
+
+div#teaser div#last-updates div.list h2 a{
+  font-size:12px;
+  float:right;
+  letter-spacing:0;
+  margin:8px 0 0;
+  color:#4189bc;
+}
+
+div#teaser div#home-register{
+  width:228px;
+  background-color:#f2f2f2;
+  border-radius:12px;
+  -moz-border-radius:12px;
+  -webkit-border-radius:12px;
+  float:right;
+  text-align:center;
+  padding:24px;
+  border:8px solid #96bddb;
+  margin:24px;
+}
+
+div#teaser div#home-register .j-button{
+  width:100%;
+}
+
+div#teaser div#highlight{
+  background-color:rgb(228,238,247);
+  height:260px;
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, rgb(228,238,247)),
+      color-stop(0.93, rgb(66,138,189))
+  );
+  background-image: -moz-linear-gradient(
+      center bottom,
+      rgb(228,238,247) 0%,
+      rgb(66,138,189) 93%
+  );
+      border-radius:12px;
+      -moz-border-radius:12px;
+      -webkit-border-radius:12px;
+      -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.1) inset, 0 1px 0 rgba(255,255,255,0.2);
+      -moz-box-shadow:0 1px 3px rgba(0,0,0,0.1) inset, 0 1px 0 rgba(255,255,255,0.2);
+      box-shadow:0 1px 3px rgba(0,0,0,0.1) inset, 0 1px 0 rgba(255,255,255,0.2);
+      
+}
+
+div#teaser div#highlight div.inner {
+  padding:24px;
+}
+
+div#teaser div#highlight div.inner h1 {
+  text-shadow:none;
+  color:#fff;
+  text-transform:none;
+  text-shadow:0 0 4px #666;
+}
+
+div#home-register p{
+  color:#666;
+  font-size:12px;
+  text-align:left;
+  line-height:16px;
+  margin:0 0 24px 0;
 }
 
 div#contact h3 {
@@ -610,6 +699,21 @@ div#contact a{
 
 div#contact p{
   margin: 24px 0 24px 0;
+}
+
+div#about {
+  margin:24px 0 24px 0;
+}
+
+div#about h3 {
+  font-size:28px;
+  border-bottom:1px solid #ccc;
+  margin:12px 0 12px 0;
+}
+
+div#about p{
+  margin:12px 0 12px 0;
+  line-height:20px;
 }
 
 div#box-form-answer {
