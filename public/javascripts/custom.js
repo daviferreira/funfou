@@ -4,6 +4,8 @@ $(function(){
 	$('pre').find('br.content-nl').remove();
 
   $('.question .description pre').each(function(){
+    $(this).removeClass('dom');
+    if($(this).attr('class') == "") $(this).addClass("ruby");
     $(this).snippet($(this).attr('class'),{
               style:"vim-dark",
               clipboard:"/flash/ZeroClipboard.swf"
@@ -11,6 +13,8 @@ $(function(){
   });
   
   $('.answer pre').each(function(){
+    $(this).removeClass('dom');
+    if($(this).attr('class') == "") $(this).addClass("ruby");
     $(this).snippet($(this).attr('class'),{
               style:"rand01",
               clipboard:"/flash/ZeroClipboard.swf",
@@ -53,6 +57,10 @@ $(function(){
   $('#btn-responder').click(function(){
     $('textarea#answer_content').focus();
   });
+  
+  $('div.list > ul').each(function(){
+    $(this).find('li:odd').addClass('odd');
+  });
 
 });
 
@@ -63,10 +71,10 @@ var greetings = function(){
   if($('#greetings-time').length > 0) user = $('#greetings-time').html();
 
   var greeting = '';
-  if(c_hour >= 5 && c_hour < 12) greeting = user ? 'Bom dia, '+user+'!' : 'Bom dia!';
-  else if(c_hour >= 12 && c_hour < 18) greeting = user ? 'Boa tarde, '+user+'.' : 'Boa tarde!';
-  else if(c_hour >= 18 && c_hour < 23) greeting = user ? 'Boa noite, '+user+'.' : 'Boa noite!';
-  else greeting = user ? 'Tá sem sono, '+user+'? Dormir é para os fracos!' : 'Tá sem sono?';
+  if(c_hour >= 5 && c_hour < 12) greeting = user ? 'Bom dia, '+user+'!' : 'Bom dia.';
+  else if(c_hour >= 12 && c_hour < 18) greeting = user ? 'Boa tarde, '+user+'.' : 'Boa tarde.';
+  else if(c_hour >= 18 && c_hour < 23) greeting = user ? 'Boa noite, '+user+'.' : 'Boa noite.';
+  else greeting = user ? 'Tá sem sono, '+user+'? Dormir é para os fracos!' : 'Sem sono?';
   
   if(user) $('#greetings-time').html(greeting);
   else $('#greetings-time-guest').html(greeting);

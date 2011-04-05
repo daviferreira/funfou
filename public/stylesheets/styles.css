@@ -271,8 +271,12 @@ div#account-info ul#user-options li {
   padding:0 4px;
 }
 
-div#account-info ul#user-options li.perguntar span.ui-button-text {
+div#account-info ul#user-options li.perguntar a {
   color:#000;
+}
+
+div#account-info ul#user-options li.perguntar a:hover {
+  color:#ff4448;
 }
 
 div#account-info ul#user-options li.omega {
@@ -605,13 +609,85 @@ div#about div#credits{
 }
 
 div#teaser div#last-updates {
-  margin:24px 0 24px 0;
+  margin:0 0 24px 0;
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.12, rgb(255,255,255)),
+      color-stop(0.96, rgb(226, 237, 246))
+  );
+  background-image: -moz-linear-gradient(
+      center bottom,
+      rgb(255,255,255) 12%,
+      rgb(226, 237, 246) 96%
+  );
 }
 
 div#teaser div#last-updates div.list {
   float:left;
   width:329.33px;
-  padding:0 12px 0 12px;
+  padding:12px 12px 0 12px;
+}
+
+div#teaser div#last-updates div.list ul li {
+  font-size:14px;
+  padding:12px;
+  font-weight:900;
+  border-bottom:1px dotted #ccc;
+}
+
+div#teaser div#last-updates div.list ul li span {
+  display:block;
+  font-size:12px;
+  font-weight:normal;
+  margin:4px 0 0;
+}
+
+div#teaser div#last-updates div.list ul.answers li {
+  font-weight:normal;
+  line-height:16px;
+}
+
+div#teaser div#last-updates div.list ul li a {
+  font-weight:900;
+}
+
+div#teaser div#last-updates div.list ul li span.tags{
+  margin:0 0 6px 0;
+}
+
+div#teaser div#last-updates div.list ul li span.tags a {
+  color:#ff4448;
+  border-right:1px dotted #ccc;
+  margin:0 6px 0 0;
+  padding:0 6px 0 0;
+}
+
+div#teaser div#last-updates div.list ul.users {
+  margin:12px 0 0;
+}
+
+div#teaser div#last-updates div.list ul.users li {
+  float:left;
+  border:none;
+  padding:0 0;
+  height:78px;
+  margin:12px;
+}
+
+div#teaser div#last-updates div.list ul.users li img {
+  border:3px solid #E1ECF6;
+  width:78px;
+  height:auto;
+}
+
+div#teaser div#last-updates div.list ul.users li.odd {
+  background:#fff;
+}
+
+div#teaser div#last-updates div.list ul li.odd {
+  background-color:#E1ECF6;
 }
 
 div#teaser div#last-updates div.list h2 {
@@ -629,7 +705,7 @@ div#teaser div#last-updates div.list h2 a{
 }
 
 div#teaser div#home-register{
-  width:228px;
+  width:224px;
   background-color:#f2f2f2;
   border-radius:12px;
   -moz-border-radius:12px;
@@ -660,13 +736,24 @@ div#teaser div#highlight{
       rgb(228,238,247) 0%,
       rgb(66,138,189) 93%
   );
-      border-radius:12px;
-      -moz-border-radius:12px;
-      -webkit-border-radius:12px;
-      -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.1) inset, 0 1px 0 rgba(255,255,255,0.2);
-      -moz-box-shadow:0 1px 3px rgba(0,0,0,0.1) inset, 0 1px 0 rgba(255,255,255,0.2);
-      box-shadow:0 1px 3px rgba(0,0,0,0.1) inset, 0 1px 0 rgba(255,255,255,0.2);
-      
+  -webkit-border-top-left-radius: 12px;
+  -webkit-border-top-right-radius: 12px;
+  -moz-border-radius-topleft: 12px;
+  -moz-border-radius-topright: 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color:#fff;
+  font-size:16px;
+}
+
+div#teaser div#highlight h1 {
+  margin:24px 0 24px 24px;
+}
+
+div#teaser div#highlight p {
+  line-height:26px;
+  font-size:20px;
+  margin-left:24px;
 }
 
 div#teaser div#highlight div.inner {
@@ -726,9 +813,10 @@ div#box-form-answer label {
 
 div#box-form-answer p, div#box-form-question p {
   font-size:12px;
-  line-height:14px;
+  line-height:18px;
   margin:12px 0 12px 0;
   color:#333;
+  width:790px;
 }
 
 div#box-form-answer p strong, div#box-form-question p strong {
@@ -1077,6 +1165,7 @@ h3.answers a,h2.category a {
   font-size:12px;
   color:#1D5123;
   margin:0 0 0 12px;
+  letter-spacing:0;
 }
 
 p.user-info span {
@@ -1320,6 +1409,12 @@ footer {
   color:#f2f2f2;
   width:1060px;
   margin:0 auto;
+  -webkit-border-bottom-right-radius: 12px;
+  -webkit-border-bottom-left-radius: 12px;
+  -moz-border-radius-bottomright: 12px;
+  -moz-border-radius-bottomleft: 12px;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 footer a {

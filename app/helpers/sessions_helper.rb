@@ -48,7 +48,7 @@ module SessionsHelper
   
   def deny_access
     store_location
-    redirect_to login_path, :notice => "Por favor, efetue login para acessar esta página."
+    redirect_to login_path, :notice => "A página que você tentou acessar solicitou seu login."
   end
   
   def redirect_back_or(default)

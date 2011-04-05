@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
 	has_many :votes, :dependent => :destroy
 	has_many :comments, :dependent => :destroy 
 	
-	has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+	has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#" }
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
