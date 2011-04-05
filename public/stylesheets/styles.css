@@ -511,17 +511,18 @@ ul.tagit input[type="text"] {
 }
 
 .form-comment input[type="submit"] {
-  float:right;
-  margin-top:10px;
+  float:left;
+  margin:10px 0 0 10px;
   font-size:13px;
   font-weight:900;
   width:80px;
 }
 
 .form-comment textarea {
-  width:90%;
+  width:400px;
   height:40px;
   margin:0;
+  float:left;
 }
 
 #new_question input[type="text"] {

@@ -4,17 +4,17 @@
 		<%= f.label :title, "Título (140 caracteres)" %>
 		<%= f.text_field :title, :size => 60 %>
 	</div>
+  	<div class="field">
+  		<%= f.label :tags, "Tags (informe de 1 a 3 tags)" %>
+  		<ul id="question_tags"></ul>
+  	</div>
 	<div class="field">
 		<%= f.label :content, "Sua pergunta" %>
 		<%= render "shared/form_instructions" %>
 		<%= f.text_area :content, :cols => 60, :rows => 20 %>
 	</div>
-	<div class="field">
-		<%= f.label :tags, "Tags (informe de 1 a 3 tags)" %>
-		<ul id="question_tags"></ul>
-	</div>
 	<div class="actions">
-		<%= f.submit "Enviar pergunta" %>
+		<%= f.submit "Perguntar" %>
 	</div>
 <% end %>
 <script>

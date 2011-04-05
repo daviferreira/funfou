@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
     @question = Question.find_using_slug(params[:comment][:question_id])
     content = params[:comment][:content]
-    if content.nil? or content.blank? or content == "Deixe um comentário."
+    if content.nil? or content.blank? or content == "Deixe um comentário para esta pergunta." or content == "Deixe um comentário para esta resposta."
       @error = "Cadê o comentário!?"
     else
 		  @comment = current_user.comment!(params[:comment])
