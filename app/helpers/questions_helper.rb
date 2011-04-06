@@ -40,7 +40,7 @@ module QuestionsHelper
 
     unless question.answers.empty?
       question.answers.each do |answer|
-        if answer.created_at > last_login
+        if answer.created_at > last_login and (not signed_in? or current_user != answer.user)
           updates += 1
         end
       end

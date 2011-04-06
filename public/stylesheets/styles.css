@@ -923,6 +923,8 @@ div.question h2 {
 
 div.question h3 a {
   color:#333;
+  display:inline-block;
+  z-index:90;
 }
 
 div.question span.question-updates {
@@ -940,6 +942,9 @@ div.question span.question-updates {
   padding:8px 0 0;
   float:right;
   font-weight:900;
+  margin:-12px 0 0 -18px;
+  z-index:100!important;
+  position:relative;
 }
 
 div.question p {
@@ -1411,6 +1416,13 @@ footer {
   -moz-border-radius-bottomleft: 12px;
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
+}
+
+footer a.feed{
+  margin:0 0 0 12px;
+}
+footer a.feed img{
+  margin:0 6px 0 0;
 }
 
 footer a {
