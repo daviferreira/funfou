@@ -1,0 +1,8 @@
+<% unless @modified_answer.nil? %>
+var score_modified = parseInt($('#score-<%=@modified_answer.id%>').text());
+$('#score-<%=@modified_answer.id%>').text(score_modified-1)
+<% end %>
+<% unless @answer.nil? %>
+var score = parseInt($('#score-<%=@answer.id%>').text());
+$('#score-<%=@answer.id%>').text(score+1);
+<% end %>

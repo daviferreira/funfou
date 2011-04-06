@@ -1,14 +1,16 @@
 <div class="votes" class="clearfix">
   <ul>
-    <li class="value">
+    <li class="value" id="score-<%= answer.id %>">
       <% if answer.score.nil? %>
         0
       <% else %>
         <%= answer.score %>
       <% end %>
     </li>
+    <% if current_user != answer.user %>
     <li class="up">
-      <%= link_to "+", vote_up_path(:answer_id => answer.id) %>
+      <%= link_to "+", vote_up_path(:answer_id => answer.id), :remote => true %>
     </li>
+    <% end %>
   </ul>
 </div>
