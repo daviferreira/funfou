@@ -681,7 +681,7 @@ div#teaser div#last-updates div.list ul.users li img {
 }
 
 div#teaser div#last-updates div.list ul.users li.odd {
-  background:#fff;
+  background:transparent!important;
 }
 
 div#teaser div#last-updates div.list ul li.odd {

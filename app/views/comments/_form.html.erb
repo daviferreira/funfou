@@ -4,8 +4,8 @@
     <%= f.hidden_field :question_id, {:value => question_id} %>
     <%= f.hidden_field :answer_id, {:value => answer_id} %>
     <div class="field">
-      <%= f.text_area :content, :title => "Deixe um comentário para esta "+(answer_id ? "resposta" : "pergunta")+".", :autocomplete => "off" %>
-      <%= f.submit "Comentar" %>
+      <%= f.text_area :content, :title => "Deixe um comentário.", :autocomplete => "off" %>
+      <%= f.submit "Vai!" %>
     </div>
   <% end %>
 </div>
