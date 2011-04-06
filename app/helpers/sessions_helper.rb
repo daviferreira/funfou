@@ -9,6 +9,7 @@ module SessionsHelper
     
   def sign_out
     cookies.delete(:remember_token)
+    session[:return_to] = nil
     self.current_user = nil
   end
   
@@ -38,6 +39,11 @@ module SessionsHelper
   end
   
   def authenticate
+    c = params[:controller]
+    a = params[:action]
+    if c == "questions" and a == "new"
+      session[:return_to] = new_question_path
+    end
     deny_access unless signed_in?
   end
     
