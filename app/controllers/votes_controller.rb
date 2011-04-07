@@ -5,10 +5,7 @@ class VotesController < ApplicationController
     @question = Question.find_using_slug(params[:id])
     @answer = Answer.find(params[:answer_id])
     
-    if @answer.user_id == current_user.id
-      @answer = nil
-      @modified_answer = nil
-    else
+    unless @answer.user_id == current_user.id
       @question.answers.each do |answer|
         answer.votes.each do |vote|
           if vote.user_id == current_user.id
@@ -18,6 +15,7 @@ class VotesController < ApplicationController
         end
       end
       current_user.vote!(@question, @answer, 1)
+      recalculate_answers_scores(@question)
       @answer.reload
     end
     
