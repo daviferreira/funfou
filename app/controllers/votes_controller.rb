@@ -36,6 +36,7 @@ class VotesController < ApplicationController
         unless votes.empty?
           votes.each do |vote|
             @modified_answer = Answer.find(vote.answer_id)
+            @modified_answer.score = 0 if @modified_answer.nil?
             @modified_answer.update_attributes(:score => @modified_answer.score - vote.value)
             vote.destroy
           end
