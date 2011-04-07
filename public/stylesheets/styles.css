@@ -235,6 +235,12 @@ div#user-greetings {
   padding:12px;
 }
 
+.user-url a{
+  border-right:1px dotted #ccc;
+  display:inline-block;
+  padding:0 12px 0 0;
+}
+
 div#account-info {
   background-color:#333;
   font-size:12px;
