@@ -418,9 +418,7 @@ ul.tweet_list li img {
 
 ul.tagit {
   overflow:auto;
-  border-color:#C6C6C6;
-  border-style:dotted;
-  border-width:1px;
+  border:none;
   padding:1px 5px;
 }
 
