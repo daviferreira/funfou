@@ -946,7 +946,7 @@ div.question span.question-updates {
   padding:8px 0 0;
   float:right;
   font-weight:900;
-  margin:-12px 0 0 -18px;
+  margin:-12px 0 0 -4px;
   z-index:100!important;
   position:relative;
 }
