@@ -9,7 +9,7 @@ class VotesController < ApplicationController
       @answer = nil
       @modified_answer = nil
     else
-      @modified_answer = recalculate_answers_scores(@question)
+      recalculate_answers_scores(@question)
       current_user.vote!(@question, @answer, 1)
       @answer.reload
       @answer.update_attributes(:score => @answer.score + 1)
@@ -35,11 +35,11 @@ class VotesController < ApplicationController
         votes = Vote.where("user_id = #{current_user.id} AND answer_id IN (#{answers_id})")
         unless votes.empty?
           votes.each do |vote|
-            @mod = Answer.find(vote.answer_id)
-            @mod.update_attributes(:score => @mod.score - vote.value)
+            @modified_answer = Answer.find(vote.answer_id)
+            @modified_answer.update_attributes(:score => @modified_answer.score - vote.value)
             vote.destroy
           end
-          @mod
+          @modified_answer
         end
       end
     end
