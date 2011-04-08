@@ -49,7 +49,7 @@ module SessionsHelper
     
   def admin_user
     @user = User.find_using_slug(params[:id])
-    redirect_to(root_path) if !signed_in? || !current_user.admin? || current_user?(@user)
+    redirect_to(root_path) if !signed_in? or !current_user.admin? or current_user?(@user)
   end
   
   def deny_access
