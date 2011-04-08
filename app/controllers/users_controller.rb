@@ -148,6 +148,8 @@ class UsersController < ApplicationController
 		else
 			@title = "Redefinir senha"
 		end
+		@crumbs = default_crumb
+		@crumbs.push(:label => "redefinir senha", :path => nil)
 	end
 
 	def save_password
