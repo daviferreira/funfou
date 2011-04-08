@@ -29,11 +29,11 @@ class VotesController < ApplicationController
     
     def recalculate_answers_scores(question)
       question.answers.each do |answer|
-        score = 0
+        @score = 0
         answer.votes.each do |vote|
-          score += 1
+          @score += 1
         end
-        answer.update_attributes(:score => score)
+        answer.update_attributes(:score => @score)
       end
     end
 
