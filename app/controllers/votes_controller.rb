@@ -15,6 +15,7 @@ class VotesController < ApplicationController
         end
       end
       current_user.vote!(@question, @answer, 1)
+      @question.reload
       recalculate_answers_scores(@question)
       @answer.reload
     end
