@@ -29,7 +29,7 @@ module UsersHelper
     favoritos = user.favorites.count
     
     if perguntas == 1
-      txt += " já fez somente 1 pergunta e "
+      txt += " fez somente 1 pergunta e "
     elsif perguntas > 1
       txt += " já fez #{perguntas} perguntas e "
     else
