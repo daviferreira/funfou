@@ -6,7 +6,7 @@ atom_feed do |feed|
     next if question.updated_at.blank?  
       feed.entry(question, :url => pergunta_path(question)) do |entry|
         entry.title(question.title)  
-        entry.content(question.content, :type => 'html')
+        entry.content(question.content.gsub("\n", "<br />"), :type => 'html')
         entry.updated(question.updated_at.strftime("%Y-%m-dT%H:%M:%SZ"))
         entry.author do |author|  
           author.name(User.find(question.user_id).name)
