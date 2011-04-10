@@ -194,13 +194,13 @@ class QuestionsController < ApplicationController
 				if keywords.nil?
 					questions = Question.all
 				else
-					questions = Question.where("title LIKE ? OR content LIKE ?", keywords, keywords)
+					questions = Question.where("lower(title) LIKE ? OR lower(content) LIKE ?", keywords.downcase, keywords.downcase)
 				end
 			else
 				if keywords.nil?
 					questions = Question.published
 				else
-					questions = Question.published.where("title LIKE ? OR content LIKE ?", keywords, keywords)
+					questions = Question.published.where("lower(title) LIKE ? OR lower(content) LIKE ?", keywords.downcase, keywords.downcase)
 				end
 			end
 
