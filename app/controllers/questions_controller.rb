@@ -123,9 +123,9 @@ class QuestionsController < ApplicationController
 		
 		def add_visualization(question_id)
 			@client_ip = request.remote_ip
+			@agent = request.env['HTTP_USER_AGENT'].downcase 
 			if Visualization.where("question_id = ? AND ip_address = ?", 
-														 question_id, @client_ip).blank?
-				@agent = request.env['HTTP_USER_AGENT'].downcase 
+														 question_id, @client_ip).blank? and not @agent.include?("facebook")
 				Visualization.create(:question_id => question_id,
 														 :ip_address => @client_ip,
 														 :browser_agent => @agent)
