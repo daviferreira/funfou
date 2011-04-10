@@ -534,7 +534,7 @@ ul.tagit input[type="text"] {
 
 #new_question textarea {
   width:784px;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family:'Droid Sans Mono', monospace;
   padding:8px;
 }
 
