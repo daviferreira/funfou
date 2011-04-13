@@ -667,21 +667,19 @@ div#teaser div#last-updates div.list ul li span.tags a {
 }
 
 div#teaser div#last-updates div.list ul.users {
-  margin:12px 0 0;
+  margin:0 0 0 6px;
 }
 
 div#teaser div#last-updates div.list ul.users li {
   float:left;
   border:none;
   padding:0 0;
-  height:78px;
-  margin:12px;
+  margin:6px 0 6px 0;
 }
 
 div#teaser div#last-updates div.list ul.users li img {
   border:3px solid #E1ECF6;
-  width:78px;
-  height:auto;
+  margin:0 3px 0 3px;
 }
 
 div#teaser div#last-updates div.list ul.users li.odd {
