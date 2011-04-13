@@ -183,6 +183,9 @@
             var user_url = "http://"+s.twitter_url+"/"+screen_name;
             var avatar_size = s.avatar_size;
             var avatar_url = item.profile_image_url || item.user.profile_image_url;
+            if(avatar_url.indexOf('default') > -1)
+              avatar_url = "/images/avatar.png";  
+
             var tweet_url = "http://"+s.twitter_url+"/"+screen_name+"/status/"+item.id_str;
             var retweet = (typeof(item.retweeted_status) != 'undefined');
             var retweeted_screen_name = retweet ? item.retweeted_status.user.screen_name : null;
