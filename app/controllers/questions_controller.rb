@@ -41,6 +41,7 @@ class QuestionsController < ApplicationController
 		add_visualization(@question.id)
 		@question.content = @question.content.gsub("<pre>", "<pre class=\"dom\">")
 		@title = @question.title
+    @meta_description = @question.title
 		@user = User.find(@question.user_id)
 		@answers = @question.answers.published
 		if signed_in?
