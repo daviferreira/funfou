@@ -163,7 +163,7 @@ class QuestionsController < ApplicationController
 					tag.destroy
 				end
 			end
-		  unless tags.empty?
+		  unless tags.nil or tags.empty?
 		    tags.each do |tag|
 		      @category = Category.find_by_name(tag)
 		      if @category.nil?		        
