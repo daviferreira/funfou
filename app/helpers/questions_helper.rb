@@ -15,7 +15,7 @@ module QuestionsHelper
 	  tags = ""
 	  last = categories.last
 	  categories.each do |category, last|
-	    tags += "\"#{category.name}\","
+	    tags += "\"#{category.name}\"," unless category.questions.empty?
     end
     raw(tags.sub(/,$/, ""))
   end
