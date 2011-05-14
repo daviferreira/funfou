@@ -1424,6 +1424,7 @@ footer {
   -moz-border-radius-bottomleft: 12px;
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
+	margin-bottom:12px;
 }
 
 footer a.feed{
