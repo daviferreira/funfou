@@ -28,7 +28,7 @@ describe AnswersController do
 
   end
  
-  describe "PUT 'update'" do
+  describe "POST 'update'" do
     
     describe "as a non-signed-in user" do
       it "should deny access" do
