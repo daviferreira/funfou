@@ -8,6 +8,8 @@ gem 'mail', '2.2.15'
 gem 'slugged'
 gem 'paperclip'
 gem 'aws-s3'
+gem 'omniauth'
+gem 'nifty-generators' 
 
 group :development do
   gem 'rspec-rails', '2.5.0'
@@ -45,3 +47,4 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "mocha", :group => :test

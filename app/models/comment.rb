@@ -1,10 +1,10 @@
 # == Schema Information
-# Schema version: 20110308151603
+# Schema version: 20110402151912
 #
 # Table name: comments
 #
 #  id          :integer         not null, primary key
-#  comment     :text
+#  content     :text
 #  user_id     :integer
 #  question_id :integer
 #  answer_id   :integer

@@ -1,0 +1,22 @@
+# == Schema Information
+# Schema version: 20110514140045
+#
+# Table name: authentications
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  provider   :string(255)
+#  uid        :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+one:
+  user_id: 1
+  provider: MyString
+  uid: MyString
+
+two:
+  user_id: 1
+  provider: MyString
+  uid: MyString

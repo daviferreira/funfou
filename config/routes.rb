@@ -1,5 +1,7 @@
 Funfou::Application.routes.draw do
 
+  resources :authentications
+
 	resources :users, :only => [:create, :update, :destroy]
 	resources :sessions, :only => [:create, :destroy]
 	resources :questions, :only => [:create, :update, :destroy]
@@ -54,5 +56,7 @@ Funfou::Application.routes.draw do
 	
 	match "/categorias",			:to => "categories#index", :as => :categorias
 	match "/categoria/:id",   :to => "categories#show", :as => :categoria
+	
+	match '/auth/:provider/callback' => 'authentications#create'
 
 end
