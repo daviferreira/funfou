@@ -61,6 +61,43 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed." 
     redirect_to usuarios_path
   end
+  
+  def complete
+    @user = User.new
+    @crumbs = default_crumb
+	  @crumbs.push({:label => "complete seu cadastro", :path => completar_path})
+  end
+
+	def complete_authentication
+	  user = params["user"]
+	  omniauth = session["omniauth"]
+	  if not user["email"] =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/
+      flash[:error] = "E-mail inválido."
+    elsif User.find_by_email(user["email"])
+      flash[:error] = "O e-mail #{user["email"]} já está cadastrado no Funfou."
+    end
+    if flash[:error]
+      redirect_to completar_path
+    end
+    url = ""
+    unless omniauth["user_info"]["urls"].nil?
+      url = omniauth["user_info"]["urls"]["Website"]
+    end
+    pass = (0...8).map{65.+(rand(25)).chr}.join
+    if(omniauth['provider'] == "linked_in")
+      name = omniauth["user_info"][:name]
+    else
+      name = omniauth["user_info"]["name"]
+    end
+    user = User.create!(:name => name, :email => user["email"], 
+                 :password => pass, :site => url ) 
+    user.toggle!(:active)
+    user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    sign_in user
+    redirect_to authentications_url
+
+  end
+
 
 	def destroy_avatar
     @user = User.find_using_slug(params[:id])
@@ -70,7 +107,7 @@ class UsersController < ApplicationController
 			format.js
 		end
 	end
-
+		
   def toggle_admin
     @user = User.find_using_slug(params[:id])
     @user.toggle!(:admin)

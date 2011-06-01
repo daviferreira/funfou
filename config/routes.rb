@@ -58,5 +58,7 @@ Funfou::Application.routes.draw do
 	match "/categoria/:id",   :to => "categories#show", :as => :categoria
 	
 	match '/auth/:provider/callback' => 'authentications#create'
-
+	match '/completar_cadastro',  :to => "users#complete", :as => :completar
+	match '/completar_autenticacao', :to => "users#complete_authentication", :as => :complete_authentication
+	
 end

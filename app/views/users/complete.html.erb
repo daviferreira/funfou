@@ -1,0 +1,18 @@
+<div class="box-form">
+  <%= form_for @user, :url => complete_authentication_path(@user) do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+
+    <p class="info">Por favor, preencha os campos abaixo para finalizar sua autenticação:</p>
+    <br /><br />
+    
+    <div class="field">
+      <%= f.label :email, "E-mail" %><br />
+      <%= f.text_field :email %>
+  	</div>
+    
+    <div class="actions">
+      <%= f.submit "Completar" %>
+    </div>
+
+  <% end %>
+</div>

@@ -10,6 +10,7 @@ gem 'paperclip'
 gem 'aws-s3'
 gem 'omniauth'
 gem 'nifty-generators' 
+gem 'mongrel'
 
 group :development do
   gem 'rspec-rails', '2.5.0'
