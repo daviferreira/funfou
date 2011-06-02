@@ -1,16 +1,15 @@
 module ApplicationHelper
 
 	def title
-		base_title = "Funfou"
 		if @title.nil?
-			@title = "Perguntas e respostas - de programador para programador"
+			@title = "Funfou.com.br - Perguntas e respostas sobre PHP, Ruby on Rails, Python, Java, HTML, CSS, jQuery, ASP, .net"
 		end	
-		"#{base_title} | #{@title}"
+		"#{@title}"
 	end
 
   def meta_description
     if @meta_description.nil?
-      @meta_description = "Site de perguntas e respostas para programadores e profissionais da área de TI."
+      @meta_description = "Perguntas e respostas sobre programação: PHP, MySQL, Ruby on Rails, Python, Java, HTML, CSS, jQuery, ASP, .net."
     end
     @meta_description
   end

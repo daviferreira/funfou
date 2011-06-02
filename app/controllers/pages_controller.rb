@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   def home
-		@title = "Página inicial"
 		@questions = Question.all
 		if signed_in?
 			if current_user.admin?
@@ -35,7 +34,7 @@ class PagesController < ApplicationController
 	end
 
   def about
-		@title = "Sobre"
+		@title = "Sobre o Funfou"
 		@crumbs = [{:label => "sobre o funfou", :path => about_path}]
   end
 

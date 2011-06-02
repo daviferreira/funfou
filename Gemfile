@@ -11,6 +11,7 @@ gem 'aws-s3'
 gem 'omniauth'
 gem 'nifty-generators' 
 gem 'mongrel'
+gem 'sitemap_generator'
 
 group :development do
   gem 'rspec-rails', '2.5.0'

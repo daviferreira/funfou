@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
 	def index
 		all_categories = Category.all
 		@categories = []
+		@title = "Todas as categorias - Perguntas e respostas sobre PHP, Ruby on Rails, Python, Java, HTML, CSS, jQuery, ASP, .net."
 		unless all_categories.empty?
 			all_categories.each do |category|
 				if signed_in? and current_user.admin?
@@ -20,7 +21,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find_using_slug(params[:id])
-    @title = @category.name
+    @title = "Perguntas e respostas sobre #{@category.name} - Funfou"
+    @meta_description = "Aqui você encontra perguntas e respostas de programadores #{@category.name}. Tire todas as suas dúvidas em #{@category.name}!";
     if signed_in? and current_user.admin?
       @questions = @category.questions
     else

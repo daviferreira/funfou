@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
 	def index
 	  @per_page = 20
-		@title = "Perguntas"
+		@title = "Perguntas sobre PHP, Ruby on Rails, Python, Java, HTML, CSS, jQuery, ASP, .net"
 		@questions = index_with_order
 		@questions = @questions.paginate(:page => params[:page], :per_page => @per_page)
 		
@@ -40,8 +40,12 @@ class QuestionsController < ApplicationController
 	  end
 		add_visualization(@question.id)
 		@question.content = @question.content.gsub("<pre>", "<pre class=\"dom\">")
-		@title = @question.title
-    @meta_description = @question.title
+		@title = @question.title + " - " + @question.tags.first.category.name
+    @meta_description = @question.title + " " + @question.content.gsub(/<[^>]*>/ui,'').gsub(/[\n\r(  )]/ui, ' ').slice(0..60) + ". Pergunta sobre: "
+    @question.tags.each do |t|
+      @meta_description += t.category.name + ", "
+    end
+    @meta_description.sub(/, $/, '.')
 		@user = User.find(@question.user_id)
 		@answers = @question.answers.published
 		if signed_in?
