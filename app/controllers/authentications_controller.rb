@@ -6,12 +6,12 @@ class AuthenticationsController < ApplicationController
     
     if authentication
       sign_in authentication.user
-      flash[:notice] = "Signed in successfully."
+      flash[:notice] = "Login efetuado com sucesso."
       redirect_back_or usuario_path(authentication.user)
     elsif signed_in?
       current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
-      flash[:notice] = "Authentication successful."
-      redirect_to authentications_url
+      flash[:notice] = "Sua conta foi autenticada com sucesso."
+      redirect_to usuario_path(current_user)
     elsif omniauth['provider'] == "facebook" || omniauth['provider'] == "google_apps"
       if omniauth['provider'] == "facebook"
         data = omniauth['extra']['user_hash']
@@ -51,6 +51,6 @@ class AuthenticationsController < ApplicationController
   def destroy
     @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
-    redirect_to authentications_url, :notice => "Successfully destroyed authentication."
+    redirect_to usuario_path(current_user), :notice => "Autenticação removida com sucesso."
   end
 end
