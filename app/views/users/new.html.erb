@@ -5,7 +5,7 @@
 	<%= render "form" %>
 	<p class="member-login">Já é cadastrado? <%= link_to "Efetue login!", login_path %></p>
 	<p><strong>Ou utilize um dos serviços abaixo para criar sua conta ou efetuar login:</strong></p>
-  <%= render 'authentications/services' %>
+  <%= omniauth_providers %>
 </div>
 
 <script>

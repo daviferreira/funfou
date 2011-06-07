@@ -1,7 +1,4 @@
 class AuthenticationsController < ApplicationController
-  def index
-    @authentications = current_user.authentications if signed_in?
-  end
 
   def create
     omniauth = request.env["omniauth.auth"]
@@ -35,7 +32,7 @@ class AuthenticationsController < ApplicationController
         sign_in user
       end
       user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
-      redirect_to authentications_url
+      redirect_to usuario_path(user)
     else
       user = User.new
       user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])

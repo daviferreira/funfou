@@ -20,7 +20,25 @@
   	  <span class="round user-bio user-info"><strong><%= @user.bio %></strong></span>
   	<% end %>
 	  <%= stats_text(@user) %>
-	</p> 
+	</p>
+	
+	<% if @user == current_user and not @user.authentications.empty? %> 
+  <div class="authentications clearfix">
+    <p><strong>Você pode efetuar login no Funfou utilizando os seguintes serviços:</strong></p>
+    <% for authentication in @user.authentications %>
+      <div class="authentication">
+        <%= image_tag "#{authentication.provider}_32.png", :size => "32x32" %>
+        <div class="provider"><%= authentication.provider.titleize %></div>
+        <div class="uid"><%= authentication.uid %></div>
+        <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
+      </div>
+    <% end %>
+    <% if @user.authentications.length != 5 %>
+    <p><strong>Adicionar outro serviço:</strong></p>
+    <%= omniauth_providers %>
+    <% end %>
+  </div>
+	<% end %>
 	
 </div>
 
