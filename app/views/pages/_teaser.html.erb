@@ -28,7 +28,7 @@
           		<% end %>
               </span>
           	<% end %>
-          <%= link_to question.title, pergunta_path(question) %><span>Enviada por <%= link_to first_name(question.user.name), usuario_path(question.user) %> há <%= time_ago_in_words(question.created_at) %> atrás</span></li>
+          <%= link_to question.title, pergunta_path(question) %><span>Enviada por <%= link_to first_name(question.user.name), usuario_path(question.user) %> há <%= time_ago_in_words(question.created_at) %></span></li>
         <% end %>
         </ul>
       <% end %>
@@ -47,7 +47,7 @@
         		<% end %>
             </span>
         	<% end %>
-        	<%= link_to first_name(answer.user.name), usuario_path(answer.user) %> respondeu a pergunta <%= link_to answer.question.title, pergunta_path(answer.question) + "#answer_#{answer.id}" %> há <%= time_ago_in_words(answer.created_at) %> atrás</li>
+        	<%= link_to first_name(answer.user.name), usuario_path(answer.user) %> respondeu a pergunta <%= link_to answer.question.title, pergunta_path(answer.question) + "#answer_#{answer.id}" %> há <%= time_ago_in_words(answer.created_at) %></li>
         <% end %>
         </ul>
       <% end %>        

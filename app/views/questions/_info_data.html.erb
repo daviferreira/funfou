@@ -1,6 +1,6 @@
 <ul class="meta clearfix">
 	<li class="alpha">
-	  Enviada há <%= time_ago_in_words(question.created_at) %> atrás por <%= author_name(question.user_id) %>.</li>
+	  Enviada há <%= time_ago_in_words(question.created_at) %> por <%= author_name(question.user_id) %>.</li>
 	<li class="view"><%= meta_in_words(question.visualizations.count, {
 												:singular => 'visualização', 
 												:plural => 'visualizações'}) %></li>

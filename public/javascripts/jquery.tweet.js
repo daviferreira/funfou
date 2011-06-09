@@ -99,19 +99,19 @@
       var delta = parseInt((relative_to.getTime() - date) / 1000, 10);
       var r = '';
       if (delta < 60) {
-        r = delta + ' segundos atrás';
+        r = delta + ' segundos';
       } else if(delta < 120) {
-        r = 'um minuto atrás';
+        r = 'um minuto';
       } else if(delta < (45*60)) {
-        r = (parseInt(delta / 60, 10)).toString() + ' minutos atrás';
+        r = (parseInt(delta / 60, 10)).toString() + ' minutos';
       } else if(delta < (2*60*60)) {
-        r = 'uma hora atrás';
+        r = 'uma hora';
       } else if(delta < (24*60*60)) {
-        r = '' + (parseInt(delta / 3600, 10)).toString() + ' horas atrás';
+        r = '' + (parseInt(delta / 3600, 10)).toString() + ' horas';
       } else if(delta < (48*60*60)) {
-        r = 'um dia atrás';
+        r = 'um dia';
       } else {
-        r = (parseInt(delta / 86400, 10)).toString() + ' dias atrás';
+        r = (parseInt(delta / 86400, 10)).toString() + ' dias';
       }
       return 'há ' + r;
     }

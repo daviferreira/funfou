@@ -4,7 +4,7 @@
   </div>
   <div class="comment-content">
     <span class="comment-info">
-    Há <%= time_ago_in_words(comment.created_at) %> atrás...
+    Há <%= time_ago_in_words(comment.created_at) %>...
     </span>
     <span class="comment-text">
       <%= auto_link(sanitize(comment.content.gsub(/\n/, "<br />"), :tags => %w(br))) %>
