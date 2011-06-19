@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddPublishedToAnswers < ActiveRecord::Migration
   def self.up
     add_column :answers, :published, :boolean

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module QuestionsHelper 
   
 	def meta_in_words(total, forms)

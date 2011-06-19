@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module UsersHelper
   
   def first_name(name)

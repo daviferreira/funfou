@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAvatarUploadedAtToUsers < ActiveRecord::Migration
   def self.up
     add_column :users, :avatar_uploaded_at, :datetime

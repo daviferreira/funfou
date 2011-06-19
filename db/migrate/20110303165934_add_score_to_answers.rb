@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddScoreToAnswers < ActiveRecord::Migration
   def self.up
     add_column :answers, :score, :integer

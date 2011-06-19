@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AnswersController < ApplicationController
 	before_filter :authenticate, :only => [:create, :destroy, :edit, :update]
 	before_filter :admin_user, :only => [:destroy, :edit, :update]

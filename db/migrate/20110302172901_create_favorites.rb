@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateFavorites < ActiveRecord::Migration
   def self.up
     create_table :favorites do |t|

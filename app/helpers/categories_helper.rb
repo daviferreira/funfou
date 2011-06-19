@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module CategoriesHelper
 	def total_questions(category)
 		if signed_in? and current_user.admin?

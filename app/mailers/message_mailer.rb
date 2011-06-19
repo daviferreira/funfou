@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class MessageMailer < ActionMailer::Base
   default :to => "contato@funfou.com.br"
   

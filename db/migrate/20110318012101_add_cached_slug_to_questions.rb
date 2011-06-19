@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCachedSlugToQuestions < ActiveRecord::Migration
   
   def self.up

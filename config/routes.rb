@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Funfou::Application.routes.draw do
 
   resources :authentications
