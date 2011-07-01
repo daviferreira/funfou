@@ -30,7 +30,7 @@ GEM
       activesupport (= 3.0.4)
     activesupport (3.0.4)
     addressable (2.2.2)
-    annotate-models (1.0.4)
+    annotate (2.4.0)
     arel (2.0.9)
     aws-s3 (0.6.2)
       builder
@@ -174,7 +174,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
-  annotate-models (= 1.0.4)
+  annotate
   aws-s3
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)
