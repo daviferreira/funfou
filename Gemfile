@@ -10,7 +10,7 @@ gem 'paperclip'
 gem 'aws-s3'
 gem 'omniauth'
 gem 'nifty-generators' 
-gem 'mongrel' 
+gem "mongrel", '>= 1.2.0.pre2' 
 gem 'sitemap_generator'
 
 group :development do

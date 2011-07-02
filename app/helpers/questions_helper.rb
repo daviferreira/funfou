@@ -79,19 +79,18 @@ module QuestionsHelper
   
   def sanitize_pre(content)
 		unless content.nil?
-    	r1 = /&lt;pre class=&quot;([a-z_\-]+)&quot;&gt;/i
-    	r2 = /&lt;\/pre&gt;/i
-			content = raw(h(content))
-			unless content.gsub(r1, '<pre class="\1">').nil?
-				content.gsub!(r1, '<pre class="\1">') 
-				content.gsub!(r2, '</pre>')
-				content = sanitize content, :tags => %w(pre)
-			end
-			unless content.gsub(/\swww\./, ' http://www.').nil?
-				content.gsub!(/\swww\./, ' http://www.').to_s
-				content.gsub!(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, '<a href="\1" target="_blank">\1</a>')
-			end
-			content
+      r1 = /&lt;pre class=&quot;([a-z_\-]+)&quot;&gt;/i
+      r2 = /&lt;\/pre&gt;/i
+      content = h(content)
+      unless content.gsub(r1, '<pre class="\1">').nil?
+      	content = content.gsub(r1, '<pre class="\1">').to_s
+      	content = content.gsub(r2, '</pre>').to_s
+      	content = sanitize content, :tags => %w(pre)
+      end
+      unless content.gsub(/\swww\./, ' http://www.').nil?
+      	content = content.gsub(/\swww\./, ' http://www.').to_s
+      	content = content.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, '<a href="\1" target="_blank">\1</a>').to_s
+      end
 		end
   end
   

@@ -18,7 +18,7 @@
 
 	<div class="description">
 	  <article>
-		  <%= auto_link(sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />")) %>
+		  <%= raw(auto_link(sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />"))) %>
 		</article>
 
     <div class="box-share">
