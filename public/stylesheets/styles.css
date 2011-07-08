@@ -1357,6 +1357,10 @@ div.box-form input[type="submit"]:hover {
   color:#f64448;
 }
 
+div#login-form{
+  height:390px;
+}
+
 div#login-form input[type="text"],div#login-form input[type="password"],div#password-form input[type="text"] {
   width:400px;
   font-size:14px;
