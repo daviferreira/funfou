@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 Funfou::Application.routes.draw do
 
-  resources :authentications
+  resources :authentications, :only => [:create, :destroy]
 
 	resources :users, :only => [:create, :update, :destroy]
 	resources :sessions, :only => [:create, :destroy]
