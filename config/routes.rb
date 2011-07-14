@@ -31,7 +31,7 @@ Funfou::Application.routes.draw do
 	match "/contato",	      :to	=> "pages#contact", :as => :contact
 
 	match "/usuario/senha",		          :to => "users#new_password", :as => :new_password
-	match "/instrucoes",                :to => "users#password_instructions", :as => :password_instructions
+	post "/instrucoes",                :to => "users#password_instructions", :as => :password_instructions
 	match "/senha/:salt",			          :to => "users#reset_password", :as => :reset_password
 	match "/usuario/nova_senha",        :to => "users#save_password", :as => :save_password
 	match "/usuario/:id/delete_avatar", :to => "users#destroy_avatar", :as => :delete_user_avatar
