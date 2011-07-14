@@ -350,5 +350,33 @@ describe UsersController do
 
   end
 
+  describe "GET 'reset_password'" do
+
+    describe "for invalid user salts" do
+      it "should redirect to to the root path" do
+        get :reset_password, :salt => "invalid"
+        response.should redirect_to root_path
+      end
+    end
+
+    describe "for valid user salts" do
+
+      before(:each) do
+        @user = Factory(:user)
+      end
+
+      it "should render new password form" do
+        get :reset_password, :salt => @user.salt
+        response.should render_template('reset_password')
+      end
+
+      it "should have the right title" do
+        get :reset_password, :salt => @user.salt
+        response.should have_selector("title", :content => "Redefinir senha")
+      end
+
+    end
+
+  end
 
 end

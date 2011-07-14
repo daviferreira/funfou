@@ -5,6 +5,7 @@ Factory.define :user do |user|
   user.password              	"foobar"
   user.password_confirmation 	"foobar"
 	user.cached_slug						"michael-hartl"
+  user.salt                   "salt"
 end
 
 Factory.sequence :email do |n|
