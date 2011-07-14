@@ -319,5 +319,36 @@ describe UsersController do
       end
     end
   end
-  
+
+  describe "POST 'password_instructions'" do
+
+    describe "for valid users" do
+      
+      before(:each) do
+        @user = Factory(:user)
+        test_sign_in(@user)
+      end
+
+      it "should send instructions" do
+        # mailer test? 
+      end
+
+      it "should redirect to new password path" do
+        post :password_instructions, :user => @user
+        response.should redirect_to new_password_path 
+      end
+
+    end
+
+    describe "for invalid users" do
+      it "should render the new_password page" do
+        attr = { :email => "" }
+        post :password_instructions, :user => attr 
+        response.should redirect_to new_password_path
+      end
+    end
+
+  end
+
+
 end
