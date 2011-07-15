@@ -16,7 +16,7 @@ gem 'sitemap_generator'
 group :development do
   gem 'rspec-rails'
   gem 'annotate'
-  gem 'faker'
+  gem 'faker', '>= 0.9.5'
 end
 
 group :test do

@@ -3,6 +3,7 @@ namespace :db do
   task :populate => :environment do
 		require 'faker'
 		Rake::Task['db:reset'].invoke
+    I18n.reload!
     make_users
     make_questions
   end

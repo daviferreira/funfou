@@ -186,7 +186,7 @@ DEPENDENCIES
   annotate
   aws-s3
   factory_girl_rails
-  faker
+  faker (>= 0.9.5)
   mail
   mocha
   mongrel (>= 1.2.0.pre2)
