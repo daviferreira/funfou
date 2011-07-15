@@ -167,7 +167,7 @@ class UsersController < ApplicationController
       redirect_to new_password_path
     else
       UserMailer.password_instructions(user, request.host_with_port).deliver
-      flash[:success] = "As instruções foram enviadas para o e-mail #{email}."
+      flash[:success] = "As instruções foram enviadas para o e-mail #{user.email}."
       redirect_to new_password_path
     end
   end

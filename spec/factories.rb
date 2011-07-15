@@ -6,6 +6,7 @@ Factory.define :user do |user|
   user.password_confirmation 	"foobar"
 	user.cached_slug						"michael-hartl"
   user.salt                   "salt"
+  user.active                 true
 end
 
 Factory.sequence :email do |n|

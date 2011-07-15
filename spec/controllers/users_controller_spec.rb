@@ -33,7 +33,7 @@ describe UsersController do
       
       it "should have an element for each user" do
         get :index
-        User.paginate(:page => 1).each do |user|
+        User.all.paginate(:page => 1).each do |user|
           response.should have_selector('li', :content => user.name)
         end
       end
@@ -378,5 +378,38 @@ describe UsersController do
     end
 
   end
+
+  describe "POST 'change_password'" do
+    before(:each) do
+      @user = Factory(:user)
+    end
+
+    describe "failure" do
+
+      it "should redirect to reset password" do
+        post :save_password, :user => {:password => "short", :password_confirmation => "short", :salt => @user.salt}
+        response.should redirect_to reset_password_path(@user.salt) 
+        flash[:error].should =~ /mínimo/i
+      end
+
+    end
+
+    describe "success" do
+  
+      it "should sign the user in" do
+        post :save_password, :user => {:password => "123change", :password_confirmation => "123change", :salt => @user.salt}
+        controller.should be_signed_in
+      end
+
+      it "should redirect to the user profile" do
+        post :save_password, :user => {:password => "123change", :password_confirmation => "123change", :salt => @user.salt}
+        response.should redirect_to usuario_path @user 
+        flash[:success].should =~ /redefinida/i
+      end
+
+    end
+
+  end
+
 
 end
