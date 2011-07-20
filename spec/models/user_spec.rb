@@ -133,5 +133,40 @@ describe User do
       @user.should be_admin
     end
   end
+  
+  describe "active attribute" do
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    it "should respond to active" do
+      @user.should respond_to(:active)
+    end
+
+    it "should be inactive by default" do
+      @user.should_not be_active
+    end
+
+    it "should be convertible to active" do
+      @user.toggle!(:active)
+      @user.should be_active
+    end
+  end
+
+  describe "faving" do
+
+  end
+
+  describe "commenting" do
+
+  end
+
+  describe "answering" do
+
+  end
+
+  describe "voting" do
+
+  end
 
 end

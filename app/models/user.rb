@@ -95,20 +95,20 @@ class User < ActiveRecord::Base
    (user && user.salt == cookie_salt) ? user : nil
  end
 
-	def favorite?(question)
+	def favorite!(question)
+		favorites.create!(:question_id => question.id)
+	end
+
+  def favorite?(question)
 		favorites.find_by_question_id(question)
 	end
 
-	def favorite!(question)
-		favorites.create!(:question_id => question.id)
+  def unfavorite!(question)
+		favorites.find_by_question_id(question).destroy
 	end
 	
 	def comment!(params)
 		comments.create!(params)
-	end
-
-	def unfavorite!(question)
-		favorites.find_by_question_id(question).destroy
 	end
 
 	def answer!(question, content)
