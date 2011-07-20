@@ -3,9 +3,7 @@ class AuthenticationsController < ApplicationController
 
   def create
     omniauth = request.env["omniauth.auth"]
-    
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], "#{omniauth['uid']}")
-    
     if authentication
       sign_in authentication.user
       flash[:notice] = "Login efetuado com sucesso."
@@ -14,12 +12,8 @@ class AuthenticationsController < ApplicationController
       current_user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:notice] = "Sua conta foi autenticada com sucesso."
       redirect_to usuario_path(current_user)
-    elsif omniauth['provider'] == "facebook" || omniauth['provider'] == "google_apps"
-      if omniauth['provider'] == "facebook"
-        data = omniauth['extra']['user_hash']
-      else
-        data = omniauth['user_info']
-      end
+    elsif omniauth['user_info']['email']
+      data = omniauth['user_info']
       url = ""
       unless omniauth["user_info"]["urls"].nil?
         url = omniauth["user_info"]["urls"]["Website"]
@@ -38,15 +32,8 @@ class AuthenticationsController < ApplicationController
     else
       user = User.new
       user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
-      if user.save
-        sign_in user
-        flash[:notice] = "Signed in successfully."
-        redirect_back_or usuario_path(user)
-      else
-        #render :text => omniauth.to_yaml
-        session[:omniauth] = omniauth.except('extra')
-        redirect_to completar_path
-      end
+      session[:omniauth] = omniauth.except('extra')
+      redirect_to completar_path
     end
   end
 
