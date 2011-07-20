@@ -7,4 +7,6 @@ doc/
 *~
 .DS_Store
 public/system/avatars/
-webrat.log
+webrat*
+webrat-*
+public/sitemap*
