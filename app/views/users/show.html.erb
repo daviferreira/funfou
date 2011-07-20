@@ -23,6 +23,7 @@
 	</p>
 	
   <% if @user == current_user %> 
+
     <% unless @user.authentications.empty? %>
       <div class="authentications clearfix">
         <p><strong>Você pode efetuar login no Funfou utilizando os seguintes serviços:</strong></p>
@@ -34,12 +35,13 @@
           </div>
         <% end %>
       </div>
-      <% end %>
     <% end %>	
+
     <% if @user.authentications.length != 5 %>
       <p><strong>Adicionar outro serviço:</strong></p>
       <%= omniauth_providers %>
     <% end %>
+
   <% end %>
 </div>
 
