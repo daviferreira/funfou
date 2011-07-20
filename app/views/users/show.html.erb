@@ -32,13 +32,14 @@
         <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
       </div>
     <% end %>
-    <% if @user.authentications.length != 5 %>
-    <p><strong>Adicionar outro serviço:</strong></p>
-    <%= omniauth_providers %>
-    <% end %>
-  </div>
+   </div>
 	<% end %>
 	
+  <% if @user.authentications.length != 5 %>
+    <p><strong>Adicionar outro serviço:</strong></p>
+    <%= omniauth_providers %>
+  <% end %>
+
 </div>
 
 
