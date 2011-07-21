@@ -79,24 +79,24 @@ class UsersController < ApplicationController
     end
     if flash[:error]
       redirect_to completar_path
+    else 
+      url = ""
+      unless omniauth["user_info"]["urls"].nil?
+        url = omniauth["user_info"]["urls"]["Website"]
+      end
+      pass = (0...8).map{65.+(rand(25)).chr}.join
+      if(omniauth['provider'] == "linked_in")
+        name = omniauth["user_info"][:name]
+      else
+        name = omniauth["user_info"]["name"]
+      end
+      user = User.create!(:name => name, :email => user["email"], 
+                  :password => pass, :site => url ) 
+      user.toggle!(:active)
+      user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      sign_in user
+      redirect_to usuario_path(user) 
     end
-    url = ""
-    unless omniauth["user_info"]["urls"].nil?
-      url = omniauth["user_info"]["urls"]["Website"]
-    end
-    pass = (0...8).map{65.+(rand(25)).chr}.join
-    if(omniauth['provider'] == "linked_in")
-      name = omniauth["user_info"][:name]
-    else
-      name = omniauth["user_info"]["name"]
-    end
-    user = User.create!(:name => name, :email => user["email"], 
-                 :password => pass, :site => url ) 
-    user.toggle!(:active)
-    user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
-    sign_in user
-    redirect_to authentications_url
-
   end
 
 
