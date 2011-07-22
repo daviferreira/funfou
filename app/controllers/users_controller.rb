@@ -215,12 +215,6 @@ class UsersController < ApplicationController
       @user = User.find_using_slug(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
-
-    def correct_user_or_admin
-      id = params[:id] ? params[:id] : (signed_in? ? current_user.id : nil)
-      @user = User.find_using_slug(id)
-      redirect_to(root_path) unless current_user?(@user) or current_user.admin?
-    end
     
     def default_crumb
       [{:label => "usuários", :path => usuarios_path}]

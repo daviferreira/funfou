@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 class AuthenticationsController < ApplicationController
+  before_filter :authenticate, :only => [:destroy]
+  before_filter :correct_user_or_admin, :only => [:destroy]
 
   def create
     omniauth = request.env["omniauth.auth"]
@@ -41,5 +43,10 @@ class AuthenticationsController < ApplicationController
     @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
     redirect_to usuario_path(current_user), :notice => "Autenticação removida com sucesso."
+  end
+
+  def failure
+    flash[:error] = params[:message]
+    redirect_to login_path 
   end
 end

@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 Funfou::Application.routes.draw do
 
-  resources :authentications, :only => [:create, :destroy]
+  resources :authentications, :only => [:create, :destroy, :failure]
 
 	resources :users, :only => [:create, :update, :destroy]
 	resources :sessions, :only => [:create, :destroy]
@@ -59,6 +59,7 @@ Funfou::Application.routes.draw do
 	match "/categoria/:id",   :to => "categories#show", :as => :categoria
 	
 	match '/auth/:provider/callback' => 'authentications#create'
+  match '/auth/failure' => 'authentications#failure', :as => 'failed_authentication'
 	match '/completar_cadastro',  :to => "users#complete", :as => :completar
 	match '/completar_autenticacao', :to => "users#complete_authentication", :as => :complete_authentication
 	
