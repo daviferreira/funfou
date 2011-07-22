@@ -57,7 +57,6 @@
 	  </ul>
 	<% end %>
 	
-
   <div id="answer-form">
 	<% if signed_in? %>
 		<%= render 'answers/form' %>
@@ -65,6 +64,7 @@
     <p class="info">Você precisa estar logado para responder a esta pergunta.</p>
     <div class="box-form">
       <%= render 'sessions/form' %>
+      <%= render 'sessions/providers' %>
     </div>
 	<% end %>
   <a name="answer_form"></a>

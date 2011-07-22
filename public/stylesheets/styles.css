@@ -1483,8 +1483,8 @@ footer ul li a:hover {
 /* Authentication
 -------------------------------------------------------------- */
 
-.social-login{
-  font-size:12px;
+.social-login, .social-login p{
+  font-size:12px!important;
 }
 
 .providers{

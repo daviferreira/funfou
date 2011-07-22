@@ -4,12 +4,7 @@
 <div id="user-form" class="box-form">
 	<%= render "form" %>
 	<p class="member-login">Já é cadastrado? <%= link_to "Efetue login!", login_path %></p>
-  <div class="social-login">
-	  <p><strong>Ou utilize um dos serviços abaixo para criar sua conta ou efetuar login:</strong></p>
-    <div class="providers clearfix">
-      <%= omniauth_providers %>
-    </div>
-  </div>
+  <%= render 'sessions/providers' %>
 </div>
 
 <script>
