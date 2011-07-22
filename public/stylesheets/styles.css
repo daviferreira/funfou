@@ -1371,7 +1371,11 @@ div#login-form input[type="text"],div#login-form input[type="password"],div#pass
 p.member-login {
   font-size:12px!important;
   color:#666;
-  margin:24px 0 0;
+  margin:24px 0 12px 0;
+}
+
+div#user-form{
+  height:auto!important;
 }
 
 div#user-form input[type="text"] {
@@ -1478,6 +1482,14 @@ footer ul li a:hover {
 
 /* Authentication
 -------------------------------------------------------------- */
+
+.social-login{
+  font-size:12px;
+}
+
+.providers{
+  margin:24px 0 0;
+}
 
 .authentication {
   width: 130px;
