@@ -170,3 +170,30 @@ describe User do
   end
 
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer         not null, primary key
+#  name                :string(255)
+#  email               :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  encrypted_password  :string(255)
+#  salt                :string(255)
+#  admin               :boolean
+#  last_login          :datetime
+#  active              :boolean
+#  site                :string(255)
+#  twitter             :string(255)
+#  github              :string(255)
+#  cidade              :string(255)
+#  bio                 :string(255)
+#  cached_slug         :string(255)
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_uploaded_at  :datetime
+#
+
