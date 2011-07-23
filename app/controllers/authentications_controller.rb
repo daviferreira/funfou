@@ -49,4 +49,13 @@ class AuthenticationsController < ApplicationController
     flash[:error] = params[:message]
     redirect_to login_path 
   end
+  
+  private
+  
+    def correct_user_or_admin
+      @authentication = Authentication.find(params[:id])
+      @user = User.find(@authentication.user_id)
+      redirect_to(root_path) unless current_user?(@user) or current_user.admin?
+    end
+  
 end

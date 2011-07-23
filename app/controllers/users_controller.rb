@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update]
+  before_filter :authenticate, :only => [:edit, :update]
   before_filter :correct_user_or_admin, :only => [:edit, :update, :destroy_avatar]
-  before_filter :admin_user, :only => [:destroy, :toggle_admin, :toggle_active]
+  before_filter :admin_and_not_current_user, :only => [:destroy, :toggle_admin, :toggle_active]
   
   def index
     @title = "Usuários"
@@ -211,9 +211,14 @@ class UsersController < ApplicationController
 
   private
 
-    def correct_user
+    def correct_user_or_admin
       @user = User.find_using_slug(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      redirect_to(root_path) unless current_user?(@user) or current_user.admin?
+    end
+    
+    def admin_and_not_current_user
+      @user = User.find_using_slug(params[:id])
+      redirect_to(root_path) if !signed_in? or !current_user.admin? or current_user?(@user)
     end
     
     def default_crumb

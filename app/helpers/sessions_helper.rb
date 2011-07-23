@@ -40,23 +40,16 @@ module SessionsHelper
   end
   
   def authenticate
-      c = params[:controller]
-      a = params[:action]
-      if c == "questions" and a == "new"
-        session[:return_to] = new_question_path
-      end
-      deny_access unless signed_in?
+    c = params[:controller]
+    a = params[:action]
+    if c == "questions" and a == "new"
+      session[:return_to] = new_question_path
     end
-
-  def correct_user_or_admin
-    id = params[:id] ? params[:id] : (signed_in? ? current_user.id : nil)
-    @user = User.find_using_slug(id)
-    redirect_to(root_path) unless current_user?(@user) or current_user.admin?
+    deny_access unless signed_in?
   end
     
   def admin_user
-    @user = User.find_using_slug(params[:id])
-    redirect_to(root_path) if !signed_in? or !current_user.admin? or current_user?(@user)
+    redirect_to(root_path) if !signed_in? or !current_user.admin?
   end
   
   def deny_access

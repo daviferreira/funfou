@@ -283,6 +283,12 @@ describe UsersController do
         delete :destroy, :id => @user.id
         response.should redirect_to(root_path)
       end
+      
+      it "should not destroy the user" do
+        lambda do
+          delete :destroy, :id => @user.id
+        end.should_not change(User, :count)
+      end
     end
     
     describe "as non-admin user" do
@@ -290,6 +296,12 @@ describe UsersController do
         test_sign_in(@user)
         delete :destroy, :id => @user.id
         response.should redirect_to(root_path)
+      end
+      
+      it "should not destroy the user" do
+        lambda do
+          delete :destroy, :id => @user.id
+        end.should_not change(User, :count)
       end
     end
     

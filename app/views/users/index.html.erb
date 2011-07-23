@@ -11,7 +11,7 @@
     	  <%= stats_text(user) %>
     	</p> 
     	
-			<% if current_user.admin? and user.email != "contato@daviferreira.com" %>
+			<% if signed_in? and current_user.admin? and user.email != "contato@daviferreira.com" %>
 			<div class="admin">
 			 <%= link_to "Excluir", user, :method => :delete,
 																 :confirm => "Tem certeza?",

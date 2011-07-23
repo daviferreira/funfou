@@ -73,8 +73,14 @@ describe AnswersController do
     
     describe "as a non-signed-in user" do
       it "should deny access" do
-        delete :destroy, {:id => 1}
+        delete :destroy, :id => 1
         response.should redirect_to(login_path)
+      end
+
+      it "should not destroy the answer" do
+        lambda do
+          delete :destroy, :id => 1
+        end.should_not change(Answer, :count)
       end
     end
     

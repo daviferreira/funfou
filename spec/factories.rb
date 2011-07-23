@@ -26,6 +26,13 @@ end
 
 Factory.define :answer do |answer|
   answer.content            "Test"
+  answer.score              0
   answer.association        :user
   answer.association        :question
+end
+
+Factory.define :authentication do |authentication|
+  authentication.uid                "123"
+  authentication.provider           "twitter"
+  authentication.association        :user
 end

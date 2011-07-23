@@ -76,10 +76,34 @@ describe AuthenticationsController do
         delete :destroy, :id => 1 
         response.should redirect_to(login_path)
       end
+      
+      it "should not destroy the authentication" do
+        lambda do
+          delete :destroy, :id => 1
+        end.should_not change(Authentication, :count)
+      end
     end
     
     describe "as a signed-in user" do
+      before(:each) do 
+        @user = Factory(:user)
+        test_sign_in(@user)
+      end
 
+      it "should destroy their own authentication" do
+        @authentication = Factory(:authentication, :user => @user)
+        lambda do
+          delete :destroy, :id => @authentication
+        end.should change(Authentication, :count).by(-1)
+      end
+      
+      it "should not destroy other user's authentications" do
+        second_user = Factory(:user, :name => "Bob", :email => "another@example.com")
+        second_auth = Factory(:authentication, :user => second_user)
+        lambda do
+          delete :destroy, :id => second_auth
+        end.should_not change(Authentication, :count)
+      end
     end
     
   end
