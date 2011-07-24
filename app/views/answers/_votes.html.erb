@@ -9,7 +9,7 @@
     </li>
     <% if current_user != answer.user %>
     <li class="up">
-      <%= link_to "+", vote_up_path(:answer_id => answer.id), :remote => true %>
+      <%= link_to "+", vote_up_path(answer), :remote => true %>
     </li>
     <% end %>
   </ul>

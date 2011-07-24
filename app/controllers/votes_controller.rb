@@ -3,8 +3,8 @@ class VotesController < ApplicationController
 	before_filter :authenticate
 
   def up    
-    @question = Question.find_using_slug(params[:id])
-    @answer = Answer.find(params[:answer_id])
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
     
     unless @answer.user_id == current_user.id
       @question.answers.each do |answer|
