@@ -6,79 +6,69 @@ describe UsersController do
 
   describe "GET 'index'" do
 
-    describe "for non-signed-in users" do
-      it "should deny access" do
-        get :index
-        response.should redirect_to(login_path)
-      end
-    end
-    
-    describe "for signed-in-users" do
+		before(:each) do
+			@user = test_sign_in(Factory(:user))
+			second = Factory(:user, :name => "Bob", :email => "another@example.com")
+			third  = Factory(:user, :name => "Ben", :email => "another@example.net")
+			
+			30.times do
+				Factory(:user, :name => Factory.next(:name),
+												:email => Factory.next(:email))
+			end
+		end
+		
+		it "should be successful" do
+			get :index
+			response.should be_success
+		end
+		
+		it "should have an element for each user" do
+			get :index
+			User.all.paginate(:page => 1).each do |user|
+				response.should have_selector('li', :content => user.name)
+			end
+		end
+		
+		it "should paginate users" do
+			get :index
+			response.should have_selector('div.apple_pagination')
+			response.should have_selector('span.disabled', :content => "anterior")
+			response.should have_selector('a', :href => "/usuarios?page=2",
+																					:content => "2")
+			response.should have_selector('a', :href => "/usuarios?page=2",
+																					:content => "próximo")
+		end
+		
+		it "should have delete links for admins" do
+			@user.toggle!(:admin)
+			other_user = User.all.second
+			get :index
+			response.should have_selector('a', :href => user_path(other_user),
+																					:content => "Excluir")
+		end
 
-      before(:each) do
-        @user = test_sign_in(Factory(:user))
-        second = Factory(:user, :name => "Bob", :email => "another@example.com")
-        third  = Factory(:user, :name => "Ben", :email => "another@example.net")
-        
-        30.times do
-          Factory(:user, :name => Factory.next(:name),
-                         :email => Factory.next(:email))
-        end
-      end
-      
-      it "should be successful" do
-        get :index
-        response.should be_success
-      end
-      
-      it "should have an element for each user" do
-        get :index
-        User.all.paginate(:page => 1).each do |user|
-          response.should have_selector('li', :content => user.name)
-        end
-      end
-      
-      it "should paginate users" do
-        get :index
-        response.should have_selector('div.apple_pagination')
-        response.should have_selector('span.disabled', :content => "anterior")
-        response.should have_selector('a', :href => "/usuarios?page=2",
-                                           :content => "2")
-        response.should have_selector('a', :href => "/usuarios?page=2",
-                                           :content => "próximo")
-      end
-      
-      it "should have delete links for admins" do
-        @user.toggle!(:admin)
-        other_user = User.all.second
-        get :index
-        response.should have_selector('a', :href => user_path(other_user),
-                                           :content => "Excluir")
-      end
+		it "should not have delete links for non-admins" do
+			other_user = User.all.second
+			get :index
+			response.should_not have_selector('a', :href => usuario_path(other_user),
+																							:content => "Excluir")
+		end
+		
+		it "should have edit links for admins" do
+			@user.toggle!(:admin)
+			other_user = User.all.second
+			get :index
+			response.should have_selector('a', :href => edit_user_path(other_user),
+																					:content => "Editar")
+		end
 
-      it "should not have delete links for non-admins" do
-        other_user = User.all.second
-        get :index
-        response.should_not have_selector('a', :href => usuario_path(other_user),
-                                               :content => "Excluir")
-      end
-      
-      it "should have edit links for admins" do
-        @user.toggle!(:admin)
-        other_user = User.all.second
-        get :index
-        response.should have_selector('a', :href => edit_user_path(other_user),
-                                           :content => "Editar")
-      end
-
-      it "should not have edit links for non-admins" do
-        other_user = User.all.second
-        get :index
-        response.should_not have_selector('a', :href => edit_user_path(other_user),
-                                               :content => "Editar")
-      end      
-      
-    end
+		it "should not have edit links for non-admins" do
+			other_user = User.all.second
+			get :index
+			response.should_not have_selector('a', :href => edit_user_path(other_user),
+																							:content => "Editar")
+		end      
+		
   end
 
   describe "GET 'show'" do

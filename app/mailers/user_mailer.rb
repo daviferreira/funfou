@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   
   def password_instructions(user, host)
     @user = user
-    @url = "http://" + host + "/senha/" + user.salt 
+    @url = "http://#{host}/senha/#{user.salt}"
     mail(:to => user.email,
          :subject => "Instruções para criar uma nova senha no Funfou")
   end

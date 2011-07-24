@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class CommentsController < ApplicationController
   
+  before_filter :authenticate
+  
   def create
 
     @question = Question.find_using_slug(params[:comment][:question_id])
@@ -11,7 +13,7 @@ class CommentsController < ApplicationController
 		  @comment = current_user.comment!(params[:comment])
 	  end
 		respond_to do |format|
-			format.html { redirect_to @question }
+			format.html { redirect_to pergunta_path(@question) }
 			format.js
 		end
 

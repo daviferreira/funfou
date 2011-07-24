@@ -51,7 +51,6 @@ Funfou::Application.routes.draw do
 	match "/sair",            :to => "sessions#destroy", :as => :logout
 	
 	match "/vote/up/:id",     :to => "votes#up", :as => :vote_up
-	match "/vote/down/:id",   :to => "votes#down", :as => :vote_down
 	
 	match "/favoritar/:id",   :to => "favorites#new", :as => :new_favorite
 	

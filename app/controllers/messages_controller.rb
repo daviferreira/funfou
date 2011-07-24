@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     if @message.valid?
       MessageMailer.contact(@message).deliver
-      flash[:notice] = "Mensagem enviada! Obrigado por entrar em contato."
+      flash[:success] = "Mensagem enviada! Obrigado por entrar em contato."
       redirect_to root_url
     else
       flash[:error] = "Todos os campos são de preenchimento obrigatório."
