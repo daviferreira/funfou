@@ -41,7 +41,8 @@ class QuestionsController < ApplicationController
 	  end
 		add_visualization(@question.id)
 		@question.content = @question.content.gsub("<pre>", "<pre class=\"dom\">")
-		@title = @question.title + " - " + @question.tags.first.category.name
+		tag = @question.tags.first.category.name unless @question.tags.first.nil?
+		@title = @question.title + " - " + tag.to_s
     @meta_description = @question.title + " " + @question.content.gsub(/<[^>]*>/ui,'').gsub(/[\n\r(  )]/ui, ' ').slice(0..60) + ". Pergunta sobre: "
     @question.tags.each do |t|
       @meta_description += t.category.name + ", "
