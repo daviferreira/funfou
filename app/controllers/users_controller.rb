@@ -212,7 +212,11 @@ class UsersController < ApplicationController
   private
 
     def correct_user_or_admin
-      @user = User.find_using_slug(params[:id])
+      if(params[:id])
+        @user = User.find_using_slug(params[:id])
+      else
+        @user = current_user
+      end
       redirect_to(root_path) unless current_user?(@user) or current_user.admin?
     end
     
