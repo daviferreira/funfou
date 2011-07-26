@@ -22,7 +22,7 @@ end
 group :test do
   gem 'rspec'
   gem 'webrat'
-  gem 'spork'#, :git => "https://github.com/timcharper/spork.git"
+  gem 'spork'
   gem 'ZenTest'
   gem 'factory_girl_rails'
   gem 'mocha'
