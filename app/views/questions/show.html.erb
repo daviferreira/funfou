@@ -1,5 +1,3 @@
-
-
 <div class="question">
 
   <%= render 'favorite_form' if signed_in? %>
@@ -17,6 +15,8 @@
   <%= render 'info_data', :question => @question %>
 
 	<div class="description">
+	  <article><%= @question.content %></article>
+	  <article><%= h(@question.content) %></article>
 	  <article>
 		  <%= raw(auto_link(sanitize_pre(@question.content).gsub(/\n/, "<br class=\"content-nl\" />"))) %>
 		</article>

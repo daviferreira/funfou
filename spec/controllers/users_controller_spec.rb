@@ -177,7 +177,6 @@ describe UsersController do
       response.should be_success
     end
     
-
   end
 
   describe "PUT 'update'" do
@@ -254,6 +253,11 @@ describe UsersController do
         get :edit, :id => @user.id
         response.should redirect_to(root_path)
       end
+      
+       it "should allow access to 'meus-dados'" do
+          get :edit
+          response.should render_template('edit')
+        end
       
       it "should require matching users for 'update'" do
         put :update, :id => @user.id, :user => {}
