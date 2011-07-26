@@ -3,7 +3,7 @@
   <%= render 'answers/votes', :answer => answer %>
   <div class="answer">
     <div class="content">
-      <%= auto_link(sanitize_pre(answer.content).gsub(/\n/, "<br class=\"content-nl\" />")) %>
+      <%= raw(auto_link(sanitize_pre(answer.content).gsub(/\n/, "<br class=\"content-nl\" />"))) %>
     </div>
     
     <div class="admin">
