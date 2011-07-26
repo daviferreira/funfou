@@ -495,6 +495,7 @@ ul.tagit input[type="text"] {
 .box-comments ul li div.comment-content {
   width:860px;
   line-height:18px;
+  font-size:13px;
 }
 
 .box-comments ul li div.comment-avatar img {
@@ -1160,6 +1161,11 @@ div.question div.description {
    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 -1px 1px rgba(113, 123, 149, .2);
    box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 -1px 1px rgba(113, 123, 149, .2);
 }
+
+div.question div.descrtion article{
+  padding:40px;
+}
+
 
 div.question div.description pre {
   font-size:14px;
