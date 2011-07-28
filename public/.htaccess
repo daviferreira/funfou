@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(funfou\.com.br)(:80)? [NC]
+RewriteRule ^(.*) http://www.funfou.com.br/$1 [R=301,L]
+order deny,allow
