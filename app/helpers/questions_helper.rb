@@ -77,7 +77,7 @@ module QuestionsHelper
     end
   end
   
-  def sanitize_pre(content)
+  def sanitize_preserving_pre(content)
 		unless content.nil?
       r1 = /&lt;pre class=&quot;([a-z_\-]+)&quot;&gt;/i
       r2 = /&lt;\/pre&gt;/i
@@ -91,6 +91,7 @@ module QuestionsHelper
       	content = content.gsub(/\swww\./, ' http://www.').to_s
       	content = content.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, '<a href="\1" target="_blank">\1</a>').to_s
       end
+      raw(auto_link(content.gsub(/\n/, "<br class=\"content-nl\" />")))
 		end
   end
   

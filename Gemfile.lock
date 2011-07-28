@@ -37,7 +37,6 @@ GEM
       mime-types
       xml-simple
     builder (2.1.2)
-    closure-compiler (1.1.1)
     cocaine (0.1.0)
     daemons (1.0.10)
     diff-lcs (1.1.2)
@@ -186,7 +185,6 @@ DEPENDENCIES
   actionmailer (>= 3.0.9)
   annotate
   aws-s3
-  closure-compiler
   factory_girl_rails
   faker (>= 0.9.5)
   mail
