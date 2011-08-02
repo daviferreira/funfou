@@ -11,7 +11,7 @@ class PagesController < ApplicationController
 			@crumbs = [{:label => "Perguntas", :path   => perguntas_path}]
 		else
 		  @questions = Question.published.limit(5)
-		  @answers = Answer.order("created_at DESC").where("published = 't'").limit(5)
+		  @answers = Answer.published.limit(5)
 		  @users = User.order("created_at DESC").shuffle
 		  @aux = []
 		  unless @users.empty?
