@@ -533,6 +533,11 @@ ul.tagit input[type="text"] {
   color:#333;
 }
 
+.help{
+  text-align:left!important;
+  font-size:14px!important;
+}
+
 #new_question textarea {
   width:784px;
   font-family:'Droid Sans Mono', monospace;
