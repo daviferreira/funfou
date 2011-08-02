@@ -26,7 +26,10 @@ class Answer < ActiveRecord::Base
 	validates :question_id, :presence => true
 	validates :user_id, :presence => true
 	
-	default_scope :order => 'answers.score DESC, answers.created_at DESC'
-	scope :published, :conditions => { :published => true }
+	#default_scope :order => 'answers.score DESC, answers.created_at DESC'
+  scope :latest, :conditions => { :published => true },
+                 :order => 'answers.created_at DESC'
+	scope :published, :conditions => { :published => true },
+                    :order => 'answers.score DESC, answers.created_at DESC'
 	scope :not_published, :order => 'created_at DESC', :conditions => { :published => nil }
 end
