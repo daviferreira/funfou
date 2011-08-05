@@ -16,4 +16,6 @@ class Favorite < ActiveRecord::Base
 	belongs_to :question
 	
 	default_scope :order => 'favorites.created_at DESC'
+
+  #validates :question_id, :uniqueness => {:scope => :user_id}
 end
