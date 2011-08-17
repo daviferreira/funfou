@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
                          
  before_save :encrypt_password, :if => :validate_password?
  
- default_scope :order => 'users.name ASC'
+ default_scope :order => 'LOWER(users.name) ASC'
 
  def validate_password?
    !password.blank? || !password_confirmation.blank? || new_record?
