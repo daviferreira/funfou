@@ -10,3 +10,4 @@ public/system/avatars/
 webrat*
 webrat-*
 public/sitemap*
+Gemfile.lock
