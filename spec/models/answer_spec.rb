@@ -2,7 +2,25 @@
 require 'spec_helper'
 
 describe Answer do
-  pending "add some examples to (or delete) #{__FILE__}"
+    before(:each) do
+        @user = Factory(:user)
+        @question = {
+            :title => "Title",
+            :content => "Content"
+        }
+        @attr = {
+            :content => "Content",
+            :score => 0,
+            :published => true
+        }
+    end
+
+    it "should create a new answer given valid attributes" do
+        lambda do
+            question = @user.questions.new(@question).save!
+            @user.answers.create!(@attr.merge({:question_id => question.id}))
+        end.should change(Answer, :count).by 1
+    end
 end
 
 # == Schema Information
