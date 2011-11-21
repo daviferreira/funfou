@@ -3,23 +3,21 @@ require 'spec_helper'
 
 describe Answer do
     before(:each) do
-        @user = Factory(:user)
-        @question = {
-            :title => "Title",
-            :content => "Content"
-        }
+        @question = Factory(:question) 
         @attr = {
             :content => "Content",
             :score => 0,
-            :published => true
+            :published => true,
+            :user_id => @question.user.id,
+            :question_id => @question.id
         }
     end
 
     it "should create a new answer given valid attributes" do
-        lambda do
-            question = @user.questions.new(@question).save!
-            @user.answers.create!(@attr.merge({:question_id => question.id}))
-        end.should change(Answer, :count).by 1
+        answer = Answer.create(@attr)
+        answer.user_id = @attr[:user_id]
+        answer.should be_valid
+        answer.save!.should be_true
     end
 end
 
