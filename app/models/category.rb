@@ -18,5 +18,8 @@ class Category < ActiveRecord::Base
   has_many :tags, :dependent => :destroy
   has_many :questions, :through => :tags
 
+  validates :name, :presence => true,
+                   :uniqueness => true
+
   default_scope :order => 'categories.name ASC'
 end

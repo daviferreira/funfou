@@ -2,7 +2,28 @@
 require 'spec_helper'
 
 describe Category do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+    before(:each) do
+        @attr = {
+            :name => 'Category'
+        }
+    end
+
+    it "should create a category given valid attributes" do
+        lambda do
+            Category.create!(@attr)
+        end.should change(Category, :count).by(1)
+    end
+
+    it "should require a name" do
+        Category.new({:name => ''}).should_not be_valid
+    end
+
+    it "should have validate the uniqueness of a name" do
+        Category.create!(@attr)
+        Category.new(@attr).should_not be_valid
+    end
+
 end
 
 # == Schema Information
