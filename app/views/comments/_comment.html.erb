@@ -7,7 +7,7 @@
       Há <%= time_ago_in_words(comment.created_at) %> <%= first_name(comment.user.name) %> disse:
     </span>
     <span class="comment-text">
-      <%= sanitize(auto_link(comment.content.gsub(/\n/, "<br />")), :tags => %w(br a)) %>
+      <%= sanitize(auto_link(comment.content).gsub(/\n/, "<br />"), :tags => %w(br a)) %>
     </span>
   </div>
 </li>
