@@ -91,7 +91,7 @@ module QuestionsHelper
       	content = content.gsub(/\swww\./, ' http://www.').to_s
       	content = content.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, '<a href="\1" target="_blank">\1</a>').to_s
       end
-      raw(auto_link(content.gsub(/\n/, "<br class=\"content-nl\" />")))
+      raw(auto_link(content).gsub(/\n/, "<br class=\"content-nl\" />"))
 		end
   end
   
