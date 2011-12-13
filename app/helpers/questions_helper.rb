@@ -87,10 +87,6 @@ module QuestionsHelper
       	content = content.gsub(r2, '</pre>').to_s
       	content = sanitize content, :tags => %w(pre)
       end
-      unless content.gsub(/\swww\./, ' http://www.').nil?
-      	content = content.gsub(/\swww\./, ' http://www.').to_s
-      	content = content.gsub(/((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/, '<a href="\1" target="_blank">\1</a>').to_s
-      end
       raw(auto_link(content).gsub(/\n/, "<br class=\"content-nl\" />"))
 		end
   end
